@@ -1,0 +1,12 @@
+{
+  "name": "it-qbr",
+  "version": "1.0.0",
+  "description": "IT Quarterly Business Review",
+  "scripts": {
+    "build": "echo 'Static site'",
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "serve": "^14.0.0"
+  }
+}
