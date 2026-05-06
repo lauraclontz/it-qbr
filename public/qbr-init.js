@@ -533,6 +533,13 @@
     applyProject('ENI',  'eni',  '#F59E0B');
   }
 
+  function safeChart(id, config) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    Chart.getChart(el)?.destroy();
+    return new Chart(el, config);
+  }
+
   function applyWorkato(data) {
     const s = data.summary || {};
     const weeks = data.weeks || [];
@@ -576,7 +583,7 @@
     const tasks = weeks.map(w => w.weekly_tasks || null);
     const recipes = weeks.map(w => w.total_running_recipes);
 
-    new Chart(document.getElementById('chart-ipaas-runs'), {
+    safeChart('chart-ipaas-runs', {
       type: 'bar',
       data: {
         labels,
@@ -589,14 +596,14 @@
         plugins: { legend: { display: false },
           tooltip: { callbacks: { label: ctx => Number(ctx.parsed.y).toLocaleString() + ' runs' } } },
         scales: {
-          y: { type: 'logarithmic', grid: { color: 'rgba(0,0,0,0.05)' },
-            ticks: { callback: v => [1000,10000,100000,500000].includes(v) ? (v/1000)+'K' : null } },
+          y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: { callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v } },
           x: { grid: { display: false } }
         }
       }
     });
 
-    new Chart(document.getElementById('chart-ipaas-failures'), {
+    safeChart('chart-ipaas-failures', {
       type: 'line',
       data: {
         labels,
@@ -615,27 +622,28 @@
       }
     });
 
-    new Chart(document.getElementById('chart-ipaas-tasks'), {
+    const tasksData = weeks.map(w => w.weekly_tasks || 0);
+    safeChart('chart-ipaas-tasks', {
       type: 'bar',
       data: {
         labels,
-        datasets: [{ label: 'Tasks Consumed', data: tasks,
-          backgroundColor: tasks.map(v => v > 200000 ? '#F59E0B' : 'rgba(245,158,11,0.45)'),
+        datasets: [{ label: 'Tasks Consumed', data: tasksData,
+          backgroundColor: tasksData.map(v => v > 200000 ? '#F59E0B' : 'rgba(245,158,11,0.45)'),
           borderRadius: 4 }]
       },
       options: {
         responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false },
-          tooltip: { callbacks: { label: ctx => ctx.parsed.y ? Number(ctx.parsed.y).toLocaleString() + ' tasks' : 'Pending' } } },
+          tooltip: { callbacks: { label: ctx => Number(ctx.parsed.y).toLocaleString() + ' tasks' } } },
         scales: {
-          y: { type: 'logarithmic', grid: { color: 'rgba(0,0,0,0.05)' },
-            ticks: { callback: v => [10000,100000,500000].includes(v) ? (v/1000)+'K' : null } },
+          y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: { callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v } },
           x: { grid: { display: false } }
         }
       }
     });
 
-    new Chart(document.getElementById('chart-ipaas-recipes'), {
+    safeChart('chart-ipaas-recipes', {
       type: 'line',
       data: {
         labels,

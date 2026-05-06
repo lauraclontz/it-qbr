@@ -257,7 +257,7 @@
               <div class="metric-card">
                 <div class="metric-value" id="btec-bugs-value">53</div>
                 <div class="metric-label" id="btec-bugs-label">Bugs (12.7%)</div>
-                <div class="metric-delta delta-up">&darr; reactive work</div>
+                <div class="metric-delta delta-up">&darr; bug rate vs Q4 (15.1%)</div>
               </div>
               <div class="metric-card">
                 <div class="metric-value" id="btec-cycle">9.2d</div>
@@ -330,10 +330,11 @@
               </h5>
               <ul class="editable" data-edit-id="biztech-commentary-text">
                 <li>BizTech / GTM completed 442 tickets in Q1 FY27, with median cycle time improving 34% to 9.2d (down from 13.9d in Q4 FY26).</li>
-                <li>Bug rate held at 12.7% (53 tickets), indicating a continued shift away from reactive work toward planned delivery.</li>
+                <li>Bug rate improved to 12.7% (53 bug-type tickets) from 15.1% in Q4, despite a 45% increase in total volume — bug count up slightly but rate down.</li>
                 <li>Ticket mix skewed toward Configuration (54.8%) and Development (33.9%), driven by Salesforce billing infrastructure and partner tooling work.</li>
                 <li>Opportunity-to-Order and Order-to-Cash processes drove the most volume (22.8% each), consistent with Q1 commercial systems priorities.</li>
                 <li>Platform Administration (18.3%) and Demand-to-Opportunity (16.8%) were the next highest-volume process areas.</li>
+                <li>Key Q1 themes: Salesforce managed package audit and updates (30+ packages reviewed), AI Agent tooling pilot (Slack &amp; Jira integrations, knowledge layer), and Workspace object redesign (Workspace_User__c, Account-Workspace relationships).</li>
               </ul>
             </div>
 
@@ -360,7 +361,7 @@
               <div class="metric-card">
                 <div class="metric-value" id="ete-bugs-value">14</div>
                 <div class="metric-label" id="ete-bugs-label">Bugs (10.7%)</div>
-                <div class="metric-delta delta-up">Low reactive work</div>
+                <div class="metric-delta delta-down">&uarr; bug rate vs Q4 (6.2%)</div>
               </div>
               <div class="metric-card">
                 <div class="metric-value" id="ete-cycle">5.9d</div>
@@ -433,9 +434,10 @@
               </h5>
               <ul class="editable" data-edit-id="enttech-commentary-text">
                 <li>EntTech completed 160 tickets in Q1 FY27, with median cycle time improving to 5.9d from 6.5d in Q4 FY26.</li>
-                <li>Bug rate remained low at 10.7% (14 tickets), with work predominantly configuration-driven (90.8%) — indicative of a stable, well-defined operating environment.</li>
+                <li>Bug rate at 10.7% (14 bug-type tickets) vs 6.2% in Q4 — slight uptick but still low overall; work predominantly configuration-driven (90.8%), indicative of a stable operating environment.</li>
                 <li>75.6% of work fell under Run the Business, consistent with a mature team sustaining existing finance and HR systems (NetSuite, Workday, Coupa).</li>
                 <li>Platform Administration (32.1%) and Order-to-Cash (21.4%) were the top process areas, followed by Procure-to-Pay (16.8%) and Record-to-Report (13.7%).</li>
+                <li>Key Q1 themes: Stripe-NetSuite reconciliation and SKU creation for new products (Vidoso, 4.1 SKUs), AI-assisted automation pilots (Claude + NetSuite MCP for journal entry loading, agentic headcount reconciliation), tax jurisdiction updates (VAT, US/CA state rules via Anrok), and recurring Workday-NetSuite headcount sync discrepancies.</li>
               </ul>
             </div>
 
@@ -561,7 +563,6 @@
           </div>
           <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-secondary); margin-top:4px;">
             <span>0</span>
-            <span style="color:var(--yellow);">&#x26A0; Alert threshold (75%)</span>
             <span>3M limit</span>
           </div>
         </div>
