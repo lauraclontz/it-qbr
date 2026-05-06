@@ -252,7 +252,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
               <div class="metric-card">
                 <div class="metric-value" id="btec-total">442</div>
                 <div class="metric-label">Total Tickets</div>
-                <div class="metric-delta delta-up">&uarr; vs 100 Q4 FY26</div>
+                <div class="metric-delta delta-up">&uarr; 45% vs 305 Q4 FY26</div>
               </div>
               <div class="metric-card">
                 <div class="metric-value" id="btec-bugs-value">53</div>
