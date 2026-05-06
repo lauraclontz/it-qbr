@@ -1,0 +1,3036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT QBR — Q1 FY'27</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --blue: #4353FF;
+    --blue-light: #6B77FF;
+    --blue-bg: rgba(67,83,255,0.06);
+    --dark: #1a1a2e;
+    --dark-2: #16213e;
+    --text: #2d2d3a;
+    --text-secondary: #6b7280;
+    --bg: #f5f6fa;
+    --white: #ffffff;
+    --border: #e5e7eb;
+    --green: #00C853;
+    --green-bg: rgba(0,200,83,0.08);
+    --yellow: #F59E0B;
+    --yellow-bg: rgba(245,158,11,0.08);
+    --red: #EF4444;
+    --red-bg: rgba(239,68,68,0.08);
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── Sidebar Nav ─────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--dark);
+    color: #fff;
+    padding: 24px 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 0 24px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .sidebar-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-header .quarter-badge {
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .sidebar nav {
+    flex: 1;
+    padding: 16px 0;
+  }
+
+  .sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+
+  .sidebar nav a:hover,
+  .sidebar nav a.active {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+    border-left-color: var(--blue);
+  }
+
+  .sidebar nav a .nav-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.1);
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sidebar nav a.active .nav-num {
+    background: var(--blue);
+  }
+
+  .sidebar-footer {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── Main Content ────────────────────────────────── */
+  .main {
+    margin-left: 260px;
+    padding: 32px 40px;
+    max-width: 1200px;
+  }
+
+  /* ── Top Bar ─────────────────────────────────────── */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .top-bar h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .top-bar .subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  .flags-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--yellow-bg);
+    border: 1px solid rgba(245,158,11,0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--yellow);
+    cursor: pointer;
+  }
+
+  .flags-badge:hover {
+    background: rgba(245,158,11,0.15);
+  }
+
+  /* ── Section Cards ───────────────────────────────── */
+  .section {
+    margin-bottom: 28px;
+    scroll-margin-top: 20px;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--dark);
+    color: #fff;
+    cursor: default;
+  }
+
+  .card-header h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-header .section-num {
+    font-size: 12px;
+    background: var(--blue);
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    padding: 24px;
+  }
+
+  /* ── Flag Inline ─────────────────────────────────── */
+  .flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .flag-high { background: var(--red-bg); color: var(--red); }
+  .flag-medium { background: var(--yellow-bg); color: var(--yellow); }
+  .flag-low { background: var(--green-bg); color: var(--green); }
+
+  /* ── Exec Summary ────────────────────────────────── */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--yellow-bg);
+    border: 1px solid rgba(245,158,11,0.15);
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+  }
+
+  .status-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .status-green { background: var(--green); }
+  .status-yellow { background: var(--yellow); }
+  .status-red { background: var(--red); }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .summary-col {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+  }
+
+  .summary-col h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .summary-col ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .summary-col li {
+    font-size: 14px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .summary-col li:last-child { border-bottom: none; }
+
+  /* ── Metric Cards ────────────────────────────────── */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .metric-card {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+  }
+
+  .metric-card .metric-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.1;
+  }
+
+  .metric-card .metric-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-top: 4px;
+  }
+
+  .metric-card .metric-delta {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-neutral { color: var(--text-secondary); }
+
+  /* ── Accordion ───────────────────────────────────── */
+  .accordion { margin-bottom: 12px; }
+
+  .accordion-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    transition: all 0.2s;
+  }
+
+  .accordion-trigger:hover {
+    background: var(--blue-bg);
+    border-color: var(--blue-light);
+  }
+
+  .accordion-trigger .trigger-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .accordion-trigger .team-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .accordion-trigger .chevron {
+    transition: transform 0.2s;
+    color: var(--text-secondary);
+  }
+
+  .accordion.open .accordion-trigger {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    background: var(--blue-bg);
+    border-color: var(--blue-light);
+  }
+
+  .accordion.open .chevron {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    display: none;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    padding: 20px;
+    background: var(--white);
+  }
+
+  .accordion.open .accordion-content {
+    display: block;
+  }
+
+  /* ── Tables ──────────────────────────────────────── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--bg);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .data-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .data-table tr:hover td {
+    background: var(--blue-bg);
+  }
+
+  .jira-link {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .jira-link:hover { text-decoration: underline; }
+
+  /* ── Status Pills ────────────────────────────────── */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .pill-green { background: var(--green-bg); color: var(--green); }
+  .pill-yellow { background: var(--yellow-bg); color: var(--yellow); }
+  .pill-red { background: var(--red-bg); color: var(--red); }
+  .pill-blue { background: var(--blue-bg); color: var(--blue); }
+  .pill-gray { background: rgba(107,114,128,0.08); color: var(--text-secondary); }
+
+  /* ── Charts ──────────────────────────────────────── */
+  .chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .chart-container {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+  }
+
+  .chart-container h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .chart-wrap {
+    position: relative;
+    height: 220px;
+  }
+
+  /* ── Placeholder ─────────────────────────────────── */
+  .placeholder {
+    padding: 32px;
+    text-align: center;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    border: 2px dashed var(--border);
+  }
+
+  .placeholder .placeholder-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  .placeholder p {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+
+  .placeholder .placeholder-action {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue);
+  }
+
+  /* ── Commentary ──────────────────────────────────── */
+  .commentary {
+    background: var(--blue-bg);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+
+  .commentary h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--blue);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .commentary ul {
+    padding-left: 18px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .commentary li {
+    margin-bottom: 6px;
+  }
+
+  /* ── Filter Buttons ──────────────────────────────── */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-secondary);
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+  }
+
+  /* ── Maturity Visual ─────────────────────────────── */
+  .maturity-track {
+    display: flex;
+    gap: 4px;
+    margin: 20px 0;
+  }
+
+  .maturity-step {
+    flex: 1;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-size: 12px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .maturity-step.completed {
+    background: var(--green-bg);
+    border-color: var(--green);
+  }
+
+  .maturity-step.current {
+    background: var(--blue-bg);
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(67,83,255,0.15);
+  }
+
+  .maturity-step .step-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .maturity-step.completed .step-num { color: var(--green); }
+  .maturity-step.current .step-num { color: var(--blue); }
+
+  .maturity-step .step-label {
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  /* ── Expand/Collapse All ─────────────────────────── */
+  .toggle-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
+
+  .toggle-all:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  /* ── Comments ─────────────────────────────────────── */
+  .commentable {
+    position: relative;
+    transition: outline 0.15s;
+    border-radius: var(--radius-sm);
+  }
+
+  .commentable:hover {
+    outline: 2px dashed rgba(67,83,255,0.3);
+    outline-offset: 4px;
+  }
+
+  .commentable:hover .comment-btn {
+    opacity: 1;
+  }
+
+  .comment-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: var(--shadow);
+  }
+
+  .comment-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .commentable.has-comments .comment-btn {
+    opacity: 1;
+    background: var(--yellow);
+  }
+
+  .comment-count-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--red);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .comment-thread {
+    margin-top: 8px;
+    background: #FFFBEB;
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    display: none;
+  }
+
+  .comment-thread.open {
+    display: block;
+  }
+
+  .comment-thread-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(245,158,11,0.08);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--yellow);
+  }
+
+  .comment-thread-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+
+  .comment-list {
+    padding: 0;
+    list-style: none;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+
+  .comment-item {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(245,158,11,0.1);
+    font-size: 13px;
+  }
+
+  .comment-item:last-child { border-bottom: none; }
+
+  .comment-item .comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .comment-item .comment-author {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 12px;
+  }
+
+  .comment-item .comment-time {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .comment-item .comment-text {
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .comment-item .comment-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 11px;
+    padding: 0;
+    margin-left: 8px;
+  }
+
+  .comment-item .comment-delete:hover {
+    color: var(--red);
+  }
+
+  .comment-input-row {
+    display: flex;
+    gap: 8px;
+    padding: 10px 14px;
+    border-top: 1px solid rgba(245,158,11,0.15);
+    background: #fff;
+  }
+
+  .comment-input-row input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .comment-input-row input[type="text"]:focus {
+    border-color: var(--blue);
+  }
+
+  .comment-input-row button {
+    padding: 8px 16px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .comment-input-row button:hover {
+    background: var(--blue-light);
+  }
+
+  /* ── Comments Panel (sidebar toggle) ─────────────── */
+  .comments-panel-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #FFFBEB;
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--yellow);
+    cursor: pointer;
+    margin-right: 8px;
+  }
+
+  .comments-panel-toggle:hover {
+    background: rgba(245,158,11,0.15);
+  }
+
+  /* Export / Import buttons */
+  .export-comments-btn, .import-btn {
+    padding: 6px 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .export-comments-btn:hover, .import-btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  /* ── Interactive Review Flags ────────────────────── */
+  .flag-interactive {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+    transition: all 0.2s;
+  }
+
+  .flag-interactive.severity-high {
+    background: var(--red-bg);
+    border: 1px solid rgba(239,68,68,0.15);
+  }
+  .flag-interactive.severity-medium {
+    background: var(--yellow-bg);
+    border: 1px solid rgba(245,158,11,0.15);
+  }
+  .flag-interactive.severity-low {
+    background: var(--green-bg);
+    border: 1px solid rgba(0,200,83,0.15);
+  }
+
+  .flag-interactive.resolved {
+    background: rgba(0,200,83,0.05);
+    border-color: rgba(0,200,83,0.2);
+    opacity: 0.7;
+  }
+
+  .flag-interactive .flag-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .flag-interactive .flag-severity-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .flag-interactive.severity-high .flag-severity-dot { background: var(--red); }
+  .flag-interactive.severity-medium .flag-severity-dot { background: var(--yellow); }
+  .flag-interactive.severity-low .flag-severity-dot { background: var(--green); }
+  .flag-interactive.resolved .flag-severity-dot { background: var(--green); }
+
+  .flag-interactive .flag-info {
+    flex: 1;
+  }
+
+  .flag-interactive .flag-message {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .flag-interactive.resolved .flag-message {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+  }
+
+  .flag-interactive .flag-owner-section {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .flag-interactive .flag-resolved-by {
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .flag-resolve-btn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .flag-resolve-btn.unresolve {
+    background: var(--green-bg);
+    color: var(--green);
+  }
+
+  .flag-resolve-btn.resolve {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  .flag-resolve-btn:hover {
+    transform: scale(1.03);
+  }
+
+  /* ── Inline Editable ──────────────────────────────── */
+  .editable {
+    position: relative;
+    transition: outline 0.15s, background 0.15s;
+    border-radius: 4px;
+    cursor: text;
+  }
+
+  .editable:hover {
+    background: rgba(67,83,255,0.04);
+  }
+
+  .editable:focus {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+    background: rgba(67,83,255,0.04);
+  }
+
+  .editable.edited {
+    border-left: 3px solid var(--yellow);
+    padding-left: 8px;
+  }
+
+  .editable .edit-indicator {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--yellow);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 10px;
+    white-space: nowrap;
+    z-index: 5;
+  }
+
+  .editable.edited .edit-indicator {
+    display: block;
+  }
+
+  .edit-history-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(67,83,255,0.06);
+    border: 1px solid rgba(67,83,255,0.15);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    cursor: pointer;
+    margin-left: 8px;
+  }
+
+  .edit-history-btn:hover {
+    background: rgba(67,83,255,0.12);
+  }
+
+  .edit-log {
+    display: none;
+    margin-top: 8px;
+    padding: 12px 16px;
+    background: rgba(67,83,255,0.04);
+    border: 1px solid rgba(67,83,255,0.1);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .edit-log.open { display: block; }
+
+  .edit-log-entry {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(67,83,255,0.08);
+    color: var(--text-secondary);
+  }
+
+  .edit-log-entry:last-child { border-bottom: none; }
+
+  .edit-log-entry .edit-author { font-weight: 600; color: var(--dark); }
+  .edit-log-entry .edit-time { color: var(--text-secondary); font-size: 11px; }
+
+  /* ── Edit mode toolbar ──────────────────────────── */
+  .edit-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--blue-bg);
+    border: 1px solid rgba(67,83,255,0.15);
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .edit-toolbar .edit-count {
+    font-weight: 600;
+    color: var(--blue);
+  }
+
+  /* ── Print ───────────────────────────────────────── */
+  @media print {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .accordion-content { display: block !important; }
+    .flags-badge { display: none; }
+    .card { break-inside: avoid; }
+    .comment-btn { display: none; }
+    .comment-thread { display: block !important; border: 1px solid #ddd; }
+    .comment-input-row { display: none; }
+    .comments-panel-toggle { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ Sidebar ═══════════════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h1>IT QBR</h1>
+    <span class="quarter-badge">Q1 FY'27</span>
+  </div>
+  <nav>
+    <a href="#exec-summary" class="active">
+      <span class="nav-num">1</span> Executive Summary
+    </a>
+    <a href="#hires">
+      <span class="nav-num">2</span> Hires & Open Roles
+    </a>
+    <a href="#metrics">
+      <span class="nav-num">3</span> Operational Metrics
+    </a>
+    <a href="#landings">
+      <span class="nav-num">4</span> Quarterly Landings
+    </a>
+    <a href="#roadmap">
+      <span class="nav-num">5</span> Roadmap & Look Ahead
+    </a>
+    <a href="#decisions">
+      <span class="nav-num">6</span> Decisions & Support
+    </a>
+    <a href="#sf-maturity">
+      <span class="nav-num">7</span> SF Maturity Plan
+    </a>
+    <a href="#actions">
+      <span class="nav-num">8</span> Action Items
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    Generated Apr 16, 2026<br>
+    QBR Automation v1.0
+  </div>
+</aside>
+
+<!-- ═══ Main Content ══════════════════════════════════ -->
+<div class="main">
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div>
+      <h2>IT Quarterly Business Review</h2>
+      <div class="subtitle">Q1 FY'27 &middot; Feb 1 &ndash; Apr 30, 2026 &middot; Presented May 2026</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+      <div class="comments-panel-toggle" onclick="toggleAllComments()">
+        &#x1F4AC; <span id="total-comment-count">0</span> comments
+      </div>
+      <div style="padding:6px 14px; background:rgba(67,83,255,0.06); border:1px solid rgba(67,83,255,0.15); border-radius:20px; font-size:12px; font-weight:600; color:var(--blue);">
+        &#x270F;&#xFE0F; <span id="edit-count">0</span> edits
+      </div>
+      <button class="export-comments-btn" onclick="exportAllFeedback()">Export feedback</button>
+      <label class="import-btn">
+        Import feedback
+        <input type="file" accept=".json" style="display:none" onchange="importFeedback(event)">
+      </label>
+      <div class="flags-badge" onclick="document.getElementById('flags-summary').scrollIntoView({behavior:'smooth'})">
+        &#x26A0;&#xFE0F; <span id="flags-open-count">15</span> open flags
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 1. Executive Summary ══════════════════════ -->
+  <div class="section" id="exec-summary">
+    <div class="card">
+      <div class="card-header">
+        <h3><span class="section-num">1</span> Executive Summary</h3>
+        <span class="flag flag-high">&#x26A0; HIGH &mdash; Laura to review</span>
+      </div>
+      <div class="card-body">
+        <div class="status-bar commentable" data-comment-id="exec-status">
+          <div class="status-dot status-yellow"></div>
+          <div>
+            <strong>Status: Pending Review</strong>
+            <span style="color:var(--text-secondary); font-size:13px;"> &mdash; AI-drafted executive summary will be generated after all sections are reviewed.</span>
+          </div>
+        </div>
+
+        <div class="placeholder commentable" data-comment-id="exec-placeholder">
+          <div class="placeholder-icon">&#x1F4DD;</div>
+          <div class="editable" data-edit-id="exec-summary-text">
+            <p>AI-drafted executive summary will be generated after all sections are reviewed.</p>
+          </div>
+          <div class="placeholder-action">Click above to start writing, or Laura to finalize before QBR meeting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 2. New Hires & Open Roles ═════════════════ -->
+  <div class="section" id="hires">
+    <div class="card">
+      <div class="card-header">
+        <h3><span class="section-num">2</span> New Hires & Open Roles</h3>
+        <span class="flag flag-low">&#x1F4CB; Check EMEA role status</span>
+      </div>
+      <div class="card-body">
+        <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:12px;">New Hires (Q1 FY27)</h4>
+        <div class="commentable" data-comment-id="hires-new">
+          <table class="data-table">
+            <thead>
+              <tr><th>Name</th><th>Title</th><th>Type</th><th>Manager</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Anna Duncanson</strong></td><td>Senior Manager, GTM Technology</td><td><span class="pill pill-blue">FTE</span></td><td>Laura Clontz</td></tr>
+              <tr><td><strong>Jen Szymarek</strong></td><td>Senior AI Product Owner</td><td><span class="pill pill-blue">FTE</span></td><td>Reed Shackelford</td></tr>
+              <tr><td><strong>Krishnakant Nayak</strong></td><td>Integrations Engineer</td><td><span class="pill pill-yellow">CW (India)</span></td><td>Sachin</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:24px 0 12px;">Open Roles</h4>
+        <div class="commentable" data-comment-id="hires-open">
+          <table class="data-table">
+            <thead>
+              <tr><th>Role</th><th>Type</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Lead AI Engineer</td><td><span class="pill pill-blue">FTE</span></td><td><span class="pill pill-yellow">Open</span></td></tr>
+              <tr><td>AI Business Systems Admin</td><td><span class="pill pill-gray">TBD</span></td><td><span class="pill pill-yellow">Open</span></td></tr>
+              <tr><td>Senior IT Support Specialist, EMEA</td><td><span class="pill pill-blue">FTE</span></td><td><span class="pill pill-gray">Checking</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 3. Operational Metrics ════════════════════ -->
+  <div class="section" id="metrics">
+    <div class="card">
+      <div class="card-header">
+        <h3><span class="section-num">3</span> Operational Metrics</h3>
+        <span class="flag flag-medium">&#x26A0; Multiple sections need review</span>
+      </div>
+      <div class="card-body">
+        <button class="toggle-all" onclick="toggleAllAccordions()">
+          &#x2195;&#xFE0F; Expand / Collapse All
+        </button>
+
+        <!-- 3a. IT Ops (Console) -->
+        <div class="accordion open" id="acc-itops">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-itops')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#6366F1"></span>
+              3a. IT Ops (Console)
+              <span class="pill pill-blue">Live Data</span>
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="metrics-row commentable" data-comment-id="itops-console-metrics">
+              <div class="metric-card">
+                <div class="metric-value">4,675</div>
+                <div class="metric-label">Ticket Volume</div>
+                <div class="metric-delta delta-up">&uarr; 16.2% vs Q4 (4,024)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">4.76</div>
+                <div class="metric-label">CSAT (out of 5.0)</div>
+                <div class="metric-delta delta-up">&uarr; from 4.7 (326 reviews)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" style="color:var(--red);">74.8%</div>
+                <div class="metric-label">Automation Rate</div>
+                <div class="metric-delta delta-down">&darr; from ~84% Q4</div>
+              </div>
+            </div>
+
+            <!-- Console categories chart + automation trend -->
+            <div class="chart-row commentable" data-comment-id="itops-charts">
+              <div class="chart-container">
+                <h5>Top 5 Console Categories</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-console-categories"></canvas>
+                </div>
+              </div>
+              <div class="chart-container">
+                <h5>Automation % Trend</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-automation-trend"></canvas>
+                </div>
+                <p style="font-size:11px; color:var(--text-secondary); margin-top:8px;">* Q3 FY26 data is approximate</p>
+              </div>
+            </div>
+
+            <div class="commentary commentable" data-comment-id="itops-console-flag">
+              <h5>
+                &#x1F6A9; Automation Drop
+                <span class="flag flag-high">&#x26A0; HIGH &mdash; Anthony to investigate</span>
+              </h5>
+              <ul class="editable" data-edit-id="itops-automation-text">
+                <li>Console automation dropped from ~84% (Q4) to 74.8% (Q1). This needs investigation &mdash; possible cause: new ticket categories not yet automated, or changed routing rules.</li>
+              </ul>
+            </div>
+
+            <!-- Jira ITS placeholder -->
+            <div style="margin-top:20px;">
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:12px;">Jira ITS</h4>
+              <div class="placeholder commentable" data-comment-id="itops-jira-its">
+                <div class="placeholder-icon">&#x1F3AB;</div>
+                <p>Full ITS pagination in progress. Sample shows ~50 tickets/day, 86% Service Requests.</p>
+                <div class="placeholder-action">Flag: Complete ITS data pull needed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3b. Endpoint -->
+        <div class="accordion" id="acc-endpoint">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-endpoint')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#8B5CF6"></span>
+              3b. Endpoint Management
+              <span class="flag flag-low" style="margin-left:8px;">&#x1F4CB; Chris</span>
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="placeholder commentable" data-comment-id="endpoint-placeholder">
+              <div class="placeholder-icon">&#x1F4BB;</div>
+              <p>Awaiting Jamf data from Chris.</p>
+              <div class="placeholder-action">Chris to provide Jamf export for endpoint metrics</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3c. AI Adoption -->
+        <div class="accordion" id="acc-ai">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-ai')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#EC4899"></span>
+              3c. AI Adoption
+              <span class="flag flag-low" style="margin-left:8px;">&#x1F4CB; Reed</span>
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="placeholder commentable" data-comment-id="ai-adoption-placeholder">
+              <div class="placeholder-icon">&#x1F916;</div>
+              <p>Awaiting AI adoption metrics from Reed.</p>
+              <div class="placeholder-action">Reed to provide AI adoption data (MAU, DAU, attainment)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3d. BizTech / GTM (BTEC) — REAL DATA -->
+        <div class="accordion open" id="acc-biztech">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-biztech')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#4353FF"></span>
+              3d. BizTech / GTM (BTEC)
+              <span class="pill pill-blue">Live Data</span>
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <!-- Metric cards -->
+            <div class="metrics-row commentable" data-comment-id="biztech-metrics">
+              <div class="metric-card">
+                <div class="metric-value">344</div>
+                <div class="metric-label">Total Tickets</div>
+                <div class="metric-delta delta-up">&uarr; vs 200+ Q4 (partial)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">39</div>
+                <div class="metric-label">Bugs (13.0%)</div>
+                <div class="metric-delta delta-up">&darr; from 15.5% Q4</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">9.2d</div>
+                <div class="metric-label">Median Cycle Time</div>
+                <div class="metric-delta delta-up">&darr; from 13.9d Q4</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" style="color:var(--red);">50.3%</div>
+                <div class="metric-label">Uncategorized</div>
+                <div class="metric-delta delta-down">Missing custom fields</div>
+              </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="chart-row commentable" data-comment-id="biztech-charts">
+              <div class="chart-container">
+                <h5>Issue Types (Q1 FY27)</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-biztech-types"></canvas>
+                </div>
+              </div>
+              <div class="chart-container">
+                <h5>QoQ Comparison &mdash; BTEC</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-biztech-qoq"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Breakdown tables -->
+            <div class="chart-row commentable" data-comment-id="biztech-breakdowns">
+              <div>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>Change Type</th><th>Count</th><th>%</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td style="color:var(--text-secondary)">Uncategorized</td><td style="color:var(--red)">151</td><td style="color:var(--red)">50.3%</td></tr>
+                    <tr><td>Configuration</td><td>84</td><td>28.0%</td></tr>
+                    <tr><td>Development</td><td>59</td><td>19.7%</td></tr>
+                    <tr><td>Documentation</td><td>6</td><td>2.0%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>ETE Category</th><th>Count</th><th>%</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td style="color:var(--text-secondary)">Uncategorized</td><td style="color:var(--red)">151</td><td style="color:var(--red)">50.3%</td></tr>
+                    <tr><td>Run the Business</td><td>71</td><td>23.7%</td></tr>
+                    <tr><td>Change the Business</td><td>68</td><td>22.7%</td></tr>
+                    <tr><td>Transform the Business</td><td>10</td><td>3.3%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Impacted Processes -->
+            <div class="commentable" data-comment-id="biztech-processes" style="margin-bottom:16px;">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Top Impacted Processes</th><th>Count</th><th>%</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Order-to-Cash (OTC)</td><td>45</td><td>15.0%</td></tr>
+                  <tr><td>Demand-to-Opportunity (D2O)</td><td>32</td><td>10.7%</td></tr>
+                  <tr><td>Opportunity-to-Order (O2O)</td><td>28</td><td>9.3%</td></tr>
+                  <tr><td>Platform Administration</td><td>24</td><td>8.0%</td></tr>
+                  <tr><td>Time-to-Value (T2V)</td><td>8</td><td>2.7%</td></tr>
+                  <tr><td style="color:var(--text-secondary)">Uncategorized</td><td style="color:var(--red)">151</td><td style="color:var(--red)">50.3%</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Data quality flag -->
+            <div class="commentary" style="background:var(--red-bg); border-left-color:var(--red);">
+              <h5 style="color:var(--red);">
+                &#x1F6A9; Data Quality Alert
+                <span class="flag flag-high">&#x26A0; HIGH &mdash; Harshit</span>
+              </h5>
+              <ul>
+                <li>50.3% of BTEC tickets (151 of 300) are missing Change Type, ETE Category, Pillar, and Impacted Process fields.</li>
+                <li>Recommend enforcing required custom fields at ticket creation to improve data quality in Q2.</li>
+              </ul>
+            </div>
+
+            <!-- Commentary -->
+            <div class="commentary commentable" data-comment-id="biztech-commentary">
+              <h5>
+                &#x1F4DD; Commentary
+                <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; BizTech lead to review</span>
+              </h5>
+              <ul class="editable" data-edit-id="biztech-commentary-text">
+                <li>AI-drafted commentary pending. BizTech lead to review.</li>
+              </ul>
+            </div>
+
+            <!-- Top P0 tickets -->
+            <details style="margin-top:16px;">
+              <summary style="cursor:pointer; font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; color:var(--blue); padding:8px 0;">View Top 10 Completed Tickets</summary>
+              <table class="data-table" style="margin-top:8px;">
+                <thead>
+                  <tr><th>Key</th><th>Summary</th><th>Type</th><th>Priority</th><th>Cycle Time</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2461" target="_blank">BTEC-2461</a></td><td>SLA POT issue - SLA products not flowing into Order Line Items during Amendments</td><td>Story</td><td>P0</td><td>0.0d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2329" target="_blank">BTEC-2329</a></td><td>Lock Down Third-Party Salesforce Write Access (Google Sheets Connector + Coefficient)</td><td>Task</td><td>P0</td><td>7.2d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2333" target="_blank">BTEC-2333</a></td><td>Update Role Hierarchy: Partner Reseller User - reassign from CS to Sales rollup</td><td>Story</td><td>P0</td><td>11.7d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2279" target="_blank">BTEC-2279</a></td><td>SFDC Partner Identification - Type Field Automation &amp; Partner Conversion Date</td><td>Story</td><td>P0</td><td>21.0d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2309" target="_blank">BTEC-2309</a></td><td>T1: Stripe TEST Customer Not Created nor Synced Back to Salesforce</td><td>Bug</td><td>P0</td><td>0.9d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2383" target="_blank">BTEC-2383</a></td><td>Move Approval status Validations onto Submit for approval logic</td><td>Story</td><td>P0</td><td>9.4d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2308" target="_blank">BTEC-2308</a></td><td>New Fields + Layout Updates &mdash; Opportunity Deal Review Checklist</td><td>Story</td><td>P0</td><td>3.3d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2385" target="_blank">BTEC-2385</a></td><td>Scale on the FY27 Pricebook is mapping to Online MSA in SFDC</td><td>Bug</td><td>P0</td><td>0.1d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2480" target="_blank">BTEC-2480</a></td><td>Reactivate the Enterprise Select Bundle and associated SKUs</td><td>Bug</td><td>P0</td><td>0.0d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/BTEC-2452" target="_blank">BTEC-2452</a></td><td>Enforce Restriction on Quotes with Unresolved POT SKUs</td><td>Story</td><td>P0</td><td>0.0d</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </div>
+        </div>
+
+        <!-- 3e. EntTech (ETE) — REAL DATA -->
+        <div class="accordion open" id="acc-enttech">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-enttech')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#10B981"></span>
+              3e. EntTech (ETE)
+              <span class="pill pill-blue">Live Data</span>
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="metrics-row commentable" data-comment-id="enttech-metrics">
+              <div class="metric-card">
+                <div class="metric-value">121</div>
+                <div class="metric-label">Total Tickets</div>
+                <div class="metric-delta delta-up">&uarr; vs 100+ Q4 (partial)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">10</div>
+                <div class="metric-label">Bugs (10.0%)</div>
+                <div class="metric-delta delta-down">&uarr; from 7% Q4</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">5.9d</div>
+                <div class="metric-label">Median Cycle Time</div>
+                <div class="metric-delta delta-up">&darr; from 6.5d Q4</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">27-28%</div>
+                <div class="metric-label">Missing Fields</div>
+                <div class="metric-delta delta-neutral">Custom field gaps</div>
+              </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="chart-row commentable" data-comment-id="enttech-charts">
+              <div class="chart-container">
+                <h5>Issue Types (Q1 FY27)</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-enttech-types"></canvas>
+                </div>
+              </div>
+              <div class="chart-container">
+                <h5>QoQ Comparison &mdash; ETE</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-enttech-qoq"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Breakdown tables -->
+            <div class="chart-row commentable" data-comment-id="enttech-breakdowns">
+              <div>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>Change Type</th><th>Count</th><th>%</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Configuration</td><td>65</td><td>65.0%</td></tr>
+                    <tr><td style="color:var(--text-secondary)">Uncategorized</td><td>28</td><td>28.0%</td></tr>
+                    <tr><td>Development</td><td>4</td><td>4.0%</td></tr>
+                    <tr><td>Documentation</td><td>3</td><td>3.0%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>ETE Category</th><th>Count</th><th>%</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Run the Business</td><td>63</td><td>63.0%</td></tr>
+                    <tr><td style="color:var(--text-secondary)">Uncategorized</td><td>27</td><td>27.0%</td></tr>
+                    <tr><td>Change the Business</td><td>9</td><td>9.0%</td></tr>
+                    <tr><td>Transform the Business</td><td>1</td><td>1.0%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Impacted Processes -->
+            <div class="commentable" data-comment-id="enttech-processes" style="margin-bottom:16px;">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Top Impacted Processes</th><th>Count</th><th>%</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Procure to Pay</td><td>24</td><td>24.0%</td></tr>
+                  <tr><td>Platform Administration</td><td>17</td><td>17.0%</td></tr>
+                  <tr><td>Order-to-Cash (OTC)</td><td>13</td><td>13.0%</td></tr>
+                  <tr><td>Record to Report</td><td>9</td><td>9.0%</td></tr>
+                  <tr><td>Integration</td><td>6</td><td>6.0%</td></tr>
+                  <tr><td>FP&amp;A</td><td>4</td><td>4.0%</td></tr>
+                  <tr><td style="color:var(--text-secondary)">Uncategorized</td><td>27</td><td>27.0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Commentary -->
+            <div class="commentary commentable" data-comment-id="enttech-commentary">
+              <h5>
+                &#x1F4DD; Commentary
+                <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; Sachin to review</span>
+              </h5>
+              <ul class="editable" data-edit-id="enttech-commentary-text">
+                <li>AI-drafted commentary pending. Sachin to review.</li>
+              </ul>
+            </div>
+
+            <!-- Top completed -->
+            <details style="margin-top:16px;">
+              <summary style="cursor:pointer; font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; color:var(--blue); padding:8px 0;">View Top 10 Completed Tickets</summary>
+              <table class="data-table" style="margin-top:8px;">
+                <thead>
+                  <tr><th>Key</th><th>Summary</th><th>Type</th><th>Priority</th><th>Cycle Time</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-815" target="_blank">ETE-815</a></td><td>Report for Cash in flow and Cash outflow for Non operating Journals</td><td>Story</td><td>P0</td><td>5.0d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-848" target="_blank">ETE-848</a></td><td>Testing scenarios for Saskatchewan tax</td><td>Sub-task</td><td>P0</td><td>4.1d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-853" target="_blank">ETE-853</a></td><td>Anrok: Rotate Production App Anrok Key</td><td>Task</td><td>P0</td><td>9.8d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-847" target="_blank">ETE-847</a></td><td>Testing scenarios for New Mexico tax</td><td>Sub-task</td><td>P0</td><td>4.2d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-846" target="_blank">ETE-846</a></td><td>Testing scenarios for Manitoba tax</td><td>Sub-task</td><td>P0</td><td>4.2d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-845" target="_blank">ETE-845</a></td><td>Testing scenarios for Maryland tax</td><td>Sub-task</td><td>P0</td><td>4.1d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-824" target="_blank">ETE-824</a></td><td>New 4.1 SKUs for Stripe &amp; Netsuite</td><td>Story</td><td>P0</td><td>17.5d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-805" target="_blank">ETE-805</a></td><td>Japan Customers Tax Questions</td><td>Task</td><td>P0</td><td>3.0d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-869" target="_blank">ETE-869</a></td><td>Action Required: J.P. Morgan Chase PGP Key Renewal</td><td>Story</td><td>P1</td><td>2.2d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ETE-850" target="_blank">ETE-850</a></td><td>Please add Lodging as a selectable account in ZIP</td><td>Story</td><td>P1</td><td>2.9d</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </div>
+        </div>
+
+        <!-- 3f. Integrations (ENI) — REAL DATA -->
+        <div class="accordion open" id="acc-integrations">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-integrations')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#F59E0B"></span>
+              3f. Integrations (ENI)
+              <span class="pill pill-blue">Live Data</span>
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="metrics-row commentable" data-comment-id="eni-metrics">
+              <div class="metric-card">
+                <div class="metric-value">56</div>
+                <div class="metric-label">Total Tickets</div>
+                <div class="metric-delta delta-up">&uarr; 115% vs Q4 (26)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">39</div>
+                <div class="metric-label">Bugs (69.6%)</div>
+                <div class="metric-delta delta-neutral">Auto-tracked errors</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">0.73d</div>
+                <div class="metric-label">Median Cycle Time</div>
+                <div class="metric-delta delta-up">&darr; from 9.6d Q4</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" style="color:var(--red);">100%</div>
+                <div class="metric-label">Missing Fields</div>
+                <div class="metric-delta delta-down">All custom fields blank</div>
+              </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="chart-row commentable" data-comment-id="eni-charts">
+              <div class="chart-container">
+                <h5>Issue Types (Q1 FY27)</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-eni-types"></canvas>
+                </div>
+              </div>
+              <div class="chart-container">
+                <h5>QoQ Comparison &mdash; ENI</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-eni-qoq"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data quality flag -->
+            <div class="commentary" style="background:var(--red-bg); border-left-color:var(--red);">
+              <h5 style="color:var(--red);">
+                &#x1F6A9; Data Quality Alert
+                <span class="flag flag-high">&#x26A0; HIGH &mdash; Sachin / Bali</span>
+              </h5>
+              <ul>
+                <li>100% of ENI tickets (56 of 56) are missing all custom fields (Change Type, ETE Category, Pillar, Impacted Process).</li>
+              </ul>
+            </div>
+
+            <!-- Commentary -->
+            <div class="commentary commentable" data-comment-id="eni-commentary">
+              <h5>
+                &#x1F4DD; Commentary
+                <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; Bali to review</span>
+              </h5>
+              <ul class="editable" data-edit-id="eni-commentary-text">
+                <li>High bug count (69.6%) reflects automated error tracking from integration platform (Workato), not manual bug reports. These are auto-created tickets from Workato recipe errors and are auto-resolved.</li>
+                <li>Very fast median cycle time (0.73 days) confirms automated nature of most tickets.</li>
+              </ul>
+            </div>
+
+            <!-- Top completed -->
+            <details style="margin-top:16px;">
+              <summary style="cursor:pointer; font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; color:var(--blue); padding:8px 0;">View Top 10 Completed Tickets</summary>
+              <table class="data-table" style="margin-top:8px;">
+                <thead>
+                  <tr><th>Key</th><th>Summary</th><th>Type</th><th>Priority</th><th>Cycle Time</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ENI-93" target="_blank">ENI-93</a></td><td>Update SFDC -&gt; Netsuite Sales order creation recipe to support Bundle products</td><td>Story</td><td>P1</td><td>0.1d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ENI-91" target="_blank">ENI-91</a></td><td>Parallel Export - Adaptive Report - Enterprise AI Ops</td><td>Story</td><td>P1</td><td>7.6d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ENI-98" target="_blank">ENI-98</a></td><td>Optimise and Update logic for Certiverse Integration Recipe - Workato</td><td>Story</td><td>P3</td><td>4.9d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ENI-64" target="_blank">ENI-64</a></td><td>Need to ensure recipe is only triggered for in scope zoom meetings</td><td>Bug</td><td>P4</td><td>26.1d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ENI-99" target="_blank">ENI-99</a></td><td>PROD: 429 Too Many Requests (Stripe rate limiting)</td><td>Bug</td><td>Unprioritized</td><td>0.3d</td></tr>
+                  <tr><td><a class="jira-link" href="https://webflow.atlassian.net/browse/ENI-88" target="_blank">ENI-88</a></td><td>Workato access request for Jamila (knowledge transfer)</td><td>Access request</td><td>Unprioritized</td><td>12.2d</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 3g. iPaaS Operational Metrics ═════════════ -->
+  <div class="section" id="ipaas">
+    <div class="card">
+      <div class="card-header" style="background:var(--dark-2);">
+        <h3><span class="section-num" style="background:#F59E0B;">&#x2699;</span> iPaaS Operational Metrics (Workato)</h3>
+        <span class="pill pill-blue">Live Data</span>
+      </div>
+      <div class="card-body">
+        <!-- Summary cards -->
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-value">1.54M</div>
+            <div class="metric-label">Total Recipe Runs</div>
+            <div class="metric-delta delta-neutral">11 weeks, Q1 FY27</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">499</div>
+            <div class="metric-label">Total Failures</div>
+            <div class="metric-delta delta-up">0.032% fail rate</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">95</div>
+            <div class="metric-label">Active Recipes</div>
+            <div class="metric-delta delta-up">&#x2191; from 76 (+25%)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">1.45M</div>
+            <div class="metric-label">Tasks Consumed</div>
+            <div class="metric-delta delta-up">48% of quarterly budget</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">3M</div>
+            <div class="metric-label">Quarterly Budget</div>
+            <div class="metric-delta delta-neutral">12M/yr plan</div>
+          </div>
+        </div>
+
+        <!-- Usage vs Budget gauge -->
+        <div style="margin:16px 0 24px;">
+          <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">
+            <span>Task Usage vs Q1 Budget</span>
+            <span>1.45M / 3M (48%)</span>
+          </div>
+          <div style="background:var(--border); border-radius:8px; height:24px; overflow:hidden;">
+            <div style="background:linear-gradient(90deg, var(--green), var(--blue)); height:100%; width:48%; border-radius:8px; transition:width 0.5s;"></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-secondary); margin-top:4px;">
+            <span>0</span>
+            <span style="color:var(--yellow);">75% warning</span>
+            <span>3M limit</span>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="chart-row">
+          <div class="chart-container">
+            <h5>Weekly Recipe Runs</h5>
+            <div class="chart-wrap">
+              <canvas id="chart-ipaas-runs"></canvas>
+            </div>
+          </div>
+          <div class="chart-container">
+            <h5>Weekly Failure Rate (%)</h5>
+            <div class="chart-wrap">
+              <canvas id="chart-ipaas-failures"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-container">
+            <h5>Weekly Tasks Consumed</h5>
+            <div class="chart-wrap">
+              <canvas id="chart-ipaas-tasks"></canvas>
+            </div>
+          </div>
+          <div class="chart-container">
+            <h5>Active Recipes Over Time</h5>
+            <div class="chart-wrap">
+              <canvas id="chart-ipaas-recipes"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top consumers & failures table -->
+        <div class="chart-row" style="margin-top:8px;">
+          <div>
+            <h5 style="font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:8px;">Top Task Consumers</h5>
+            <table class="data-table">
+              <thead><tr><th>Recipe</th><th>Tasks</th></tr></thead>
+              <tbody>
+                <tr><td>Salesforce &#x2194; Stripe - Invoice Status Updated</td><td>High volume (wk 13+)</td></tr>
+                <tr><td>Salesforce &#x2194; Stripe - Generate Invoices</td><td>High volume (wk 13+)</td></tr>
+                <tr><td>[US] Compile Candidate Data + Email for External Counsel</td><td>~30K/week</td></tr>
+                <tr><td>SimilarWeb Batch Handler</td><td>Periodic batches</td></tr>
+                <tr><td>Zoom to Salesforce Meeting Attendees</td><td>~5K/week</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h5 style="font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:8px;">Recurring Failure Sources</h5>
+            <table class="data-table">
+              <thead><tr><th>Recipe</th><th>Error</th></tr></thead>
+              <tbody>
+                <tr><td>Adaptive &#x2192; Airtable: Full Data Sync</td><td>Password expired / 502</td></tr>
+                <tr><td>Greenhouse &#x2192; Airtable: Data Import</td><td>Table already exists</td></tr>
+                <tr><td>Open Role Announcements</td><td>User ID Must be Present</td></tr>
+                <tr><td>Stripe Customer creation function</td><td>Failed job</td></tr>
+                <tr><td>Work Email Boomerang Child</td><td>Failed job</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Commentary -->
+        <div class="commentary commentable" data-comment-id="ipaas-commentary">
+          <h5>
+            &#x1F4DD; Commentary
+            <span class="flag flag-medium">&#x26A0; MEDIUM &#x2014; Sachin to review</span>
+          </h5>
+          <ul class="editable" data-edit-id="ipaas-commentary-text">
+            <li>Recipe run volume increased 46x from early Feb (~10K/week) to mid-Apr (~400K/week), driven by Salesforce &#x2194; Stripe billing integrations going live in late March.</li>
+            <li>Despite the massive volume spike, failure rate remained under 0.04% &#x2014; strong platform reliability.</li>
+            <li>Task consumption is at 48% of quarterly budget (1.45M of 3M). On track, but the Stripe integration volume should be monitored for plan impact.</li>
+            <li>Active recipe count grew 25% (76 &#x2192; 95), reflecting new integrations being built and deployed.</li>
+            <li>Recurring failures in Adaptive &#x2192; Airtable and Greenhouse &#x2192; Airtable recipes suggest credential/schema maintenance needed.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 4. Quarterly Landings (from Asana) ═════════ -->
+  <div class="section" id="landings">
+    <div class="card">
+      <div class="card-header">
+        <h3><span class="section-num">4</span> Quarterly Landings (Q1 FY27)</h3>
+        <span class="flag flag-medium">&#x26A0; Only GTM shown &mdash; all leads update Asana</span>
+      </div>
+      <div class="card-body">
+        <div class="commentable" data-comment-id="landings-table" style="position:relative">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Team</th>
+                <th>Pillar</th>
+                <th>Priority</th>
+                <th>Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Automated Webflow Product Provisioning</strong></td>
+                <td>GTM Technology</td>
+                <td>Pillar 2 &mdash; Business Process Automation</td>
+                <td><span class="pill pill-red">P1 &mdash; High</span></td>
+                <td>Apr 13, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>MadKudu Implementation</strong></td>
+                <td>GTM Technology</td>
+                <td>Pillar 2 &mdash; Business Process Automation</td>
+                <td><span class="pill pill-red">P1 &mdash; High</span></td>
+                <td>Apr 16, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Safebase Implementation</strong></td>
+                <td>GTM Technology</td>
+                <td>Pillar 4 &mdash; Identity, Security &amp; Compliance</td>
+                <td><span class="pill pill-red">P1 &mdash; High</span></td>
+                <td>Apr 13, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Obsidian Implementation</strong></td>
+                <td>GTM Technology</td>
+                <td>Pillar 4 &mdash; Identity, Security &amp; Compliance</td>
+                <td><span class="pill pill-yellow" style="background:var(--red-bg); color:var(--red);">P0 &mdash; Critical</span></td>
+                <td>Apr 16, 2026</td>
+              </tr>
+              <tr>
+                <td><strong>&ldquo;Centralize&rdquo; POC</strong></td>
+                <td>GTM Technology</td>
+                <td>Pillar 2 &mdash; Business Process Automation</td>
+                <td><span class="pill pill-blue">P2 &mdash; Medium</span></td>
+                <td>Apr 13, 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="commentary" style="margin-top:16px;">
+          <h5>&#x1F4DD; Note</h5>
+          <ul>
+            <li>All 5 landings are GTM Technology. Other sub-teams should update Asana to reflect their completed projects.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 5. Roadmap + Look Ahead (Q2 FY27) ═════════ -->
+  <div class="section" id="roadmap">
+    <div class="card">
+      <div class="card-header">
+        <h3><span class="section-num">5</span> Roadmap &amp; Look Ahead &mdash; Q2 FY27</h3>
+      </div>
+      <div class="card-body">
+
+        <!-- GTM Technology -->
+        <div class="accordion open" id="acc-roadmap-gtm">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-roadmap-gtm')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#4353FF"></span>
+              GTM Technology
+              <span class="pill pill-blue">15 projects</span>
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="commentable" data-comment-id="roadmap-gtm">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Pillar</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Customer 360</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 3</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>User Provisioning + Deprovisioning + Hierarchy Automation</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>Modern IT Operating Model</td></tr>
+                  <tr><td><strong>Trials Process Build</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 22</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>Enterprise Deal Qualification</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 22</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>MDF Approval Process</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 31</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>Partner Data Revamp</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>May 31</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>Integration User Overhaul</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 31</td><td>Modern IT Operating Model</td></tr>
+                  <tr><td><strong>Unmanaged Renewals Automation</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Apr 30</td><td><span style="color:var(--text-secondary)">(blank)</span></td></tr>
+                  <tr><td><strong>Managed Package Audit</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>Jul 1</td><td>Operational Excellence</td></tr>
+                  <tr><td><strong>SFDC Uptime + Error Monitoring</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>Jul 31</td><td>Modern IT Operating Model</td></tr>
+                  <tr><td><strong>AI Assisted Forecasting</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>AI as Default Way of Working</td></tr>
+                  <tr><td><strong>Outreach &lt;&gt; SFDC Integration</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 17</td><td>Operational Excellence</td></tr>
+                  <tr><td><strong>AI Assisted Slack Ticket Updating</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jul 30</td><td>AI as Default Way of Working</td></tr>
+                  <tr><td><strong>AI Assisted Discovery</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jul 30</td><td>AI as Default Way of Working</td></tr>
+                  <tr><td><strong>True Ups Opportunity Automation</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>Marketo &lt;&gt; SFDC Integration</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-blue">In Planning</span></td><td>Jul 31</td><td>Operational Excellence</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- EntTech / Finance, Legal & Billing -->
+        <div class="accordion open" id="acc-roadmap-enttech">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-roadmap-enttech')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#10B981"></span>
+              EntTech / Finance, Legal &amp; Billing
+              <span class="pill pill-blue">8 projects</span>
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="commentable" data-comment-id="roadmap-enttech">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Pillar</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Argentina Entity</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>Enterprise Billing Automation (Stripe)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>SKU Creation Automation + Product Catalog Syncer</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 31</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>Automated Intercompany for Expenses Across Webflow Entities</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>May 1</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>Consolidation of Month End and Flux Analysis</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>May 31</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>JPMC Bank Integration for Expense Payout</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
+                  <tr><td><strong>ZIP AI Intake Process</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-green">Done</span></td><td>May 31</td><td>AI as Default Way of Working</td></tr>
+                  <tr><td><strong>ZIP and Brightflag Integration</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 6. Decisions & Support Needed ═════════════ -->
+  <div class="section" id="decisions">
+    <div class="card">
+      <div class="card-header">
+        <h3><span class="section-num">6</span> Decisions & Support Needed</h3>
+        <span class="flag flag-low">&#x1F4CB; Laura / Anna</span>
+      </div>
+      <div class="card-body">
+        <div class="placeholder commentable" data-comment-id="decisions-placeholder">
+          <div class="placeholder-icon">&#x1F91D;</div>
+          <p>Laura / Anna to populate before QBR meeting.</p>
+          <div class="placeholder-action">Add decisions, escalations, and cross-team dependencies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 7. Salesforce Maturity ════════════════════ -->
+  <div class="section" id="sf-maturity">
+    <div class="card">
+      <div class="card-header">
+        <h3><span class="section-num">7</span> Salesforce Maturity Tactical Plan</h3>
+        <span class="flag flag-low">&#x1F4CB; Laura</span>
+      </div>
+      <div class="card-body">
+        <div class="maturity-track commentable" data-comment-id="sf-maturity-track">
+          <div class="maturity-step completed">
+            <div class="step-num">1</div>
+            <div class="step-label">Initial</div>
+            <div style="font-size:11px; color:var(--text-secondary); margin-top:4px;">Basic usage, minimal adoption</div>
+          </div>
+          <div class="maturity-step completed">
+            <div class="step-num">2</div>
+            <div class="step-label">Developing</div>
+            <div style="font-size:11px; color:var(--text-secondary); margin-top:4px;">Some processes, initial automation</div>
+          </div>
+          <div class="maturity-step current">
+            <div class="step-num">3</div>
+            <div class="step-label">Defined</div>
+            <div style="font-size:11px; color:var(--text-secondary); margin-top:4px;">Documented standards, embedded in ops</div>
+          </div>
+          <div class="maturity-step">
+            <div class="step-num">4</div>
+            <div class="step-label">Managed</div>
+            <div style="font-size:11px; color:var(--text-secondary); margin-top:4px;">KPIs, governance, cross-functional</div>
+          </div>
+          <div class="maturity-step">
+            <div class="step-num">5</div>
+            <div class="step-label">Optimized</div>
+            <div style="font-size:11px; color:var(--text-secondary); margin-top:4px;">AI-driven, continuous improvement</div>
+          </div>
+        </div>
+        <p style="font-size:13px; color:var(--text-secondary); margin-top:8px;">Currently at Level 3 &mdash; targeting Level 4 by end of FY27.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 8. Action Items ══════════════════════════ -->
+  <div class="section" id="actions">
+    <div class="card">
+      <div class="card-header">
+        <h3><span class="section-num">8</span> Action Items</h3>
+        <span class="flag flag-low">&#x1F4CB; To be populated</span>
+      </div>
+      <div class="card-body">
+        <div class="commentable" data-comment-id="action-items">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Owner</th>
+                <th>Due Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4" style="text-align:center; color:var(--text-secondary); padding:24px;">Action items will be captured during QBR meeting.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Flags Summary ════════════════════════════ -->
+  <div class="section" id="flags-summary" style="margin-top:40px;">
+    <div style="padding:20px; background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow);">
+      <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:16px;">&#x26A0;&#xFE0F; Review Flags</h4>
+      <div style="display:flex; gap:16px; margin-bottom:16px;">
+        <div id="flag-count-high" style="padding:8px 16px; background:var(--red-bg); border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--red);">&#x1F534; 4 HIGH</div>
+        <div id="flag-count-medium" style="padding:8px 16px; background:var(--yellow-bg); border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--yellow);">&#x1F7E1; 5 MEDIUM</div>
+        <div id="flag-count-low" style="padding:8px 16px; background:var(--green-bg); border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--green);">&#x1F7E2; 6 LOW</div>
+        <div id="flag-count-resolved" style="padding:8px 16px; background:rgba(0,200,83,0.06); border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--green);">&#x2705; 0 resolved</div>
+      </div>
+      <div id="flags-container">
+        <!-- Flags rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="text-align:center; padding:32px 0; color:var(--text-secondary); font-size:12px;">
+    Generated Apr 16, 2026 &middot; QBR Automation v1.0 &middot; Data as of Apr 16, 2026
+  </div>
+
+</div>
+
+<!-- ═══ Scripts ════════════════════════════════════════ -->
+<script>
+  // ── Config ──────────────────────────────────────
+  const QUARTER = 'Q1FY27';
+  const SCRIPT_URL = ''; // Paste your Apps Script deployment URL here
+  const USE_BACKEND = SCRIPT_URL.length > 0;
+
+  // ── Flag definitions (embedded at generation time) ──
+  const FLAG_DEFS = [
+    // HIGH
+    { flag_id: 'flag-exec-summary', severity: 'HIGH', section: 'Exec Summary', message: 'AI-drafted executive summary pending \u2014 Laura to finalize before presenting', owner: 'Laura' },
+    { flag_id: 'flag-btec-data-quality', severity: 'HIGH', section: 'BTEC Data Quality', message: '50.3% of BTEC tickets missing custom fields (Change Type, ETE Category, Pillar, Impacted Process)', owner: 'Harshit' },
+    { flag_id: 'flag-eni-data-quality', severity: 'HIGH', section: 'ENI Data Quality', message: '100% of ENI tickets missing all custom fields', owner: 'Sachin / Bali' },
+    { flag_id: 'flag-automation-drop', severity: 'HIGH', section: 'Console Automation', message: 'Console automation rate dropped from ~84% to 74.8% QoQ', owner: 'Anthony' },
+    // MEDIUM
+    { flag_id: 'flag-biztech-commentary', severity: 'MEDIUM', section: 'BizTech', message: 'BizTech commentary needs lead review', owner: 'BizTech Lead' },
+    { flag_id: 'flag-enttech-commentary', severity: 'MEDIUM', section: 'EntTech', message: 'EntTech commentary needs Sachin review', owner: 'Sachin' },
+    { flag_id: 'flag-eni-commentary', severity: 'MEDIUM', section: 'Integrations', message: 'Integrations commentary needs Bali review', owner: 'Bali' },
+    { flag_id: 'flag-landings-gtm-only', severity: 'MEDIUM', section: 'Landings', message: 'All 5 landings are GTM Technology only \u2014 other sub-teams should update Asana', owner: 'All leads' },
+    { flag_id: 'flag-its-data', severity: 'MEDIUM', section: 'IT Ops', message: 'Full Jira ITS data pagination still in progress', owner: 'Laura' },
+    // LOW
+    { flag_id: 'flag-hires-emea', severity: 'LOW', section: 'Hires', message: 'Check status of Senior IT Support Specialist, EMEA role', owner: 'Laura' },
+    { flag_id: 'flag-endpoint', severity: 'LOW', section: 'Endpoint', message: 'Awaiting Jamf data from Chris', owner: 'Chris' },
+    { flag_id: 'flag-ai-adoption', severity: 'LOW', section: 'AI Adoption', message: 'Awaiting AI adoption metrics from Reed', owner: 'Reed' },
+    { flag_id: 'flag-decisions', severity: 'LOW', section: 'Decisions', message: 'Laura / Anna to populate before QBR meeting', owner: 'Laura / Anna' },
+    { flag_id: 'flag-sf-maturity', severity: 'LOW', section: 'SF Maturity', message: 'Review SF maturity assessment and Q2 targets', owner: 'Laura' },
+    { flag_id: 'flag-actions', severity: 'LOW', section: 'Action Items', message: 'Action items to be captured during QBR', owner: 'Laura' },
+  ];
+
+  // Accordion toggle
+  function toggleAccordion(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  function toggleAllAccordions() {
+    const accordions = document.querySelectorAll('.accordion');
+    const anyOpen = Array.from(accordions).some(a => a.classList.contains('open'));
+    accordions.forEach(a => {
+      if (anyOpen) a.classList.remove('open');
+      else a.classList.add('open');
+    });
+  }
+
+  // Nav highlight on scroll
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+  const sections = document.querySelectorAll('.section');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      if (window.scrollY >= top) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  });
+
+  // Smooth scroll
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // ── Inline Editing System ────────────────────────
+  const EDITS_KEY = 'qbr-edits-' + QUARTER;
+
+  function loadEdits() {
+    try { return JSON.parse(localStorage.getItem(EDITS_KEY)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveEdits(data) {
+    localStorage.setItem(EDITS_KEY, JSON.stringify(data));
+    updateEditCounts();
+  }
+
+  function updateEditCounts() {
+    var data = loadEdits();
+    var count = Object.keys(data).length;
+    var el = document.getElementById('edit-count');
+    if (el) el.textContent = count;
+  }
+
+  function initEditables() {
+    document.querySelectorAll('.editable').forEach(function(el) {
+      var id = el.dataset.editId;
+      if (!id) return;
+
+      el.setAttribute('contenteditable', 'true');
+      el.setAttribute('spellcheck', 'true');
+
+      // Add edit indicator badge
+      var badge = document.createElement('span');
+      badge.className = 'edit-indicator';
+      badge.textContent = 'edited';
+      el.appendChild(badge);
+
+      // Load saved edits
+      var edits = loadEdits();
+      if (edits[id]) {
+        el.innerHTML = edits[id].content;
+        el.classList.add('edited');
+        // Re-add badge since innerHTML replaced it
+        badge = document.createElement('span');
+        badge.className = 'edit-indicator';
+        badge.textContent = 'edited by ' + edits[id].lastEditBy;
+        el.appendChild(badge);
+      }
+
+      // Save original content for diff
+      if (!el.dataset.originalContent) {
+        el.dataset.originalContent = el.innerHTML;
+      }
+
+      // Track edits on blur
+      el.addEventListener('blur', function() {
+        var currentContent = el.innerHTML;
+        // Remove the badge from content comparison
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = currentContent;
+        var badges = tempDiv.querySelectorAll('.edit-indicator');
+        badges.forEach(function(b) { b.remove(); });
+        var cleanContent = tempDiv.innerHTML;
+
+        var origDiv = document.createElement('div');
+        origDiv.innerHTML = el.dataset.originalContent;
+        var origBadges = origDiv.querySelectorAll('.edit-indicator');
+        origBadges.forEach(function(b) { b.remove(); });
+        var origClean = origDiv.innerHTML;
+
+        if (cleanContent !== origClean) {
+          if (!currentUser) {
+            ensureUserName(function() { saveEdit(id, cleanContent, el); });
+          } else {
+            saveEdit(id, cleanContent, el);
+          }
+        }
+      });
+    });
+    updateEditCounts();
+  }
+
+  function saveEdit(editId, content, el) {
+    var edits = loadEdits();
+    var timestamp = new Date().toLocaleString('en-US', {
+      month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+    });
+
+    if (!edits[editId]) {
+      edits[editId] = { history: [], content: content, lastEditBy: currentUser, lastEditAt: timestamp };
+    }
+    edits[editId].history.push({
+      author: currentUser,
+      time: timestamp,
+      content: content
+    });
+    edits[editId].content = content;
+    edits[editId].lastEditBy = currentUser;
+    edits[editId].lastEditAt = timestamp;
+
+    saveEdits(edits);
+    el.classList.add('edited');
+
+    // Update or add badge
+    var existing = el.querySelector('.edit-indicator');
+    if (!existing) {
+      existing = document.createElement('span');
+      existing.className = 'edit-indicator';
+      el.appendChild(existing);
+    }
+    existing.textContent = 'edited by ' + currentUser;
+  }
+
+  // Include edits in the export
+  var _origExportAllFeedback = typeof exportAllFeedback === 'function' ? exportAllFeedback : null;
+
+  // ── Flags System ─────────────────────────────────
+  const FLAGS_KEY = 'qbr-flags-' + QUARTER;
+
+  function loadFlagState() {
+    try { return JSON.parse(localStorage.getItem(FLAGS_KEY)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveFlagState(state) {
+    localStorage.setItem(FLAGS_KEY, JSON.stringify(state));
+  }
+
+  function renderFlags() {
+    const state = loadFlagState();
+    const container = document.getElementById('flags-container');
+    container.innerHTML = '';
+
+    let counts = { HIGH: 0, MEDIUM: 0, LOW: 0, resolved: 0 };
+
+    FLAG_DEFS.forEach(function(f) {
+      const s = state[f.flag_id] || {};
+      const resolved = s.resolved || false;
+
+      if (resolved) counts.resolved++;
+      else counts[f.severity]++;
+
+      const div = document.createElement('div');
+      div.className = 'flag-interactive severity-' + f.severity.toLowerCase() + (resolved ? ' resolved' : '');
+      div.innerHTML = '<div class="flag-left">'
+        + '<div class="flag-severity-dot"></div>'
+        + '<div class="flag-info">'
+        + '<div class="flag-message">' + f.message + '</div>'
+        + '<div class="flag-owner-section">' + f.section + ' \u00B7 Owner: ' + f.owner + '</div>'
+        + (resolved ? '<div class="flag-resolved-by">\u2705 Resolved by ' + escapeHtml(s.resolved_by) + ' \u00B7 ' + s.resolved_at + '</div>' : '')
+        + '</div></div>'
+        + (resolved
+          ? '<button class="flag-resolve-btn unresolve" onclick="toggleFlag(\'' + f.flag_id + '\')">Reopen</button>'
+          : '<button class="flag-resolve-btn resolve" onclick="toggleFlag(\'' + f.flag_id + '\')">Mark resolved</button>');
+      container.appendChild(div);
+    });
+
+    document.getElementById('flag-count-high').textContent = '\uD83D\uDD34 ' + counts.HIGH + ' HIGH';
+    document.getElementById('flag-count-medium').textContent = '\uD83D\uDFE1 ' + counts.MEDIUM + ' MEDIUM';
+    document.getElementById('flag-count-low').textContent = '\uD83D\uDFE2 ' + counts.LOW + ' LOW';
+    document.getElementById('flag-count-resolved').textContent = '\u2705 ' + counts.resolved + ' resolved';
+    document.getElementById('flags-open-count').textContent = counts.HIGH + counts.MEDIUM + counts.LOW;
+  }
+
+  function toggleFlag(flagId) {
+    if (!currentUser) {
+      ensureUserName(function() { toggleFlag(flagId); });
+      return;
+    }
+    const state = loadFlagState();
+    if (state[flagId] && state[flagId].resolved) {
+      delete state[flagId];
+    } else {
+      state[flagId] = {
+        resolved: true,
+        resolved_by: currentUser,
+        resolved_at: new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+      };
+    }
+    saveFlagState(state);
+
+    // If backend is configured, sync
+    if (USE_BACKEND) {
+      const f = state[flagId];
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(f ? { action: 'resolveFlag', flag_id: flagId, resolved_by: currentUser } : { action: 'unresolveFlag', flag_id: flagId })
+      }).catch(function() {});
+    }
+
+    renderFlags();
+  }
+
+  // ── Backend Sync ────────────────────────────────
+  function syncFromBackend() {
+    if (!USE_BACKEND) return;
+    fetch(SCRIPT_URL + '?action=getAll&quarter=' + QUARTER)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        // Merge comments
+        if (data.comments) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data.comments));
+          updateCommentCounts();
+          document.querySelectorAll('.commentable').forEach(function(el) {
+            if (el.querySelector('.comment-thread.open')) renderThread(el);
+          });
+        }
+        // Merge flags
+        if (data.flags) {
+          const state = {};
+          data.flags.forEach(function(f) {
+            if (f.resolved) {
+              state[f.flag_id] = { resolved: true, resolved_by: f.resolved_by, resolved_at: f.resolved_at };
+            }
+          });
+          saveFlagState(state);
+          renderFlags();
+        }
+      })
+      .catch(function() { /* silently fall back to localStorage */ });
+  }
+
+  // ── Export / Import All Feedback ────────────────
+  function exportAllFeedback() {
+    var feedback = {
+      quarter: QUARTER,
+      exported_at: new Date().toISOString(),
+      exported_by: currentUser || 'Unknown',
+      comments: loadComments(),
+      flags: loadFlagState(),
+      edits: loadEdits()
+    };
+    var blob = new Blob([JSON.stringify(feedback, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'qbr-feedback-' + QUARTER + '-' + (currentUser || 'anon').replace(/\s/g, '_') + '.json';
+    a.click();
+  }
+
+  function importFeedback(event) {
+    var file = event.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        var data = JSON.parse(e.target.result);
+        // Merge comments
+        if (data.comments) {
+          var existing = loadComments();
+          Object.keys(data.comments).forEach(function(section) {
+            if (!existing[section]) existing[section] = [];
+            data.comments[section].forEach(function(c) {
+              // Avoid duplicates by checking author+text
+              var isDupe = existing[section].some(function(ec) { return ec.author === c.author && ec.text === c.text; });
+              if (!isDupe) existing[section].push(c);
+            });
+          });
+          saveComments(existing);
+        }
+        // Merge flags
+        if (data.flags) {
+          var flagState = loadFlagState();
+          Object.keys(data.flags).forEach(function(fid) {
+            if (data.flags[fid].resolved) flagState[fid] = data.flags[fid];
+          });
+          saveFlagState(flagState);
+          renderFlags();
+        }
+        // Merge edits (latest edit wins)
+        if (data.edits) {
+          var editState = loadEdits();
+          Object.keys(data.edits).forEach(function(eid) {
+            var imported = data.edits[eid];
+            if (!editState[eid] || (imported.lastEditAt > (editState[eid].lastEditAt || ''))) {
+              editState[eid] = imported;
+            }
+          });
+          saveEdits(editState);
+          // Apply imported edits to editable elements
+          document.querySelectorAll('.editable').forEach(function(el) {
+            var id = el.dataset.editId;
+            if (editState[id]) {
+              el.innerHTML = editState[id].content;
+              el.classList.add('edited');
+              var badge = el.querySelector('.edit-indicator');
+              if (!badge) { badge = document.createElement('span'); badge.className = 'edit-indicator'; el.appendChild(badge); }
+              badge.textContent = 'edited by ' + editState[id].lastEditBy;
+            }
+          });
+        }
+        // Refresh all comment threads
+        document.querySelectorAll('.commentable').forEach(function(el) {
+          if (el.querySelector('.comment-thread.open')) renderThread(el);
+        });
+        updateCommentCounts();
+        alert('Imported feedback from ' + (data.exported_by || 'unknown') + '.');
+      } catch (err) {
+        alert('Error importing file: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = ''; // reset so same file can be re-imported
+  }
+
+  // ── Comments System ──────────────────────────────
+  const STORAGE_KEY = 'qbr-comments-' + QUARTER;
+
+  function loadComments() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveComments(data) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    updateCommentCounts();
+  }
+
+  function updateCommentCounts() {
+    const data = loadComments();
+    let total = 0;
+    document.querySelectorAll('.commentable').forEach(el => {
+      const id = el.dataset.commentId;
+      const comments = data[id] || [];
+      const badge = el.querySelector('.comment-count-badge');
+      const btn = el.querySelector('.comment-btn');
+      if (comments.length > 0) {
+        el.classList.add('has-comments');
+        if (badge) { badge.textContent = comments.length; badge.style.display = 'flex'; }
+        total += comments.length;
+      } else {
+        el.classList.remove('has-comments');
+        if (badge) badge.style.display = 'none';
+      }
+    });
+    document.getElementById('total-comment-count').textContent = total;
+  }
+
+  function renderThread(el) {
+    const id = el.dataset.commentId;
+    const data = loadComments();
+    const comments = data[id] || [];
+    const list = el.querySelector('.comment-list');
+    list.innerHTML = '';
+    comments.forEach((c, i) => {
+      const li = document.createElement('li');
+      li.className = 'comment-item';
+      li.innerHTML = `
+        <div class="comment-meta">
+          <span class="comment-author">${escapeHtml(c.author)}</span>
+          <span>
+            <span class="comment-time">${c.time}</span>
+            <button class="comment-delete" onclick="deleteComment('${id}', ${i})" title="Delete">\u2715</button>
+          </span>
+        </div>
+        <div class="comment-text">${escapeHtml(c.text)}</div>
+      `;
+      list.appendChild(li);
+    });
+    list.scrollTop = list.scrollHeight;
+  }
+
+  function addComment(commentId) {
+    function doAdd() {
+      const el = document.querySelector(`[data-comment-id="${commentId}"]`);
+      const input = el.querySelector('.comment-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const data = loadComments();
+      if (!data[commentId]) data[commentId] = [];
+      data[commentId].push({
+        author: currentUser,
+        text: text,
+        time: new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+      });
+      saveComments(data);
+      input.value = '';
+      renderThread(el);
+    }
+    if (!currentUser) { ensureUserName(doAdd); }
+    else { doAdd(); }
+  }
+
+  function deleteComment(commentId, index) {
+    const data = loadComments();
+    if (data[commentId]) {
+      data[commentId].splice(index, 1);
+      if (data[commentId].length === 0) delete data[commentId];
+      saveComments(data);
+      const el = document.querySelector(`[data-comment-id="${commentId}"]`);
+      renderThread(el);
+    }
+  }
+
+  function toggleThread(commentId) {
+    const el = document.querySelector(`[data-comment-id="${commentId}"]`);
+    const thread = el.querySelector('.comment-thread');
+    thread.classList.toggle('open');
+    if (thread.classList.contains('open')) {
+      renderThread(el);
+      setTimeout(() => el.querySelector('.comment-input').focus(), 50);
+    }
+  }
+
+  function toggleAllComments() {
+    const threads = document.querySelectorAll('.comment-thread');
+    const anyOpen = Array.from(threads).some(t => t.classList.contains('open'));
+    threads.forEach(t => {
+      if (anyOpen) t.classList.remove('open');
+      else {
+        t.classList.add('open');
+        const el = t.closest('.commentable');
+        if (el) renderThread(el);
+      }
+    });
+  }
+
+  function exportComments() {
+    const data = loadComments();
+    const entries = Object.entries(data);
+    if (entries.length === 0) { alert('No comments to export.'); return; }
+    const lines = [];
+    lines.push("# QBR Comments \u2014 Q1 FY'27");
+    lines.push("");
+    lines.push("Exported " + new Date().toLocaleString());
+    lines.push("");
+    entries.forEach(function(entry) {
+      const section = entry[0];
+      const comments = entry[1];
+      const label = section.replace(/-/g, ' ');
+      lines.push("## " + label);
+      comments.forEach(function(c) {
+        lines.push("- **" + c.author + "** (" + c.time + "): " + c.text);
+      });
+      lines.push("");
+    });
+    const blob = new Blob([lines.join("\n")], { type: 'text/markdown' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'qbr-comments-Q1FY27.md';
+    a.click();
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // User name — stored in localStorage, editable inline
+  let currentUser = localStorage.getItem('qbr-user-name') || '';
+
+  function ensureUserName(callback) {
+    if (currentUser) { callback(); return; }
+    // Show inline name prompt
+    const overlay = document.createElement('div');
+    overlay.id = 'name-prompt';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:9999;display:flex;align-items:center;justify-content:center;';
+    overlay.innerHTML = `
+      <div style="background:#fff;padding:28px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.2);max-width:360px;width:100%;text-align:center;">
+        <div style="font-size:24px;margin-bottom:8px;">\uD83D\uDCAC</div>
+        <h3 style="font-family:Poppins,sans-serif;font-size:16px;margin-bottom:4px;">What's your name?</h3>
+        <p style="font-size:13px;color:#6b7280;margin-bottom:16px;">This will be shown on your comments.</p>
+        <input type="text" id="name-input" placeholder="e.g. Laura Clontz"
+          style="width:100%;padding:10px 14px;border:1px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:Inter,sans-serif;outline:none;margin-bottom:12px;"
+          onkeydown="if(event.key==='Enter')document.getElementById('name-submit').click()">
+        <button id="name-submit" onclick="(function(){
+          const n=document.getElementById('name-input').value.trim()||'Anonymous';
+          currentUser=n;localStorage.setItem('qbr-user-name',n);
+          document.getElementById('name-prompt').remove();
+        })()" style="width:100%;padding:10px;background:#4353FF;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">
+          Continue
+        </button>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    setTimeout(() => document.getElementById('name-input').focus(), 100);
+  }
+
+  // Inject comment UI into all commentable elements
+  document.querySelectorAll('.commentable').forEach(el => {
+    const id = el.dataset.commentId;
+
+    // Add comment button
+    const btn = document.createElement('button');
+    btn.className = 'comment-btn';
+    btn.innerHTML = '\uD83D\uDCAC<span class="comment-count-badge" style="display:none">0</span>';
+    btn.onclick = (e) => { e.stopPropagation(); toggleThread(id); };
+    el.appendChild(btn);
+
+    // Add comment thread
+    const thread = document.createElement('div');
+    thread.className = 'comment-thread';
+    thread.innerHTML = `
+      <div class="comment-thread-header">
+        <span>\uD83D\uDCAC Comments</span>
+        <button class="comment-thread-close" onclick="toggleThread('${id}')">\u2715</button>
+      </div>
+      <ul class="comment-list"></ul>
+      <div class="comment-input-row">
+        <input type="text" class="comment-input" placeholder="Add a comment\u2026"
+          onkeydown="if(event.key==='Enter')addComment('${id}')">
+        <button onclick="addComment('${id}')">Post</button>
+      </div>
+    `;
+    el.appendChild(thread);
+  });
+
+  // Initialize
+  updateCommentCounts();
+  renderFlags();
+  initEditables();
+  syncFromBackend();
+
+  // ── Charts ──────────────────────────────────────
+
+  // Console Top 5 Categories bar chart
+  new Chart(document.getElementById('chart-console-categories'), {
+    type: 'bar',
+    data: {
+      labels: ['Access Request', 'Permission/Role Update', 'Miscellaneous', 'Software', 'Password Reset'],
+      datasets: [{
+        label: 'Q1 FY27',
+        data: [76.0, 9.2, 5.0, 3.2, 1.0],
+        backgroundColor: ['#4353FF', '#6B77FF', '#818CF8', '#A5B4FC', '#C7D2FE'],
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) { return ctx.parsed.x + '%'; }
+          }
+        }
+      },
+      scales: {
+        x: { beginAtZero: true, max: 100, ticks: { callback: function(v) { return v + '%'; } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+
+  // Automation % trend line chart
+  new Chart(document.getElementById('chart-automation-trend'), {
+    type: 'line',
+    data: {
+      labels: ['Q3 FY26*', 'Q4 FY26', 'Q1 FY27'],
+      datasets: [{
+        label: 'Automation %',
+        data: [65, 84, 74.8],
+        borderColor: '#4353FF',
+        backgroundColor: 'rgba(67,83,255,0.1)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 6,
+        pointBackgroundColor: ['#F59E0B', '#00C853', '#EF4444'],
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) { return ctx.parsed.y + '%'; }
+          }
+        }
+      },
+      scales: {
+        y: { min: 50, max: 100, ticks: { callback: function(v) { return v + '%'; } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // BizTech donut
+  new Chart(document.getElementById('chart-biztech-types'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Story (62.7%)', 'Task (20.7%)', 'Bug (13.0%)', 'Sub-task (2.7%)', 'Access request (0.7%)', 'Epic (0.3%)'],
+      datasets: [{
+        data: [188, 62, 39, 8, 2, 1],
+        backgroundColor: ['#4353FF', '#6B77FF', '#EF4444', '#818CF8', '#A5B4FC', '#C7D2FE'],
+        borderWidth: 0,
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '60%',
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: { font: { family: 'Inter', size: 11 }, padding: 8, usePointStyle: true, pointStyleWidth: 10 }
+        }
+      }
+    }
+  });
+
+  // BizTech QoQ bar
+  new Chart(document.getElementById('chart-biztech-qoq'), {
+    type: 'bar',
+    data: {
+      labels: ['Story', 'Task', 'Bug', 'Sub-task', 'Access Req', 'Epic'],
+      datasets: [
+        {
+          label: 'Q4 FY26 (partial)',
+          data: [133, 19, 31, 11, 3, 3],
+          backgroundColor: 'rgba(67,83,255,0.25)',
+          borderColor: 'rgba(67,83,255,0.4)',
+          borderWidth: 1,
+          borderRadius: 4,
+        },
+        {
+          label: 'Q1 FY27',
+          data: [188, 62, 39, 8, 2, 1],
+          backgroundColor: '#4353FF',
+          borderRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: { font: { family: 'Inter', size: 12 }, usePointStyle: true, pointStyleWidth: 10 }
+        }
+      },
+      scales: {
+        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // EntTech donut
+  new Chart(document.getElementById('chart-enttech-types'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Story (58%)', 'Sub-task (16%)', 'Bug (10%)', 'Task (9%)', 'Epic (6%)', 'Access req (1%)'],
+      datasets: [{
+        data: [58, 16, 10, 9, 6, 1],
+        backgroundColor: ['#10B981', '#34D399', '#EF4444', '#6EE7B7', '#A7F3D0', '#D1FAE5'],
+        borderWidth: 0,
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '60%',
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: { font: { family: 'Inter', size: 11 }, padding: 8, usePointStyle: true, pointStyleWidth: 10 }
+        }
+      }
+    }
+  });
+
+  // EntTech QoQ bar
+  new Chart(document.getElementById('chart-enttech-qoq'), {
+    type: 'bar',
+    data: {
+      labels: ['Story', 'Task', 'Sub-task', 'Bug', 'Access Req', 'Epic'],
+      datasets: [
+        {
+          label: 'Q4 FY26 (partial)',
+          data: [47, 32, 8, 7, 3, 2],
+          backgroundColor: 'rgba(16,185,129,0.25)',
+          borderColor: 'rgba(16,185,129,0.4)',
+          borderWidth: 1,
+          borderRadius: 4,
+        },
+        {
+          label: 'Q1 FY27',
+          data: [58, 9, 16, 10, 1, 6],
+          backgroundColor: '#10B981',
+          borderRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: { font: { family: 'Inter', size: 12 }, usePointStyle: true, pointStyleWidth: 10 }
+        }
+      },
+      scales: {
+        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // ENI donut
+  new Chart(document.getElementById('chart-eni-types'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Bug (69.6%)', 'Story (26.8%)', 'Access request (3.6%)'],
+      datasets: [{
+        data: [39, 15, 2],
+        backgroundColor: ['#EF4444', '#F59E0B', '#FCD34D'],
+        borderWidth: 0,
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '60%',
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: { font: { family: 'Inter', size: 11 }, padding: 8, usePointStyle: true, pointStyleWidth: 10 }
+        }
+      }
+    }
+  });
+
+  // ENI QoQ bar
+  new Chart(document.getElementById('chart-eni-qoq'), {
+    type: 'bar',
+    data: {
+      labels: ['Bug', 'Story', 'Access Req'],
+      datasets: [
+        {
+          label: 'Q4 FY26',
+          data: [22, 4, 0],
+          backgroundColor: 'rgba(245,158,11,0.25)',
+          borderColor: 'rgba(245,158,11,0.4)',
+          borderWidth: 1,
+          borderRadius: 4,
+        },
+        {
+          label: 'Q1 FY27',
+          data: [39, 15, 2],
+          backgroundColor: '#F59E0B',
+          borderRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: { font: { family: 'Inter', size: 12 }, usePointStyle: true, pointStyleWidth: 10 }
+        }
+      },
+      scales: {
+        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // ── iPaaS Charts ────────────────────────────────
+  var ipaasWeeks = ['Wk6','Wk7','Wk8','Wk9','Wk10','Wk11','Wk12','Wk13','Wk14','Wk15','Wk16'];
+  var ipaasRuns = [9220,10141,3423,9423,9947,11392,18822,347552,293532,402000,424371];
+  var ipaasFailPct = [0.21,0.40,0.67,0.24,0.47,0.80,0.11,0.01,0.01,0.02,0.01];
+  var ipaasTasks = [92900,102700,63900,98900,102500,131600,192700,442000,129200,95800,475];
+  var ipaasRecipes = [76,80,71,75,82,81,79,81,84,92,95];
+
+  // Runs chart
+  new Chart(document.getElementById('chart-ipaas-runs'), {
+    type: 'bar',
+    data: {
+      labels: ipaasWeeks,
+      datasets: [{
+        label: 'Recipe Runs',
+        data: ipaasRuns,
+        backgroundColor: ipaasRuns.map(function(v) { return v > 100000 ? '#4353FF' : 'rgba(67,83,255,0.4)'; }),
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: function(v) { return v >= 1000 ? (v/1000)+'K' : v; } } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // Failure rate chart
+  new Chart(document.getElementById('chart-ipaas-failures'), {
+    type: 'line',
+    data: {
+      labels: ipaasWeeks,
+      datasets: [{
+        label: 'Failure Rate %',
+        data: ipaasFailPct,
+        borderColor: '#EF4444',
+        backgroundColor: 'rgba(239,68,68,0.1)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 4,
+        pointBackgroundColor: '#EF4444'
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: function(v) { return v + '%'; } } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // Tasks consumed chart
+  new Chart(document.getElementById('chart-ipaas-tasks'), {
+    type: 'bar',
+    data: {
+      labels: ipaasWeeks,
+      datasets: [{
+        label: 'Tasks Consumed',
+        data: ipaasTasks,
+        backgroundColor: ipaasRuns.map(function(v,i) { return ipaasTasks[i] > 200000 ? '#F59E0B' : 'rgba(245,158,11,0.4)'; }),
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: function(v) { return v >= 1000 ? (v/1000)+'K' : v; } } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  // Active recipes chart
+  new Chart(document.getElementById('chart-ipaas-recipes'), {
+    type: 'line',
+    data: {
+      labels: ipaasWeeks,
+      datasets: [{
+        label: 'Active Recipes',
+        data: ipaasRecipes,
+        borderColor: '#00C853',
+        backgroundColor: 'rgba(0,200,83,0.1)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 4,
+        pointBackgroundColor: '#00C853'
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: false, grid: { color: 'rgba(0,0,0,0.05)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
