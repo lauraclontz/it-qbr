@@ -434,7 +434,248 @@
     }
   });
 
-  // BizTech donut
+  // ── Live data from API ──────────────────────────────────
+  async function fetchLiveData() {
+    try {
+      const [jiraRes, workatoRes, asanaRes] = await Promise.all([
+        fetch(API_BASE + '/data/jira?quarter=' + QUARTER).then(r => r.json()),
+        fetch(API_BASE + '/data/workato?quarter=' + QUARTER).then(r => r.json()),
+        fetch(API_BASE + '/data/asana?quarter=' + QUARTER).then(r => r.json()),
+      ]);
+      applyJira(jiraRes);
+      applyWorkato(workatoRes);
+      applyAsana(asanaRes);
+    } catch (e) {
+      console.warn('Live data fetch failed:', e.message);
+    }
+  }
+
+  function fmt(n) {
+    if (n == null) return '—';
+    if (n >= 1e6) return (n / 1e6).toFixed(2).replace(/\.?0+$/, '') + 'M';
+    if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.?0+$/, '') + 'K';
+    return String(n);
+  }
+
+  function pct(num, den) {
+    if (!den) return '0%';
+    return (num / den * 100).toFixed(1) + '%';
+  }
+
+  function tableRows(data, total) {
+    return data.map(([k, v]) =>
+      `<tr><td>${escapeHtml(k)}</td><td>${v}</td><td>${pct(v, total)}</td></tr>`
+    ).join('');
+  }
+
+  function applyJira(data) {
+    const projects = data.projects || {};
+
+    function applyProject(key, prefix, color) {
+      const p = projects[key];
+      if (!p || p.error) return;
+      const totalEl = document.getElementById(prefix + '-total');
+      const bugsValEl = document.getElementById(prefix + '-bugs-value');
+      const bugsLabelEl = document.getElementById(prefix + '-bugs-label');
+      const cycleEl = document.getElementById(prefix + '-cycle');
+      if (totalEl) totalEl.textContent = p.total;
+      if (bugsValEl) bugsValEl.textContent = p.bug_count;
+      if (bugsLabelEl) bugsLabelEl.textContent = 'Bugs (' + pct(p.bug_count, p.total) + ')';
+      if (cycleEl) cycleEl.textContent = p.median_cycle_days != null ? p.median_cycle_days + 'd' : '—';
+
+      const ctTbody = document.getElementById(prefix + '-change-type-tbody');
+      if (ctTbody && p.by_change_type) {
+        ctTbody.innerHTML = tableRows(Object.entries(p.by_change_type).slice(0, 5), p.total);
+      }
+      const eteTbody = document.getElementById(prefix + '-ete-cat-tbody');
+      if (eteTbody && p.by_ete_category) {
+        eteTbody.innerHTML = tableRows(Object.entries(p.by_ete_category).slice(0, 5), p.total);
+      }
+      const procTbody = document.getElementById(prefix + '-process-tbody');
+      if (procTbody && p.by_impacted_process) {
+        procTbody.innerHTML = tableRows(Object.entries(p.by_impacted_process).slice(0, 7), p.total);
+      }
+
+      const chartId = { btec: 'chart-biztech-types', ete: 'chart-enttech-types', eni: 'chart-eni-types' }[prefix];
+      const chartEl = document.getElementById(chartId);
+      if (chartEl && p.by_type) {
+        const colors = {
+          btec: ['#4353FF','#6B77FF','#EF4444','#818CF8','#A5B4FC','#C7D2FE'],
+          ete:  ['#10B981','#34D399','#EF4444','#6EE7B7','#A7F3D0','#D1FAE5'],
+          eni:  ['#EF4444','#F59E0B','#FCD34D','#FBBF24','#A5B4FC','#C7D2FE'],
+        };
+        const palette = colors[prefix] || colors.btec;
+        const entries = Object.entries(p.by_type).slice(0, 6);
+        const labels = entries.map(([k, v]) => k + ' (' + pct(v, p.total) + ')');
+        const vals = entries.map(([, v]) => v);
+        if (window._charts && window._charts[prefix]) {
+          window._charts[prefix].destroy();
+        }
+        if (!window._charts) window._charts = {};
+        window._charts[prefix] = new Chart(chartEl, {
+          type: 'doughnut',
+          data: {
+            labels,
+            datasets: [{ data: vals, backgroundColor: palette, borderWidth: 0, borderRadius: 4 }]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false, cutout: '60%',
+            plugins: {
+              legend: { position: 'right', labels: { font: { family: 'Inter', size: 11 }, padding: 8, usePointStyle: true, pointStyleWidth: 10 } }
+            }
+          }
+        });
+      }
+    }
+
+    applyProject('BTEC', 'btec', '#4353FF');
+    applyProject('ETE',  'ete',  '#10B981');
+    applyProject('ENI',  'eni',  '#F59E0B');
+  }
+
+  function applyWorkato(data) {
+    const s = data.summary || {};
+    const weeks = data.weeks || [];
+
+    const fmtRuns = document.getElementById('ipaas-total-runs');
+    const fmtFail = document.getElementById('ipaas-total-failures');
+    const fmtRate = document.getElementById('ipaas-fail-rate');
+    const fmtRecipes = document.getElementById('ipaas-active-recipes');
+    const fmtTasks = document.getElementById('ipaas-tasks-consumed');
+    const fmtDelta = document.getElementById('ipaas-tasks-delta');
+    const fmtBudgetLabel = document.getElementById('ipaas-budget-label');
+    const fmtBudgetBar = document.getElementById('ipaas-budget-bar');
+
+    if (fmtRuns) fmtRuns.textContent = fmt(s.total_runs);
+    if (fmtFail) fmtFail.textContent = fmt(s.total_failures);
+    if (fmtRate) fmtRate.textContent = (s.overall_failure_rate_pct || 0).toFixed(3) + '% fail rate';
+    if (fmtRecipes) fmtRecipes.textContent = s.peak_active_recipes || '—';
+    if (fmtTasks) fmtTasks.textContent = fmt(s.tasks_consumed);
+    if (fmtDelta) fmtDelta.textContent = (s.budget_pct || 0) + '% of quarterly budget';
+    if (fmtBudgetLabel) fmtBudgetLabel.textContent = fmt(s.tasks_consumed) + ' / ' + fmt(s.quarterly_budget) + ' (' + (s.budget_pct || 0) + '%)';
+    if (fmtBudgetBar) fmtBudgetBar.style.width = Math.min(s.budget_pct || 0, 100) + '%';
+
+    const consumers = document.getElementById('ipaas-consumers-tbody');
+    if (consumers && data.top_task_consumers) {
+      consumers.innerHTML = data.top_task_consumers.map(r =>
+        `<tr><td>${escapeHtml(r.recipe)}</td><td>${r.count ? Number(r.count).toLocaleString() : '—'}</td></tr>`
+      ).join('') || consumers.innerHTML;
+    }
+
+    const failures = document.getElementById('ipaas-failures-tbody');
+    if (failures && data.recurring_failures) {
+      failures.innerHTML = data.recurring_failures.map(r =>
+        `<tr><td>${escapeHtml(r.recipe)}</td><td>${r.weeks_appeared} wks</td></tr>`
+      ).join('') || failures.innerHTML;
+    }
+
+    if (!weeks.length) return;
+    const labels = weeks.map(w => 'Wk' + w.week_number);
+    const runs = weeks.map(w => w.total_runs);
+    const failPct = weeks.map(w => w.failure_rate_pct);
+    const tasks = weeks.map(w => w.weekly_tasks || null);
+    const recipes = weeks.map(w => w.total_running_recipes);
+
+    new Chart(document.getElementById('chart-ipaas-runs'), {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{ label: 'Recipe Runs', data: runs,
+          backgroundColor: runs.map(v => v > 100000 ? '#4353FF' : 'rgba(67,83,255,0.45)'),
+          borderRadius: 4 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false },
+          tooltip: { callbacks: { label: ctx => Number(ctx.parsed.y).toLocaleString() + ' runs' } } },
+        scales: {
+          y: { type: 'logarithmic', grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: { callback: v => [1000,10000,100000,500000].includes(v) ? (v/1000)+'K' : null } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart-ipaas-failures'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{ label: 'Failure Rate %', data: failPct,
+          borderColor: '#EF4444', backgroundColor: 'rgba(239,68,68,0.1)',
+          fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#EF4444' }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: { callback: v => v + '%' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart-ipaas-tasks'), {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{ label: 'Tasks Consumed', data: tasks,
+          backgroundColor: tasks.map(v => v > 200000 ? '#F59E0B' : 'rgba(245,158,11,0.45)'),
+          borderRadius: 4 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ctx.parsed.y ? Number(ctx.parsed.y).toLocaleString() + ' tasks' : 'Pending' } } },
+        scales: {
+          y: { type: 'logarithmic', grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: { callback: v => [10000,100000,500000].includes(v) ? (v/1000)+'K' : null } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart-ipaas-recipes'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{ label: 'Active Recipes', data: recipes,
+          borderColor: '#00C853', backgroundColor: 'rgba(0,200,83,0.1)',
+          fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#00C853' }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: false, grid: { color: 'rgba(0,0,0,0.05)' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  function applyAsana(data) {
+    const projects = data.projects || [];
+    const tbody = document.getElementById('landings-tbody');
+    if (!tbody || !projects.length) return;
+
+    const priorityClass = { 'P0': 'pill-red', 'P1': 'pill-red', 'P2': 'pill-blue', 'P3': 'pill-gray' };
+    tbody.innerHTML = projects.map(p => {
+      const pLabel = p.priority ? p.priority.replace('P0', 'P0 — Critical').replace('P1', 'P1 — High').replace('P2', 'P2 — Medium').replace('P3', 'P3 — Low') : '';
+      const cls = p.priority ? (priorityClass[p.priority.split(' ')[0]] || 'pill-gray') : 'pill-gray';
+      return `<tr>
+        <td><strong>${escapeHtml(p.name)}</strong></td>
+        <td>${escapeHtml(p.section)}</td>
+        <td>${escapeHtml(p.pillar)}</td>
+        <td>${pLabel ? `<span class="pill ${cls}">${escapeHtml(pLabel)}</span>` : '—'}</td>
+        <td>${escapeHtml(p.completed_at)}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  fetchLiveData();
+
+  // BizTech donut (static fallback — overwritten by fetchLiveData if API is up)
   new Chart(document.getElementById('chart-biztech-types'), {
     type: 'doughnut',
     data: {
@@ -459,44 +700,7 @@
     }
   });
 
-  // BizTech QoQ bar
-  new Chart(document.getElementById('chart-biztech-qoq'), {
-    type: 'bar',
-    data: {
-      labels: ['Story', 'Task', 'Bug', 'Epic', 'Sub-task', 'Access/Svc Req'],
-      datasets: [
-        {
-          label: 'Q4 FY26 (100 total)',
-          data: [24, 57, 8, 2, 8, 1],
-          backgroundColor: 'rgba(67,83,255,0.25)',
-          borderColor: 'rgba(67,83,255,0.4)',
-          borderWidth: 1,
-          borderRadius: 4,
-        },
-        {
-          label: 'Q1 FY27 (442 total)',
-          data: [260, 98, 53, 16, 10, 5],
-          backgroundColor: '#4353FF',
-          borderRadius: 4,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          labels: { font: { family: 'Inter', size: 12 }, usePointStyle: true, pointStyleWidth: 10 }
-        }
-      },
-      scales: {
-        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
-        x: { grid: { display: false } }
-      }
-    }
-  });
-
-  // EntTech donut
+  // EntTech donut (static fallback — overwritten by fetchLiveData if API is up)
   new Chart(document.getElementById('chart-enttech-types'), {
     type: 'doughnut',
     data: {
@@ -521,44 +725,7 @@
     }
   });
 
-  // EntTech QoQ bar
-  new Chart(document.getElementById('chart-enttech-qoq'), {
-    type: 'bar',
-    data: {
-      labels: ['Story', 'Task', 'Sub-task', 'Bug', 'Access Req', 'Epic'],
-      datasets: [
-        {
-          label: 'Q4 FY26 (partial)',
-          data: [47, 32, 8, 7, 3, 2],
-          backgroundColor: 'rgba(16,185,129,0.25)',
-          borderColor: 'rgba(16,185,129,0.4)',
-          borderWidth: 1,
-          borderRadius: 4,
-        },
-        {
-          label: 'Q1 FY27',
-          data: [58, 9, 16, 10, 1, 6],
-          backgroundColor: '#10B981',
-          borderRadius: 4,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          labels: { font: { family: 'Inter', size: 12 }, usePointStyle: true, pointStyleWidth: 10 }
-        }
-      },
-      scales: {
-        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
-        x: { grid: { display: false } }
-      }
-    }
-  });
-
-  // ENI donut
+  // ENI donut (static fallback — overwritten by fetchLiveData if API is up)
   new Chart(document.getElementById('chart-eni-types'), {
     type: 'doughnut',
     data: {
@@ -583,171 +750,3 @@
     }
   });
 
-  // ENI QoQ bar
-  new Chart(document.getElementById('chart-eni-qoq'), {
-    type: 'bar',
-    data: {
-      labels: ['Bug', 'Story', 'Access Req'],
-      datasets: [
-        {
-          label: 'Q4 FY26',
-          data: [22, 4, 0],
-          backgroundColor: 'rgba(245,158,11,0.25)',
-          borderColor: 'rgba(245,158,11,0.4)',
-          borderWidth: 1,
-          borderRadius: 4,
-        },
-        {
-          label: 'Q1 FY27',
-          data: [39, 15, 2],
-          backgroundColor: '#F59E0B',
-          borderRadius: 4,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          labels: { font: { family: 'Inter', size: 12 }, usePointStyle: true, pointStyleWidth: 10 }
-        }
-      },
-      scales: {
-        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
-        x: { grid: { display: false } }
-      }
-    }
-  });
-
-  // ── iPaaS Charts ────────────────────────────────
-  var ipaasWeeks = ['Wk6','Wk7','Wk8','Wk9','Wk10','Wk11','Wk12','Wk13','Wk14','Wk15','Wk16'];
-  var ipaasRuns = [9220,10141,3423,9423,9947,11392,18822,347552,293532,402000,424371];
-  var ipaasFailPct = [0.21,0.40,0.67,0.24,0.47,0.80,0.11,0.01,0.01,0.02,0.01];
-  var ipaasTasks = [92900,102700,63900,98900,102500,131600,192700,442000,129200,95800,null]; // Wk16 tasks pending
-  var ipaasRecipes = [76,80,71,75,82,81,79,81,84,92,95];
-
-  // Runs chart (log scale — Stripe integration went live Wk13, causing 20x volume jump)
-  new Chart(document.getElementById('chart-ipaas-runs'), {
-    type: 'bar',
-    data: {
-      labels: ipaasWeeks,
-      datasets: [{
-        label: 'Recipe Runs',
-        data: ipaasRuns,
-        backgroundColor: ipaasRuns.map(function(v) { return v > 100000 ? '#4353FF' : 'rgba(67,83,255,0.45)'; }),
-        borderRadius: 4
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: { label: function(ctx) { return Number(ctx.parsed.y).toLocaleString() + ' runs'; } } },
-        annotation: {
-          annotations: {
-            integrationLine: {
-              type: 'line', xMin: 'Wk13', xMax: 'Wk13',
-              borderColor: 'rgba(239,68,68,0.5)', borderWidth: 1, borderDash: [4,3],
-              label: { content: 'Stripe-Invoice live', display: true, position: 'start', font: { size: 9 }, color: '#EF4444', backgroundColor: 'transparent' }
-            }
-          }
-        }
-      },
-      scales: {
-        y: {
-          type: 'logarithmic',
-          grid: { color: 'rgba(0,0,0,0.05)' },
-          ticks: { callback: function(v) {
-            if ([1000,10000,100000,500000].includes(v)) return v >= 1000 ? (v/1000)+'K' : v;
-            return null;
-          }}
-        },
-        x: { grid: { display: false } }
-      }
-    }
-  });
-
-  // Failure rate chart
-  new Chart(document.getElementById('chart-ipaas-failures'), {
-    type: 'line',
-    data: {
-      labels: ipaasWeeks,
-      datasets: [{
-        label: 'Failure Rate %',
-        data: ipaasFailPct,
-        borderColor: '#EF4444',
-        backgroundColor: 'rgba(239,68,68,0.1)',
-        fill: true,
-        tension: 0.3,
-        pointRadius: 4,
-        pointBackgroundColor: '#EF4444'
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: function(v) { return v + '%'; } } },
-        x: { grid: { display: false } }
-      }
-    }
-  });
-
-  // Tasks consumed chart (log scale for same reason as runs)
-  new Chart(document.getElementById('chart-ipaas-tasks'), {
-    type: 'bar',
-    data: {
-      labels: ipaasWeeks,
-      datasets: [{
-        label: 'Tasks Consumed',
-        data: ipaasTasks,
-        backgroundColor: ipaasTasks.map(function(v) { return v > 200000 ? '#F59E0B' : 'rgba(245,158,11,0.45)'; }),
-        borderRadius: 4
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: { label: function(ctx) { return ctx.parsed.y ? Number(ctx.parsed.y).toLocaleString() + ' tasks' : 'Pending'; } } }
-      },
-      scales: {
-        y: {
-          type: 'logarithmic',
-          grid: { color: 'rgba(0,0,0,0.05)' },
-          ticks: { callback: function(v) {
-            if ([10000,100000,500000].includes(v)) return (v/1000)+'K';
-            return null;
-          }}
-        },
-        x: { grid: { display: false } }
-      }
-    }
-  });
-
-  // Active recipes chart
-  new Chart(document.getElementById('chart-ipaas-recipes'), {
-    type: 'line',
-    data: {
-      labels: ipaasWeeks,
-      datasets: [{
-        label: 'Active Recipes',
-        data: ipaasRecipes,
-        borderColor: '#00C853',
-        backgroundColor: 'rgba(0,200,83,0.1)',
-        fill: true,
-        tension: 0.3,
-        pointRadius: 4,
-        pointBackgroundColor: '#00C853'
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: {
-        y: { beginAtZero: false, grid: { color: 'rgba(0,0,0,0.05)' } },
-        x: { grid: { display: false } }
-      }
-    }
-  });

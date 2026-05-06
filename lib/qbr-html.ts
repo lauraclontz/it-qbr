@@ -250,17 +250,17 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
             <!-- Metric cards -->
             <div class="metrics-row commentable" data-comment-id="biztech-metrics">
               <div class="metric-card">
-                <div class="metric-value">442</div>
+                <div class="metric-value" id="btec-total">442</div>
                 <div class="metric-label">Total Tickets</div>
                 <div class="metric-delta delta-up">&uarr; vs 100 Q4 FY26</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value">53</div>
-                <div class="metric-label">Bugs (12.7%)</div>
+                <div class="metric-value" id="btec-bugs-value">53</div>
+                <div class="metric-label" id="btec-bugs-label">Bugs (12.7%)</div>
                 <div class="metric-delta delta-up">&darr; reactive work</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value">9.2d</div>
+                <div class="metric-value" id="btec-cycle">9.2d</div>
                 <div class="metric-label">Median Cycle Time</div>
                 <div class="metric-delta delta-up">&darr; from 13.9d Q4</div>
               </div>
@@ -283,7 +283,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
                   <thead>
                     <tr><th>Change Type</th><th>Count</th><th>%</th></tr>
                   </thead>
-                  <tbody>
+                  <tbody id="btec-change-type-tbody">
                     <tr><td>Configuration</td><td>228</td><td>54.8%</td></tr>
                     <tr><td>Development</td><td>141</td><td>33.9%</td></tr>
                     <tr><td>Documentation</td><td>13</td><td>3.1%</td></tr>
@@ -295,7 +295,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
                   <thead>
                     <tr><th>ETE Category</th><th>Count</th><th>%</th></tr>
                   </thead>
-                  <tbody>
+                  <tbody id="btec-ete-cat-tbody">
                     <tr><td>Run the Business</td><td>194</td><td>46.6%</td></tr>
                     <tr><td>Change the Business</td><td>178</td><td>42.8%</td></tr>
                     <tr><td>Transform the Business</td><td>10</td><td>2.4%</td></tr>
@@ -310,7 +310,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
                 <thead>
                   <tr><th>Top Impacted Processes</th><th>Count</th><th>%</th></tr>
                 </thead>
-                <tbody>
+                <tbody id="btec-process-tbody">
                   <tr><td>Opportunity-to-Order (O2O)</td><td>95</td><td>22.8%</td></tr>
                   <tr><td>Order-to-Cash (OTC)</td><td>95</td><td>22.8%</td></tr>
                   <tr><td>Platform Administration</td><td>76</td><td>18.3%</td></tr>
@@ -353,17 +353,17 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
           <div class="accordion-content">
             <div class="metrics-row commentable" data-comment-id="enttech-metrics">
               <div class="metric-card">
-                <div class="metric-value">160</div>
+                <div class="metric-value" id="ete-total">160</div>
                 <div class="metric-label">Total Tickets</div>
                 <div class="metric-delta delta-up">&uarr; vs Q4</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value">14</div>
-                <div class="metric-label">Bugs (10.7%)</div>
+                <div class="metric-value" id="ete-bugs-value">14</div>
+                <div class="metric-label" id="ete-bugs-label">Bugs (10.7%)</div>
                 <div class="metric-delta delta-up">Low reactive work</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value">5.9d</div>
+                <div class="metric-value" id="ete-cycle">5.9d</div>
                 <div class="metric-label">Median Cycle Time</div>
                 <div class="metric-delta delta-up">&darr; from 6.5d Q4</div>
               </div>
@@ -386,7 +386,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
                   <thead>
                     <tr><th>Change Type</th><th>Count</th><th>%</th></tr>
                   </thead>
-                  <tbody>
+                  <tbody id="ete-change-type-tbody">
                     <tr><td>Configuration</td><td>119</td><td>90.8%</td></tr>
                     <tr><td>Development</td><td>9</td><td>6.9%</td></tr>
                     <tr><td>Documentation</td><td>3</td><td>2.3%</td></tr>
@@ -398,7 +398,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
                   <thead>
                     <tr><th>ETE Category</th><th>Count</th><th>%</th></tr>
                   </thead>
-                  <tbody>
+                  <tbody id="ete-ete-cat-tbody">
                     <tr><td>Run the Business</td><td>99</td><td>75.6%</td></tr>
                     <tr><td>Change the Business</td><td>30</td><td>22.9%</td></tr>
                     <tr><td>Transform the Business</td><td>2</td><td>1.5%</td></tr>
@@ -413,7 +413,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
                 <thead>
                   <tr><th>Top Impacted Processes</th><th>Count</th><th>%</th></tr>
                 </thead>
-                <tbody>
+                <tbody id="ete-process-tbody">
                   <tr><td>Platform Administration</td><td>42</td><td>32.1%</td></tr>
                   <tr><td>Order-to-Cash (OTC)</td><td>28</td><td>21.4%</td></tr>
                   <tr><td>Procure to Pay</td><td>22</td><td>16.8%</td></tr>
@@ -455,17 +455,17 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
           <div class="accordion-content">
             <div class="metrics-row commentable" data-comment-id="eni-metrics">
               <div class="metric-card">
-                <div class="metric-value">58</div>
+                <div class="metric-value" id="eni-total">58</div>
                 <div class="metric-label">Total Tickets</div>
                 <div class="metric-delta delta-up">&uarr; vs Q4</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value">39</div>
-                <div class="metric-label">Bugs (67%)</div>
+                <div class="metric-value" id="eni-bugs-value">39</div>
+                <div class="metric-label" id="eni-bugs-label">Bugs (67%)</div>
                 <div class="metric-delta delta-neutral">See note below</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value">0.73d</div>
+                <div class="metric-value" id="eni-cycle">0.73d</div>
                 <div class="metric-label">Median Cycle Time</div>
                 <div class="metric-delta delta-up">&darr; from 9.6d Q4</div>
               </div>
@@ -524,24 +524,24 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
         <!-- Summary cards -->
         <div class="metrics-row">
           <div class="metric-card">
-            <div class="metric-value">1.54M</div>
+            <div class="metric-value" id="ipaas-total-runs">1.54M</div>
             <div class="metric-label">Total Recipe Runs</div>
-            <div class="metric-delta delta-neutral">11 weeks, Q1 FY27</div>
+            <div class="metric-delta delta-neutral">Q1 FY27</div>
           </div>
           <div class="metric-card">
-            <div class="metric-value">499</div>
+            <div class="metric-value" id="ipaas-total-failures">499</div>
             <div class="metric-label">Total Failures</div>
-            <div class="metric-delta delta-up">0.032% fail rate</div>
+            <div class="metric-delta delta-up" id="ipaas-fail-rate">0.032% fail rate</div>
           </div>
           <div class="metric-card">
-            <div class="metric-value">95</div>
+            <div class="metric-value" id="ipaas-active-recipes">95</div>
             <div class="metric-label">Active Recipes</div>
             <div class="metric-delta delta-up">&#x2191; from 76 (+25%)</div>
           </div>
           <div class="metric-card">
-            <div class="metric-value">1.45M</div>
+            <div class="metric-value" id="ipaas-tasks-consumed">1.45M</div>
             <div class="metric-label">Tasks Consumed</div>
-            <div class="metric-delta delta-up">48% of quarterly budget</div>
+            <div class="metric-delta delta-up" id="ipaas-tasks-delta">48% of quarterly budget</div>
           </div>
           <div class="metric-card">
             <div class="metric-value">3M</div>
@@ -554,10 +554,10 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
         <div style="margin:16px 0 24px;">
           <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">
             <span>Task Usage vs Q1 Budget</span>
-            <span>1.45M / 3M (48%)</span>
+            <span id="ipaas-budget-label">1.45M / 3M (48%)</span>
           </div>
           <div style="background:var(--border); border-radius:8px; height:24px; overflow:hidden;">
-            <div style="background:linear-gradient(90deg, var(--green), var(--blue)); height:100%; width:48%; border-radius:8px; transition:width 0.5s;"></div>
+            <div id="ipaas-budget-bar" style="background:linear-gradient(90deg, var(--green), var(--blue)); height:100%; width:48%; border-radius:8px; transition:width 0.5s;"></div>
           </div>
           <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-secondary); margin-top:4px;">
             <span>0</span>
@@ -603,7 +603,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
             <h5 style="font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:8px;">Top Task Consumers</h5>
             <table class="data-table">
               <thead><tr><th>Recipe</th><th>Tasks</th></tr></thead>
-              <tbody>
+              <tbody id="ipaas-consumers-tbody">
                 <tr><td>Salesforce &#x2194; Stripe - Invoice Status Updated</td><td>High volume (wk 13+)</td></tr>
                 <tr><td>Salesforce &#x2194; Stripe - Generate Invoices</td><td>High volume (wk 13+)</td></tr>
                 <tr><td>[US] Compile Candidate Data + Email for External Counsel</td><td>~30K/week</td></tr>
@@ -615,8 +615,8 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
           <div>
             <h5 style="font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:8px;">Recurring Failure Sources</h5>
             <table class="data-table">
-              <thead><tr><th>Recipe</th><th>Error</th></tr></thead>
-              <tbody>
+              <thead><tr><th>Recipe</th><th>Weeks</th></tr></thead>
+              <tbody id="ipaas-failures-tbody">
                 <tr><td>Adaptive &#x2192; Airtable: Full Data Sync</td><td>Password expired / 502</td></tr>
                 <tr><td>Greenhouse &#x2192; Airtable: Data Import</td><td>Table already exists</td></tr>
                 <tr><td>Open Role Announcements</td><td>User ID Must be Present</td></tr>
@@ -663,7 +663,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
                 <th>Completed</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="landings-tbody">
               <tr>
                 <td><strong>Automated Webflow Product Provisioning</strong></td>
                 <td>GTM Technology</td>
