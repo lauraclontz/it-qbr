@@ -1,13 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getDB, quarterFrom } from '@/lib/db';
 
-const BACKEND = process.env.BACKEND_URL ?? 'http://localhost:8000';
+export const dynamic = 'force-dynamic';
 
 export async function POST(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ flagId: string }> }
 ) {
   const { flagId } = await params;
-  const res = await fetch(`${BACKEND}/flags/${flagId}/unresolve`, { method: 'POST' });
-  const data = await res.json();
-  return NextResponse.json(data, { status: res.status });
+  const quarter = quarterFrom(req);
+
+  const db = getDB();
+  const res = await db
+    .prepare(
+      'UPDATE flags SET resolved = 0, resolved_by = NULL, resolved_at = NULL WHERE quarter = ? AND flag_id = ?'
+    )
+    .bind(quarter, flagId)
+    .run();
+
+  if (!res.meta.changes) {
+    return NextResponse.json({ detail: 'Flag not found' }, { status: 404 });
+  }
+  return NextResponse.json({ success: true });
 }

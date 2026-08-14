@@ -2,7 +2,7 @@
 <aside class="sidebar">
   <div class="sidebar-header">
     <h1>IT QBR</h1>
-    <span class="quarter-badge">Q1 FY'27</span>
+    <span class="quarter-badge">Q2 FY'27</span>
   </div>
   <nav>
     <a href="#exec-summary" class="active">
@@ -28,7 +28,7 @@
     </a>
   </nav>
   <div class="sidebar-footer">
-    Generated Apr 16, 2026<br>
+    Generated Aug 12, 2026<br>
     QBR Automation v1.0
   </div>
 </aside>
@@ -40,7 +40,7 @@
   <div class="top-bar">
     <div>
       <h2>IT Quarterly Business Review</h2>
-      <div class="subtitle">Q1 FY'27 &middot; Feb 1 &ndash; Apr 30, 2026 &middot; Presented May 2026</div>
+      <div class="subtitle">Q2 FY'27 &middot; May 1 &ndash; Jul 31, 2026 &middot; Presented Aug 2026</div>
     </div>
     <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
       <div class="comments-panel-toggle" onclick="toggleAllComments()">
@@ -89,28 +89,32 @@
         <h3><span class="section-num">2</span> New Hires & Open Roles</h3>
       </div>
       <div class="card-body">
-        <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:12px;">New Hires (Q1 FY27)</h4>
+        <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:12px;">New Hires (Q2 FY27)</h4>
         <div class="commentable" data-comment-id="hires-new">
           <table class="data-table">
             <thead>
               <tr><th>Name</th><th>Title</th><th>Type</th><th>Manager</th></tr>
             </thead>
             <tbody>
-              <tr><td><strong>Anna Duncanson</strong></td><td>Senior Manager, GTM Technology</td><td><span class="pill pill-blue">FTE</span></td><td>Laura Clontz</td></tr>
-              <tr><td><strong>Jen Szymarek</strong></td><td>Senior AI Product Owner</td><td><span class="pill pill-blue">FTE</span></td><td>Reed Shackelford</td></tr>
-              <tr><td><strong>Krishnakant Nayak</strong></td><td>Integrations Engineer</td><td><span class="pill pill-yellow">CW (India)</span></td><td>Sachin Katiyar</td></tr>
+              <tr><td><strong>Lee Maddrell</strong></td><td>IT Support Specialist, EMEA</td><td><span class="pill pill-blue">FTE</span></td><td>Lalena Boetto</td></tr>
+              <tr><td><strong>Sage Lee</strong></td><td>Senior Business Systems Analyst, Enterprise AI Operations</td><td><span class="pill pill-blue">FTE</span></td><td>Reed Shackelford</td></tr>
+              <tr><td><strong>Angelo Licetti</strong></td><td>Salesforce Developer</td><td><span class="pill pill-yellow">CW (Peru)</span></td><td>Anna Duncanson</td></tr>
+              <tr><td><strong>Aayushi Pankaj</strong></td><td>Senior Salesforce Administrator</td><td><span class="pill pill-blue">FTE</span></td><td>Anna Duncanson</td></tr>
             </tbody>
           </table>
+          <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Angelo Licetti and Aayushi Pankaj started early Aug 2026; included here as they are onboard by the time of this QBR.</p>
         </div>
 
         <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:24px 0 12px;">Open Roles</h4>
         <div class="commentable" data-comment-id="hires-open">
           <table class="data-table">
             <thead>
-              <tr><th>Role</th><th>Type</th><th>Status</th></tr>
+              <tr><th>Role</th><th>Status</th></tr>
             </thead>
             <tbody>
-              <tr><td>AI Business Systems Admin</td><td><span class="pill pill-gray">TBD</span></td><td><span class="pill pill-yellow">Open</span></td></tr>
+              <tr><td>IT Support Engineer, Argentina</td><td><span class="pill pill-yellow">Open</span></td></tr>
+              <tr><td>IT Support Engineer, SF</td><td><span class="pill pill-yellow">Open</span></td></tr>
+              <tr><td>Senior Corporate Infrastructure Engineer, US</td><td><span class="pill pill-yellow">Open</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -236,12 +240,12 @@
           </div>
         </div>
 
-        <!-- 3d. BizTech / GTM (BTEC) — REAL DATA -->
+        <!-- 3d. GTM (BTEC) — REAL DATA -->
         <div class="accordion open" id="acc-biztech">
           <button class="accordion-trigger" onclick="toggleAccordion('acc-biztech')">
             <span class="trigger-left">
               <span class="team-dot" style="background:#4353FF"></span>
-              3d. BizTech / GTM (BTEC)
+              3d. GTM (BTEC)
               <span class="pill pill-blue">Live Data</span>
             </span>
             <span class="chevron">&#x25BC;</span>
@@ -250,29 +254,47 @@
             <!-- Metric cards -->
             <div class="metrics-row commentable" data-comment-id="biztech-metrics">
               <div class="metric-card">
-                <div class="metric-value" id="btec-total">442</div>
-                <div class="metric-label">Total Tickets</div>
-                <div class="metric-delta delta-up">&uarr; 45% vs 305 Q4 FY26</div>
+                <div class="metric-value">464</div>
+                <div class="metric-label">Created</div>
+                <div class="metric-delta delta-neutral">vs 491 Q1 FY27</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value" id="btec-bugs-value">53</div>
-                <div class="metric-label" id="btec-bugs-label">Bugs (12.7%)</div>
-                <div class="metric-delta delta-up">&darr; bug rate vs Q4 (15.1%)</div>
+                <div class="metric-value" id="btec-total">428</div>
+                <div class="metric-label">Closed</div>
+                <div class="metric-delta delta-neutral">&darr; 3% vs 441 Q1</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value" id="btec-cycle">9.2d</div>
-                <div class="metric-label">Median Cycle Time</div>
-                <div class="metric-delta delta-up">&darr; from 13.9d Q4</div>
+                <div class="metric-value">+36</div>
+                <div class="metric-label">Net Backlog</div>
+                <div class="metric-delta delta-neutral">created &minus; closed</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="btec-bugs-value">62</div>
+                <div class="metric-label" id="btec-bugs-label">Bugs (14.5%)</div>
+                <div class="metric-delta delta-up">&darr; vs 19.7% Q1</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="btec-cycle">13.0d</div>
+                <div class="metric-label">Median Cycle</div>
+                <div class="metric-delta delta-down">&uarr; from 8.8d Q1</div>
               </div>
             </div>
 
             <!-- Charts -->
             <div class="chart-row commentable" data-comment-id="biztech-charts">
               <div class="chart-container">
-                <h5>Issue Types (Q1 FY27)</h5>
+                <h5>Issue Types (Q2 FY27)</h5>
                 <div class="chart-wrap">
                   <canvas id="chart-biztech-types"></canvas>
                 </div>
+                <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Trend vs Q1: Bugs 19.7%&rarr;14.5%, Stories 44.7%&rarr;37.4%, Tasks 28.6%&rarr;31.8%, Epics 3.6%&rarr;4.9%.</p>
+              </div>
+              <div class="chart-container">
+                <h5>Created vs Closed</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-biztech-flow"></canvas>
+                </div>
+                <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Net backlog +36 in Q2 (created 464 &gt; closed 428).</p>
               </div>
             </div>
 
@@ -284,9 +306,10 @@
                     <tr><th>Change Type</th><th>Count</th><th>%</th></tr>
                   </thead>
                   <tbody id="btec-change-type-tbody">
-                    <tr><td>Configuration</td><td>228</td><td>54.8%</td></tr>
-                    <tr><td>Development</td><td>141</td><td>33.9%</td></tr>
-                    <tr><td>Documentation</td><td>13</td><td>3.1%</td></tr>
+                    <tr><td>Configuration</td><td>274</td><td>64.0%</td></tr>
+                    <tr><td>Development</td><td>80</td><td>18.7%</td></tr>
+                    <tr><td>Uncategorized</td><td>61</td><td>14.3%</td></tr>
+                    <tr><td>Documentation</td><td>13</td><td>3.0%</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -296,9 +319,10 @@
                     <tr><th>ETE Category</th><th>Count</th><th>%</th></tr>
                   </thead>
                   <tbody id="btec-ete-cat-tbody">
-                    <tr><td>Run the Business</td><td>194</td><td>46.6%</td></tr>
-                    <tr><td>Change the Business</td><td>178</td><td>42.8%</td></tr>
-                    <tr><td>Transform the Business</td><td>10</td><td>2.4%</td></tr>
+                    <tr><td>Change the Business</td><td>154</td><td>36.0%</td></tr>
+                    <tr><td>Run the Business</td><td>149</td><td>34.8%</td></tr>
+                    <tr><td>Uncategorized</td><td>92</td><td>21.5%</td></tr>
+                    <tr><td>Transform the Business</td><td>33</td><td>7.7%</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -311,42 +335,82 @@
                   <tr><th>Top Impacted Processes</th><th>Count</th><th>%</th></tr>
                 </thead>
                 <tbody id="btec-process-tbody">
-                  <tr><td>Opportunity-to-Order (O2O)</td><td>95</td><td>22.8%</td></tr>
-                  <tr><td>Order-to-Cash (OTC)</td><td>95</td><td>22.8%</td></tr>
-                  <tr><td>Platform Administration</td><td>76</td><td>18.3%</td></tr>
-                  <tr><td>Demand-to-Opportunity (D2O)</td><td>70</td><td>16.8%</td></tr>
-                  <tr><td>Partner</td><td>21</td><td>5.0%</td></tr>
-                  <tr><td>Integration</td><td>14</td><td>3.4%</td></tr>
-                  <tr><td>Time-to-Value (T2V)</td><td>9</td><td>2.2%</td></tr>
+                  <tr><td>Platform Administration</td><td>108</td><td>25.2%</td></tr>
+                  <tr><td>Demand-to-Opportunity (D2O)</td><td>67</td><td>15.7%</td></tr>
+                  <tr><td>Opportunity-to-Order (O2O)</td><td>49</td><td>11.4%</td></tr>
+                  <tr><td>Integration</td><td>34</td><td>7.9%</td></tr>
+                  <tr><td>Partner</td><td>21</td><td>4.9%</td></tr>
+                  <tr><td>Order-to-Cash (OTC)</td><td>16</td><td>3.7%</td></tr>
+                  <tr><td>Time-to-Value (T2V)</td><td>5</td><td>1.2%</td></tr>
                 </tbody>
               </table>
+            </div>
+
+            <!-- Velocity & complexity -->
+            <div class="metrics-row commentable" data-comment-id="biztech-velocity">
+              <div class="metric-card">
+                <div class="metric-value">1,085</div>
+                <div class="metric-label">Velocity &mdash; Story Points Closed</div>
+                <div class="metric-delta delta-neutral">vs 1,281 Q1 &middot; 86% pointed</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">2.9</div>
+                <div class="metric-label">Avg Complexity (pts / ticket)</div>
+                <div class="metric-delta delta-neutral">&darr; from 4.2 Q1 &mdash; smaller chunks</div>
+              </div>
+            </div>
+
+            <!-- Median cycle time by complexity -->
+            <div class="commentable" data-comment-id="biztech-complexity" style="margin-bottom:16px;">
+              <h5 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:10px;">Median Cycle Time by Complexity</h5>
+              <div style="display:flex; gap:12px;">
+                <div style="flex:1; background:var(--green-bg); border-radius:var(--radius-sm); padding:14px;">
+                  <div style="font-size:24px; font-weight:700; color:var(--green);">5.9d</div>
+                  <div style="font-size:12px; color:var(--text-secondary);">Simple tickets (&le;3 pts)</div>
+                </div>
+                <div style="flex:1; background:var(--red-bg); border-radius:var(--radius-sm); padding:14px;">
+                  <div style="font-size:24px; font-weight:700; color:var(--red);">49.9d</div>
+                  <div style="font-size:12px; color:var(--text-secondary);">Complex tickets (&ge;5 pts)</div>
+                </div>
+              </div>
+              <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Complexity drives duration &mdash; complex tickets take ~8&times; longer. Q2's higher overall cycle time reflects clearing aged complex items, not rising day-to-day complexity (avg points actually fell).</p>
+            </div>
+
+            <!-- Planned vs Unplanned (Activity Type) -->
+            <div class="commentable" data-comment-id="biztech-activity" style="margin-bottom:16px;">
+              <h5 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:10px;">Planned vs Unplanned (Activity Type)</h5>
+              <div style="display:flex; height:30px; border-radius:var(--radius-sm); overflow:hidden; font-size:12px; font-weight:600; color:#fff;">
+                <div style="width:48.4%; background:var(--blue); display:flex; align-items:center; justify-content:center;">Planned 48% (200)</div>
+                <div style="width:51.6%; background:var(--yellow); display:flex; align-items:center; justify-content:center;">Unplanned 52% (213)</div>
+              </div>
+              <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Activity Type populated on 96.5% of tickets.</p>
             </div>
 
             <!-- Commentary -->
             <div class="commentary commentable" data-comment-id="biztech-commentary">
               <h5>
                 &#x1F4DD; Commentary
-                <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; BizTech lead to review</span>
+                <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; GTM lead to review</span>
               </h5>
               <ul class="editable" data-edit-id="biztech-commentary-text">
-                <li>BizTech / GTM completed 442 tickets in Q1 FY27, with median cycle time improving 34% to 9.2d (down from 13.9d in Q4 FY26).</li>
-                <li>Bug rate improved to 12.7% (53 bug-type tickets) from 15.1% in Q4, despite a 45% increase in total volume — bug count up slightly but rate down.</li>
-                <li>Ticket mix skewed toward Configuration (54.8%) and Development (33.9%), driven by Salesforce billing infrastructure and partner tooling work.</li>
-                <li>Opportunity-to-Order and Order-to-Cash processes drove the most volume (22.8% each), consistent with Q1 commercial systems priorities.</li>
-                <li>Platform Administration (18.3%) and Demand-to-Opportunity (16.8%) were the next highest-volume process areas.</li>
-                <li>Key Q1 themes: Salesforce managed package audit and updates (30+ packages reviewed), AI Agent tooling pilot (Slack &amp; Jira integrations, knowledge layer), and Workspace object redesign (Workspace_User__c, Account-Workspace relationships).</li>
+                <li>GTM completed 428 tickets in Q2 FY27 (down 3% from 441 in Q1). Bug rate improved to 14.5% (62 bug-type tickets) from 19.7% in Q1.</li>
+                <li>Median cycle time rose to 13.0d (from 8.8d in Q1); average held roughly flat at ~44d. The uptick was driven by a few long-running Stories closing this quarter (e.g. GTM Permissions automation at ~165d), not a broad slowdown.</li>
+                <li>Work skewed to Configuration (64.0%) and Development (18.7%). Data-quality watch item: Uncategorized rose to 14.3% of Change Type, and 29.7% of tickets carry no Impacted Process tag — Q1 was near-fully tagged.</li>
+                <li>By ETE category the mix was balanced — Change the Business (36.0%) and Run the Business (34.8%), with Transform the Business at 7.7%.</li>
+                <li>Top tagged processes: Platform Administration (25.2%), Demand-to-Opportunity (15.7%), and Opportunity-to-Order (11.4%).</li>
+                <li>Key Q2 themes (draft — Anna to confirm): Vidoso migration (new fields &amp; product), Marketo ↔ Salesforce sync resolver for Workspace Users, C360 account/contact layout redesign, and kickoff of GTM permissions automation.</li>
               </ul>
             </div>
 
           </div>
         </div>
 
-        <!-- 3e. EntTech (ETE) — REAL DATA -->
+        <!-- 3e. Finance &amp; Legal Systems (ETE) — REAL DATA -->
         <div class="accordion open" id="acc-enttech">
           <button class="accordion-trigger" onclick="toggleAccordion('acc-enttech')">
             <span class="trigger-left">
               <span class="team-dot" style="background:#10B981"></span>
-              3e. EntTech (ETE)
+              3e. Finance &amp; Legal Systems (ETE)
               <span class="pill pill-blue">Live Data</span>
             </span>
             <span class="chevron">&#x25BC;</span>
@@ -354,29 +418,47 @@
           <div class="accordion-content">
             <div class="metrics-row commentable" data-comment-id="enttech-metrics">
               <div class="metric-card">
-                <div class="metric-value" id="ete-total">160</div>
-                <div class="metric-label">Total Tickets</div>
-                <div class="metric-delta delta-down">&darr; 10% vs 178 Q4 FY26</div>
+                <div class="metric-value">180</div>
+                <div class="metric-label">Created</div>
+                <div class="metric-delta delta-neutral">vs 168 Q1 FY27</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value" id="ete-bugs-value">14</div>
-                <div class="metric-label" id="ete-bugs-label">Bugs (10.7%)</div>
-                <div class="metric-delta delta-down">&uarr; bug rate vs Q4 (6.2%)</div>
+                <div class="metric-value" id="ete-total">295</div>
+                <div class="metric-label">Closed</div>
+                <div class="metric-delta delta-up">&uarr; 84% vs 160 Q1</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value" id="ete-cycle">5.9d</div>
-                <div class="metric-label">Median Cycle Time</div>
-                <div class="metric-delta delta-up">&darr; from 6.5d Q4</div>
+                <div class="metric-value">&minus;115</div>
+                <div class="metric-label">Net Backlog</div>
+                <div class="metric-delta delta-up">burn-down (closed &gt; created)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="ete-bugs-value">8</div>
+                <div class="metric-label" id="ete-bugs-label">Bugs (2.7%)</div>
+                <div class="metric-delta delta-up">&darr; vs 8.8% Q1</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="ete-cycle">76.1d</div>
+                <div class="metric-label">Median Cycle</div>
+                <div class="metric-delta delta-down">&uarr; from 5.1d Q1</div>
               </div>
             </div>
 
             <!-- Charts -->
             <div class="chart-row commentable" data-comment-id="enttech-charts">
               <div class="chart-container">
-                <h5>Issue Types (Q1 FY27)</h5>
+                <h5>Issue Types (Q2 FY27)</h5>
                 <div class="chart-wrap">
                   <canvas id="chart-enttech-types"></canvas>
                 </div>
+                <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Trend vs Q1: Bugs 8.8%&rarr;2.7%, Stories 46.9%&rarr;51.5%, Tasks 24.4%&rarr;29.8%, Sub-tasks 11.9%&rarr;5.1%.</p>
+              </div>
+              <div class="chart-container">
+                <h5>Created vs Closed</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-enttech-flow"></canvas>
+                </div>
+                <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Backlog burn-down: closed 295 vs created 180 (net &minus;115).</p>
               </div>
             </div>
 
@@ -388,9 +470,10 @@
                     <tr><th>Change Type</th><th>Count</th><th>%</th></tr>
                   </thead>
                   <tbody id="ete-change-type-tbody">
-                    <tr><td>Configuration</td><td>119</td><td>90.8%</td></tr>
-                    <tr><td>Development</td><td>9</td><td>6.9%</td></tr>
-                    <tr><td>Documentation</td><td>3</td><td>2.3%</td></tr>
+                    <tr><td>Uncategorized</td><td>134</td><td>45.4%</td></tr>
+                    <tr><td>Configuration</td><td>118</td><td>40.0%</td></tr>
+                    <tr><td>Development</td><td>37</td><td>12.5%</td></tr>
+                    <tr><td>Documentation</td><td>6</td><td>2.0%</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -400,9 +483,10 @@
                     <tr><th>ETE Category</th><th>Count</th><th>%</th></tr>
                   </thead>
                   <tbody id="ete-ete-cat-tbody">
-                    <tr><td>Run the Business</td><td>99</td><td>75.6%</td></tr>
-                    <tr><td>Change the Business</td><td>30</td><td>22.9%</td></tr>
-                    <tr><td>Transform the Business</td><td>2</td><td>1.5%</td></tr>
+                    <tr><td>Uncategorized</td><td>134</td><td>45.4%</td></tr>
+                    <tr><td>Run the Business</td><td>104</td><td>35.3%</td></tr>
+                    <tr><td>Transform the Business</td><td>35</td><td>11.9%</td></tr>
+                    <tr><td>Change the Business</td><td>22</td><td>7.5%</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -415,15 +499,55 @@
                   <tr><th>Top Impacted Processes</th><th>Count</th><th>%</th></tr>
                 </thead>
                 <tbody id="ete-process-tbody">
-                  <tr><td>Platform Administration</td><td>42</td><td>32.1%</td></tr>
-                  <tr><td>Order-to-Cash (OTC)</td><td>28</td><td>21.4%</td></tr>
-                  <tr><td>Procure to Pay</td><td>22</td><td>16.8%</td></tr>
-                  <tr><td>Record to Report</td><td>18</td><td>13.7%</td></tr>
-                  <tr><td>Integration</td><td>10</td><td>7.6%</td></tr>
-                  <tr><td>FP&amp;A</td><td>9</td><td>6.9%</td></tr>
-                  <tr><td>Opportunity-to-Order (O2O)</td><td>2</td><td>1.5%</td></tr>
+                  <tr><td>Order-to-Cash (OTC)</td><td>59</td><td>20.0%</td></tr>
+                  <tr><td>Platform Administration</td><td>34</td><td>11.5%</td></tr>
+                  <tr><td>Record to Report</td><td>24</td><td>8.1%</td></tr>
+                  <tr><td>Procure to Pay</td><td>20</td><td>6.8%</td></tr>
+                  <tr><td>Integration</td><td>18</td><td>6.1%</td></tr>
+                  <tr><td>FP&amp;A</td><td>2</td><td>0.7%</td></tr>
+                  <tr><td>Opportunity-to-Order (O2O)</td><td>2</td><td>0.7%</td></tr>
                 </tbody>
               </table>
+            </div>
+
+            <!-- Velocity & complexity -->
+            <div class="metrics-row commentable" data-comment-id="enttech-velocity">
+              <div class="metric-card">
+                <div class="metric-value">364</div>
+                <div class="metric-label">Velocity &mdash; Story Points Closed</div>
+                <div class="metric-delta delta-neutral">vs 498 Q1 &middot; 48% pointed (partial)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">2.6</div>
+                <div class="metric-label">Avg Complexity (pts / ticket)</div>
+                <div class="metric-delta delta-neutral">&darr; from 4.5 Q1 &mdash; smaller chunks</div>
+              </div>
+            </div>
+
+            <!-- Median cycle time by complexity -->
+            <div class="commentable" data-comment-id="enttech-complexity" style="margin-bottom:16px;">
+              <h5 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:10px;">Median Cycle Time by Complexity</h5>
+              <div style="display:flex; gap:12px;">
+                <div style="flex:1; background:var(--green-bg); border-radius:var(--radius-sm); padding:14px;">
+                  <div style="font-size:24px; font-weight:700; color:var(--green);">2.9d</div>
+                  <div style="font-size:12px; color:var(--text-secondary);">Simple tickets (&le;3 pts)</div>
+                </div>
+                <div style="flex:1; background:var(--red-bg); border-radius:var(--radius-sm); padding:14px;">
+                  <div style="font-size:24px; font-weight:700; color:var(--red);">132.8d</div>
+                  <div style="font-size:12px; color:var(--text-secondary);">Complex tickets (&ge;5 pts)</div>
+                </div>
+              </div>
+              <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">The 76d median reflects clearing long-dormant complex items (one Stripe AR story was open ~363 days) during this backlog burn-down &mdash; not rising day-to-day complexity (avg points fell).</p>
+            </div>
+
+            <!-- Planned vs Unplanned (Activity Type) -->
+            <div class="commentable" data-comment-id="enttech-activity" style="margin-bottom:16px;">
+              <h5 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:10px;">Planned vs Unplanned (Activity Type)</h5>
+              <div style="display:flex; height:30px; border-radius:var(--radius-sm); overflow:hidden; font-size:12px; font-weight:600; color:#fff;">
+                <div style="width:59%; background:var(--blue); display:flex; align-items:center; justify-content:center;">Planned 59% (85)</div>
+                <div style="width:41%; background:var(--yellow); display:flex; align-items:center; justify-content:center;">Unplanned 41% (59)</div>
+              </div>
+              <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Activity Type populated on only 48.8% of tickets &mdash; partial view.</p>
             </div>
 
             <!-- Commentary -->
@@ -433,11 +557,12 @@
                 <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; Bali to review</span>
               </h5>
               <ul class="editable" data-edit-id="enttech-commentary-text">
-                <li>EntTech completed 160 tickets in Q1 FY27, with median cycle time improving to 5.9d from 6.5d in Q4 FY26.</li>
-                <li>Bug rate at 10.7% (14 bug-type tickets) vs 6.2% in Q4 — slight uptick but still low overall; work predominantly configuration-driven (90.8%), indicative of a stable operating environment.</li>
-                <li>75.6% of work fell under Run the Business, consistent with a mature team sustaining existing finance and HR systems (NetSuite, Workday, Coupa).</li>
-                <li>Platform Administration (32.1%) and Order-to-Cash (21.4%) were the top process areas, followed by Procure-to-Pay (16.8%) and Record-to-Report (13.7%).</li>
-                <li>Key Q1 themes: Stripe-NetSuite reconciliation and SKU creation for new products (Vidoso, 4.1 SKUs), AI-assisted automation pilots (Claude + NetSuite MCP for journal entry loading, agentic headcount reconciliation), tax jurisdiction updates (VAT, US/CA state rules via Anrok), and recurring Workday-NetSuite headcount sync discrepancies.</li>
+                <li>Finance &amp; Legal Systems closed 295 tickets in Q2 FY27 (up 84% from 160 in Q1) while creating only 180 — a net backlog burn-down of 115.</li>
+                <li>Bug rate fell to 2.7% (8 tickets) from 8.8% in Q1 — a very clean quarter on quality.</li>
+                <li>Median cycle time rose sharply to 76.1d (from 5.1d), driven entirely by clearing aged, complex work: complex tickets (&ge;5 pts) ran a 132.8d median vs 2.9d for simple ones, and one Stripe AR automation had been open ~363 days. Typical ticket complexity actually fell (avg 4.5&rarr;2.6 pts).</li>
+                <li>Data-quality caveat: only ~46&ndash;49% of ETE tickets carry Change Type, Impacted Process, Story Points, or Activity Type — so categorization, velocity, and planned/unplanned figures are partial-population.</li>
+                <li>Where tagged, work led by Order-to-Cash (20.0%) and Platform Administration (11.5%); Run the Business (35.3%) dominated by category.</li>
+                <li>Key Q2 themes (draft — Bali to confirm): Stripe↔NetSuite AR-aging automation and reconciliation, cleanup of long-open finance items, new SKU/GL/item records, and continued tax/compliance support.</li>
               </ul>
             </div>
 
@@ -457,40 +582,142 @@
           <div class="accordion-content">
             <div class="metrics-row commentable" data-comment-id="eni-metrics">
               <div class="metric-card">
-                <div class="metric-value" id="eni-total">58</div>
-                <div class="metric-label">Total Tickets</div>
-                <div class="metric-delta delta-up">&uarr; 71% vs 34 Q4 FY26</div>
+                <div class="metric-value">53</div>
+                <div class="metric-label">Created</div>
+                <div class="metric-delta delta-neutral">vs 72 Q1 FY27</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value" id="eni-bugs-value">39</div>
-                <div class="metric-label" id="eni-bugs-label">Bugs (67%)</div>
-                <div class="metric-delta delta-neutral">See note below</div>
+                <div class="metric-value" id="eni-total">50</div>
+                <div class="metric-label">Closed</div>
+                <div class="metric-delta delta-neutral">&darr; 12% vs 57 Q1</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value" id="eni-cycle">0.73d</div>
-                <div class="metric-label">Median Cycle Time</div>
-                <div class="metric-delta delta-up">&darr; from 9.6d Q4</div>
+                <div class="metric-value">+3</div>
+                <div class="metric-label">Net Backlog</div>
+                <div class="metric-delta delta-neutral">created &minus; closed</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="eni-bugs-value">11</div>
+                <div class="metric-label" id="eni-bugs-label">Bugs (22.0%)</div>
+                <div class="metric-delta delta-up">&darr; from 68.4% Q1</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="eni-cycle">8.2d</div>
+                <div class="metric-label">Median Cycle</div>
+                <div class="metric-delta delta-neutral">&uarr; from 1.0d Q1 (see note)</div>
               </div>
             </div>
 
             <!-- Charts -->
             <div class="chart-row commentable" data-comment-id="eni-charts">
               <div class="chart-container">
-                <h5>Issue Types (Q1 FY27)</h5>
+                <h5>Issue Types (Q2 FY27)</h5>
                 <div class="chart-wrap">
                   <canvas id="chart-eni-types"></canvas>
                 </div>
+                <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Trend vs Q1: Bugs 68.4%&rarr;22.0%, Stories 28.1%&rarr;58.0% &mdash; far fewer auto-created error tickets, more planned build work.</p>
               </div>
+              <div class="chart-container">
+                <h5>Created vs Closed</h5>
+                <div class="chart-wrap">
+                  <canvas id="chart-eni-flow"></canvas>
+                </div>
+                <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Roughly flat: created 53 vs closed 50 (net +3).</p>
+              </div>
+            </div>
+
+            <!-- Breakdown tables -->
+            <div class="chart-row commentable" data-comment-id="eni-breakdowns">
+              <div>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>Change Type</th><th>Count</th><th>%</th></tr>
+                  </thead>
+                  <tbody id="eni-change-type-tbody">
+                    <tr><td>Development</td><td>33</td><td>66.0%</td></tr>
+                    <tr><td>Configuration</td><td>14</td><td>28.0%</td></tr>
+                    <tr><td>Uncategorized</td><td>3</td><td>6.0%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>ETE Category</th><th>Count</th><th>%</th></tr>
+                  </thead>
+                  <tbody id="eni-ete-cat-tbody">
+                    <tr><td>Run the Business</td><td>29</td><td>58.0%</td></tr>
+                    <tr><td>Change the Business</td><td>11</td><td>22.0%</td></tr>
+                    <tr><td>Transform the Business</td><td>7</td><td>14.0%</td></tr>
+                    <tr><td>Uncategorized</td><td>3</td><td>6.0%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Impacted Processes -->
+            <div class="commentable" data-comment-id="eni-processes" style="margin-bottom:16px;">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Top Impacted Processes</th><th>Count</th><th>%</th></tr>
+                </thead>
+                <tbody id="eni-process-tbody">
+                  <tr><td>Integration</td><td>35</td><td>70.0%</td></tr>
+                  <tr><td>Order-to-Cash (OTC)</td><td>7</td><td>14.0%</td></tr>
+                  <tr><td>Demand-to-Opportunity (D2O)</td><td>3</td><td>6.0%</td></tr>
+                  <tr><td>Opportunity-to-Order (O2O)</td><td>1</td><td>2.0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Velocity & complexity -->
+            <div class="metrics-row commentable" data-comment-id="eni-velocity">
+              <div class="metric-card">
+                <div class="metric-value">707</div>
+                <div class="metric-label">Velocity &mdash; Story Points Closed</div>
+                <div class="metric-delta delta-neutral">vs 290 Q1 &middot; 86% pointed</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">16.4</div>
+                <div class="metric-label">Avg Complexity (pts / ticket)</div>
+                <div class="metric-delta delta-neutral">team estimates in larger chunks</div>
+              </div>
+            </div>
+
+            <!-- Median cycle time by complexity -->
+            <div class="commentable" data-comment-id="eni-complexity" style="margin-bottom:16px;">
+              <h5 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:10px;">Median Cycle Time by Complexity</h5>
+              <div style="display:flex; gap:12px;">
+                <div style="flex:1; background:var(--green-bg); border-radius:var(--radius-sm); padding:14px;">
+                  <div style="font-size:24px; font-weight:700; color:var(--green);">0.4d</div>
+                  <div style="font-size:12px; color:var(--text-secondary);">Simple tickets (&le;3 pts)</div>
+                </div>
+                <div style="flex:1; background:var(--red-bg); border-radius:var(--radius-sm); padding:14px;">
+                  <div style="font-size:24px; font-weight:700; color:var(--red);">11.0d</div>
+                  <div style="font-size:12px; color:var(--text-secondary);">Complex tickets (&ge;5 pts)</div>
+                </div>
+              </div>
+              <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Integrations estimates in larger point values than the other teams, so its point totals aren't directly comparable &mdash; but the complexity&rarr;duration pattern holds within the team.</p>
+            </div>
+
+            <!-- Planned vs Unplanned (Activity Type) -->
+            <div class="commentable" data-comment-id="eni-activity" style="margin-bottom:16px;">
+              <h5 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:10px;">Planned vs Unplanned (Activity Type)</h5>
+              <div style="display:flex; height:30px; border-radius:var(--radius-sm); overflow:hidden; font-size:12px; font-weight:600; color:#fff;">
+                <div style="width:32.6%; background:var(--blue); display:flex; align-items:center; justify-content:center;">Planned 33% (14)</div>
+                <div style="width:67.4%; background:var(--yellow); display:flex; align-items:center; justify-content:center;">Unplanned 67% (29)</div>
+              </div>
+              <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Activity Type populated on 86% of tickets. Unplanned-heavy, consistent with reactive integration support.</p>
             </div>
 
             <!-- Bug rate context note -->
             <div class="commentary" style="background:#fffbeb; border-left-color:#D97706;">
               <h5 style="color:#D97706;">
-                &#x26A0; Note on Bug Rate (67%)
+                &#x26A0; Note on Bug Rate (22%)
               </h5>
               <ul>
-                <li>High bug count likely reflects <strong>auto-created Jira tickets from Workato recipe errors</strong>, not true integration failures or manual bug reports. Many are auto-resolved within hours (median cycle time: 0.73d).</li>
-                <li>Team is working to differentiate between data entry errors and true integration errors in Jira. <strong>Workato operational metrics are the more reliable signal</strong> — see below.</li>
+                <li>Bug rate fell sharply from 68% (Q1) to 22% (Q2) &mdash; Q1 was inflated by <strong>auto-created Jira tickets from Workato recipe errors</strong> (resolved in minutes), which had pulled Q1's median cycle time down to ~1 day. Q2's mix shifted toward planned build work (Stories 58%).</li>
+                <li><strong>Workato operational metrics remain the more reliable signal</strong> for integration health &mdash; see the iPaaS section below.</li>
               </ul>
             </div>
 
@@ -501,10 +728,12 @@
                 <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; Sachin Katiyar to review</span>
               </h5>
               <ul class="editable" data-edit-id="eni-commentary-text">
-                <li>Integrations completed 58 tickets in Q1 FY27 with a median cycle time of 0.73d — down significantly from 9.6d in Q4 FY26, reflecting faster auto-resolution of Workato-generated tickets.</li>
-                <li>The 67% bug rate is an artifact of auto-created Jira tickets from Workato recipe errors, not true integration failures. Workato operational metrics are the more reliable signal: 0.032% failure rate across 1.54M recipe runs.</li>
-                <li>Active recipe count grew 25% (76 → 95) in Q1, driven by new Salesforce ↔ Stripe billing integrations that went live in late March and are now the platform's highest-volume recipes.</li>
-                <li>Task consumption sits at 48% of quarterly budget (1.45M of 3M) — on track, with Stripe integration volume warranting continued monitoring for plan-level impact.</li>
+                <li>Integrations closed 50 tickets in Q2 FY27 (created 53; net +3) — steady volume, down slightly from Q1's 57.</li>
+                <li>Bug rate dropped from 68% to 22%: Q1 was dominated by auto-created Workato error tickets, while Q2 skewed to planned Stories (58%). The higher 8.2d median cycle (vs 1.0d) reflects that shift toward real build work, not slower response.</li>
+                <li>Now 94% categorized (up from ~0% in Q1): Development-led (66%) and overwhelmingly Integration work (70%); Run / Change / Transform split 58 / 22 / 14.</li>
+                <li>Velocity was 707 story points on 86% coverage &mdash; but the team estimates integration work in much larger point values than GTM or Finance &amp; Legal Systems, so its totals aren't comparable across teams.</li>
+                <li>Activity Type skews Unplanned (67%), consistent with reactive integration support and error handling.</li>
+                <li>Workato reliability stayed strong — see the iPaaS section for the authoritative signal (runs, failure rate, tasks).</li>
               </ul>
             </div>
 
@@ -526,24 +755,24 @@
         <!-- Summary cards -->
         <div class="metrics-row">
           <div class="metric-card">
-            <div class="metric-value" id="ipaas-total-runs">1.54M</div>
+            <div class="metric-value" id="ipaas-total-runs">4.87M</div>
             <div class="metric-label">Total Recipe Runs</div>
-            <div class="metric-delta delta-neutral">Q1 FY27</div>
+            <div class="metric-delta delta-neutral">Q2 FY27</div>
           </div>
           <div class="metric-card">
-            <div class="metric-value" id="ipaas-total-failures">499</div>
+            <div class="metric-value" id="ipaas-total-failures">490</div>
             <div class="metric-label">Total Failures</div>
-            <div class="metric-delta delta-up" id="ipaas-fail-rate">0.032% fail rate</div>
+            <div class="metric-delta delta-up" id="ipaas-fail-rate">0.010% fail rate</div>
           </div>
           <div class="metric-card">
-            <div class="metric-value" id="ipaas-active-recipes">95</div>
+            <div class="metric-value" id="ipaas-active-recipes">116</div>
             <div class="metric-label">Active Recipes</div>
-            <div class="metric-delta delta-up">&#x2191; from 76 (+25%)</div>
+            <div class="metric-delta delta-up">&#x2191; from 95 Q1 peak</div>
           </div>
           <div class="metric-card">
-            <div class="metric-value" id="ipaas-tasks-consumed">1.45M</div>
+            <div class="metric-value" id="ipaas-tasks-consumed">850.4K</div>
             <div class="metric-label">Tasks Consumed</div>
-            <div class="metric-delta delta-up" id="ipaas-tasks-delta">48% of quarterly budget</div>
+            <div class="metric-delta delta-up" id="ipaas-tasks-delta">28% of quarterly budget</div>
           </div>
           <div class="metric-card">
             <div class="metric-value">3M</div>
@@ -555,11 +784,11 @@
         <!-- Usage vs Budget gauge -->
         <div style="margin:16px 0 24px;">
           <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px;">
-            <span>Task Usage vs Q1 Budget</span>
-            <span id="ipaas-budget-label">1.45M / 3M (48%)</span>
+            <span>Task Usage vs Quarterly Budget</span>
+            <span id="ipaas-budget-label">850.4K / 3M (28%)</span>
           </div>
           <div style="background:var(--border); border-radius:8px; height:24px; overflow:hidden;">
-            <div id="ipaas-budget-bar" style="background:linear-gradient(90deg, var(--green), var(--blue)); height:100%; width:48%; border-radius:8px; transition:width 0.5s;"></div>
+            <div id="ipaas-budget-bar" style="background:linear-gradient(90deg, var(--green), var(--blue)); height:100%; width:28%; border-radius:8px; transition:width 0.5s;"></div>
           </div>
           <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-secondary); margin-top:4px;">
             <span>0</span>
@@ -605,11 +834,11 @@
             <table class="data-table">
               <thead><tr><th>Recipe</th><th>Tasks</th></tr></thead>
               <tbody id="ipaas-consumers-tbody">
-                <tr><td>Salesforce &#x2194; Stripe - Invoice Status Updated</td><td>High volume (wk 13+)</td></tr>
-                <tr><td>Salesforce &#x2194; Stripe - Generate Invoices</td><td>High volume (wk 13+)</td></tr>
-                <tr><td>[US] Compile Candidate Data + Email for External Counsel</td><td>~30K/week</td></tr>
-                <tr><td>SimilarWeb Batch Handler</td><td>Periodic batches</td></tr>
-                <tr><td>Zoom to Salesforce Meeting Attendees</td><td>~5K/week</td></tr>
+                <tr><td>Salesforce &#x2194; Stripe - Invoice Status Updated</td><td>~330K runs/wk</td></tr>
+                <tr><td>Salesforce &#x2194; Stripe - Generate Invoices</td><td>~75K runs/wk</td></tr>
+                <tr><td>[US] Compile Candidate Data + Email for External Counsel</td><td>~27K/wk (top task recipe)</td></tr>
+                <tr><td>[REC] Salesforce &#x2194; Clay Lead Scheduler</td><td>~2K runs/wk (new)</td></tr>
+                <tr><td>Zapier-Webhook-LogStreaming</td><td>emerging (late Q2)</td></tr>
               </tbody>
             </table>
           </div>
@@ -618,11 +847,11 @@
             <table class="data-table">
               <thead><tr><th>Recipe</th><th>Weeks</th></tr></thead>
               <tbody id="ipaas-failures-tbody">
-                <tr><td>Adaptive &#x2192; Airtable: Full Data Sync</td><td>Password expired / 502</td></tr>
-                <tr><td>Greenhouse &#x2192; Airtable: Data Import</td><td>Table already exists</td></tr>
-                <tr><td>Open Role Announcements</td><td>User ID Must be Present</td></tr>
-                <tr><td>Stripe Customer creation function</td><td>Failed job</td></tr>
-                <tr><td>Work Email Boomerang Child</td><td>Failed job</td></tr>
+                <tr><td>Workday &#x2192; Gsheets &#x2192; Remote (Deelbreaker) child</td><td>Wk 23&ndash;24 spike</td></tr>
+                <tr><td>Salesforce &#x2194; NetSuite v2</td><td>Tax Code / NS Internal ID missing</td></tr>
+                <tr><td>[BZ] LF | Slack | Sync Accept/Modify to SFDC</td><td>Duplicate Feature VR (wk 31)</td></tr>
+                <tr><td>Adaptive &#x2192; Airtable: Full Data Sync</td><td>Failed job (recurring)</td></tr>
+                <tr><td>[Bulk] Greenhouse &#x2192; Airtable (Offers)</td><td>Table already exists</td></tr>
               </tbody>
             </table>
           </div>
@@ -635,11 +864,11 @@
             <span class="flag flag-medium">&#x26A0; MEDIUM &#x2014; Sachin Katiyar to review</span>
           </h5>
           <ul class="editable" data-edit-id="ipaas-commentary-text">
-            <li>Recipe run volume increased 46x from early Feb (~10K/week) to mid-Apr (~400K/week), driven by Salesforce &#x2194; Stripe billing integrations going live in late March.</li>
-            <li>Despite the massive volume spike, failure rate remained under 0.04% &#x2014; strong platform reliability.</li>
-            <li>Task consumption is at 48% of quarterly budget (1.45M of 3M). On track, but the Stripe integration volume should be monitored for plan impact.</li>
-            <li>Active recipe count grew 25% (76 &#x2192; 95), reflecting new integrations being built and deployed.</li>
-            <li>Recurring failures in Adaptive &#x2192; Airtable and Greenhouse &#x2192; Airtable recipes suggest credential/schema maintenance needed.</li>
+            <li>Recipe runs held at the elevated post-Stripe baseline all quarter — averaging ~405K/week (peak 448K in the last week of July), whereas Q1 only reached that level mid-quarter.</li>
+            <li>Failure rate stayed at or below 0.04% every week; the quarter high (wk 23, 1st week of June) came from the Workday &#x2192; Gsheets &#x2018;Deelbreaker&#x2019; child recipe, since resolved.</li>
+            <li>Task consumption fell to ~850K (28% of the 3M quarterly budget), down from 48% in Q1 — comfortably within plan.</li>
+            <li>Active recipes grew to a peak of 116 (from 95 in Q1), led by new RevRise (Slack/Stripe) automations and a Zapier log-streaming webhook appearing late in the quarter.</li>
+            <li>Note: week 29 (2nd week of July) is missing from the source sheet; its tasks are rolled into week 30, and its runs are not counted in the quarter total.</li>
           </ul>
         </div>
       </div>
@@ -650,58 +879,96 @@
   <div class="section" id="landings">
     <div class="card">
       <div class="card-header">
-        <h3><span class="section-num">4</span> Quarterly Landings (Q1 FY27)</h3>
+        <h3><span class="section-num">4</span> Quarterly Landings (Q2 FY27)</h3>
       </div>
       <div class="card-body">
+        <div class="accordion open" id="acc-landings-enttech">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-landings-enttech')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#10B981"></span>
+              EntTech
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
         <div class="commentable" data-comment-id="landings-table" style="position:relative">
+
+          <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:4px 0 10px; color:var(--text);">Order to Cash</h4>
           <table class="data-table">
-            <thead>
-              <tr>
-                <th>Project</th>
-                <th>Team</th>
-                <th>Pillar</th>
-                <th>Priority</th>
-                <th>Completed</th>
-              </tr>
-            </thead>
-            <tbody id="landings-tbody">
-              <tr>
-                <td><strong>Automated Webflow Product Provisioning</strong></td>
-                <td>GTM Technology</td>
-                <td>Pillar 2 &mdash; Business Process Automation</td>
-                <td><span class="pill pill-red">P1 &mdash; High</span></td>
-                <td>Apr 13, 2026</td>
-              </tr>
-              <tr>
-                <td><strong>MadKudu Implementation</strong></td>
-                <td>GTM Technology</td>
-                <td>Pillar 2 &mdash; Business Process Automation</td>
-                <td><span class="pill pill-red">P1 &mdash; High</span></td>
-                <td>Apr 16, 2026</td>
-              </tr>
-              <tr>
-                <td><strong>Safebase Implementation</strong></td>
-                <td>GTM Technology</td>
-                <td>Pillar 4 &mdash; Identity, Security &amp; Compliance</td>
-                <td><span class="pill pill-red">P1 &mdash; High</span></td>
-                <td>Apr 13, 2026</td>
-              </tr>
-              <tr>
-                <td><strong>Obsidian Implementation</strong></td>
-                <td>GTM Technology</td>
-                <td>Pillar 4 &mdash; Identity, Security &amp; Compliance</td>
-                <td><span class="pill pill-yellow" style="background:var(--red-bg); color:var(--red);">P0 &mdash; Critical</span></td>
-                <td>Apr 16, 2026</td>
-              </tr>
-              <tr>
-                <td><strong>&ldquo;Centralize&rdquo; POC</strong></td>
-                <td>GTM Technology</td>
-                <td>Pillar 2 &mdash; Business Process Automation</td>
-                <td><span class="pill pill-blue">P2 &mdash; Medium</span></td>
-                <td>Apr 13, 2026</td>
-              </tr>
+            <thead><tr><th style="width:32%;">Landing</th><th>What it delivered</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Product Catalog Syncer</strong></td><td>Auto-syncs the product catalog from Salesforce to NetSuite, Stripe, and Anrok — one source of truth, full audit trail.</td></tr>
+              <tr><td><strong>Sales Order automation (SF → NS)</strong></td><td>Fixed multi-year deal and bundle pricing errors; standardized billing schedules across sales orders.</td></tr>
+              <tr><td><strong>Invoice syncing automation</strong></td><td>Connects Stripe, NetSuite, and Salesforce invoicing into one automated flow, replacing two disconnected systems.</td></tr>
+              <tr><td><strong>Marketplace Template Taxability</strong></td><td>Implemented correct tax handling for Marketplace Template purchases.</td></tr>
+              <tr><td><strong>Enterprise Billing go-live (Aug 17)</strong></td><td>New self-serve Enterprise billing system in Stripe, replacing manual invoicing.</td></tr>
             </tbody>
           </table>
+
+          <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">C360</h4>
+          <table class="data-table">
+            <thead><tr><th style="width:32%;">Landing</th><th>What it delivered</th></tr></thead>
+            <tbody>
+              <tr><td><strong>C360: launch to the field (May 12)</strong></td><td>Gave the field product usage, entitlement, and user data — live in Salesforce.</td></tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">Platform Governance &amp; Stability</h4>
+          <table class="data-table">
+            <thead><tr><th style="width:32%;">Landing</th><th>What it delivered</th></tr></thead>
+            <tbody>
+              <tr><td><strong>SysAdmin migration in Salesforce</strong></td><td>Moved 20+ Rev Ops / Marketing / Deal Desk users off System Admin onto right-sized roles.</td></tr>
+              <tr><td><strong>Salesforce platform security adherence</strong></td><td>Closed every outstanding Salesforce security vulnerability ahead of 2026 platform requirements.</td></tr>
+              <tr><td><strong>Resolved automation failures</strong></td><td>Fixed automations that broke after the org restructure.</td></tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">Business Process Automation</h4>
+          <table class="data-table">
+            <thead><tr><th style="width:32%;">Landing</th><th>What it delivered</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Brightflag / Zip Integration</strong></td><td>Approved legal invoices in Brightflag now auto-create the matching bill in Zip.</td></tr>
+              <tr><td><strong>Workday → NetSuite EE Demographic Sync</strong></td><td>Automated employee demographic updates flowing from Workday into NetSuite.</td></tr>
+              <tr><td><strong>SE Product Feedback Agent (Gappy)</strong></td><td>Workato routes SE product feedback straight into Salesforce.</td></tr>
+              <tr><td><strong>Ironclad → Nomio integration</strong></td><td>Stood up the integration for the first time: Nomio is our AI-powered contract repository (supplementing Ironclad) that extracts and organizes contract metadata for Legal.</td></tr>
+              <tr><td><strong>Background check automation (Workday → Checkr)</strong></td><td>Auto-tracks background checks to clear before start date, closing a SOC2 gap.</td></tr>
+              <tr><td><strong>Enterprise Customers SSO Automation</strong></td><td>Automates Webflow SSO requests, routed by managed vs. unmanaged account, with a design view before they reach the build stage.</td></tr>
+              <tr><td><strong>Closed Lost reasons &amp; GTM AI analytics</strong></td><td>Expanded Closed Lost reasons for risky renewals and added new closed-lost analytics fields for GTM AI.</td></tr>
+              <tr><td><strong>Co-marketing sourced opportunities</strong></td><td>Co-marketing opps now flow through Salesforce as Partner Sourced (Co-Marketing subtype), with commission, forecasting, and reporting updated. PAMs gain visibility, partners are credited fairly, and Marketing retains campaign attribution.</td></tr>
+              <tr><td><strong>IronClad Enhancements</strong></td><td>Moved CLM contract-attribute capture upstream to the quote stage and closed key Ironclad–Salesforce field-mapping gaps, cutting Legal's manual post-signature work and unblocking Sales / RevOps data needs.</td></tr>
+              <tr><td><strong>Risk Record Lifecycle Improvements</strong></td><td>Fixed renewal status stamping and built account-level Exit ARR reporting for accounts without an active contract, closing key data gaps for RevOps and Finance.</td></tr>
+              <tr><td><strong>Unmanaged renewals automation</strong></td><td>Auto-generates and tracks renewal opportunities for accounts with no assigned CSM.</td></tr>
+            </tbody>
+          </table>
+
+          <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">AI</h4>
+          <table class="data-table">
+            <thead><tr><th style="width:32%;">Landing</th><th>What it delivered</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Design Review Agent (internal)</strong></td><td>Reviews Salesforce design specs against our standards before build starts.</td></tr>
+              <tr><td><strong>Technical Review Agent (internal)</strong></td><td>Reviews what was actually built in Salesforce against our standards.</td></tr>
+              <tr><td><strong>Salesforce Data API Access Request Agent (internal)</strong></td><td>Handles Salesforce data API access requests and recommends solutions.</td></tr>
+              <tr><td><strong>Slack and Jira comment agent (internal)</strong></td><td>Sends a Slack DM to stakeholders tagged in a comment, for faster response times.</td></tr>
+              <tr><td><strong>Data Quality Agent</strong></td><td>Monitors data pipeline alerts, finds root cause, and drafts code fixes for review — fully automated, 24/7.</td></tr>
+            </tbody>
+          </table>
+        </div>
+          </div>
+        </div>
+
+        <div class="accordion open" id="acc-landings-it">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-landings-it')">
+            <span class="trigger-left">
+              <span class="team-dot" style="background:#6366F1"></span>
+              IT Foundations
+            </span>
+            <span class="chevron">&#x25BC;</span>
+          </button>
+          <div class="accordion-content">
+            <div class="commentable" data-comment-id="landings-it">
+              <p style="font-size:13px; color:var(--text-secondary);">Landings pending — Lalena to provide the IT Foundations list.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -711,76 +978,105 @@
   <div class="section" id="roadmap">
     <div class="card">
       <div class="card-header">
-        <h3><span class="section-num">5</span> Roadmap &amp; Look Ahead &mdash; Q2 FY27</h3>
+        <h3><span class="section-num">5</span> Roadmap &amp; Look Ahead &mdash; Q3 FY27</h3>
       </div>
       <div class="card-body">
 
-        <!-- GTM Technology -->
-        <div class="accordion open" id="acc-roadmap-gtm">
-          <button class="accordion-trigger" onclick="toggleAccordion('acc-roadmap-gtm')">
+        <div class="accordion open" id="acc-roadmap-enttech">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-roadmap-enttech')">
             <span class="trigger-left">
-              <span class="team-dot" style="background:#4353FF"></span>
-              GTM Technology
-              <span class="pill pill-blue">15 projects</span>
+              <span class="team-dot" style="background:#10B981"></span>
+              EntTech
+              <span class="pill pill-blue">P0 &amp; P1</span>
             </span>
             <span class="chevron">&#x25BC;</span>
           </button>
           <div class="accordion-content">
-            <div class="commentable" data-comment-id="roadmap-gtm">
+            <div class="commentable" data-comment-id="roadmap-enttech">
+              <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">Q3 FY27 look-ahead, P0 &amp; P1 only. Additional P2 and backlog initiatives live in the full roadmaps: <a href="https://docs.google.com/spreadsheets/d/1D1bM4RMY-8VpK0f_e7fFtvoh0DuufCoVURIoChKzxu0/edit?gid=906636856" target="_blank" style="color:var(--blue);">GTM Tech</a> &middot; <a href="https://docs.google.com/spreadsheets/d/1ZlKWbXs-fVisDFoFc988Jy-b_jLPdYocIM_phiAYB-o/edit?gid=1915868859" target="_blank" style="color:var(--blue);">Finance &amp; Legal Systems</a>.</p>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:4px 0 10px; color:var(--text);">Order to Cash</h4>
               <table class="data-table">
-                <thead>
-                  <tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Pillar</th></tr>
-                </thead>
+                <thead><tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Team</th></tr></thead>
                 <tbody>
-                  <tr><td><strong>Customer 360</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 3</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>User Provisioning + Deprovisioning + Hierarchy Automation</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>Modern IT Operating Model</td></tr>
-                  <tr><td><strong>Trials Process Build</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 22</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>Enterprise Deal Qualification</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 22</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>MDF Approval Process</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 31</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>Partner Data Revamp</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>May 31</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>Integration User Overhaul</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 31</td><td>Modern IT Operating Model</td></tr>
-                  <tr><td><strong>Unmanaged Renewals Automation</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Apr 30</td><td><span style="color:var(--text-secondary)">(blank)</span></td></tr>
-                  <tr><td><strong>Managed Package Audit</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>Jul 1</td><td>Operational Excellence</td></tr>
-                  <tr><td><strong>SFDC Uptime + Error Monitoring</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>Jul 31</td><td>Modern IT Operating Model</td></tr>
-                  <tr><td><strong>AI Assisted Forecasting</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>AI as Default Way of Working</td></tr>
-                  <tr><td><strong>Outreach &lt;&gt; SFDC Integration</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 17</td><td>Operational Excellence</td></tr>
-                  <tr><td><strong>AI Assisted Slack Ticket Updating</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jul 30</td><td>AI as Default Way of Working</td></tr>
-                  <tr><td><strong>AI Assisted Discovery</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jul 30</td><td>AI as Default Way of Working</td></tr>
-                  <tr><td><strong>True Ups Opportunity Automation</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>Marketo &lt;&gt; SFDC Integration</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-blue">In Planning</span></td><td>Jul 31</td><td>Operational Excellence</td></tr>
+                  <tr><td><strong>Enterprise Billing Automation (Stripe)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Testing</span></td><td>Aug 17</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>Revenue Accounting for AI Credits</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>Finance &amp; Legal</td></tr>
+                  <tr><td><strong>Coupon Governance</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>Campaigns SKUs / Bundle CPQ (GA Sep 15)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">Discovery</span></td><td>Sep 15</td><td>GTM</td></tr>
+                  <tr><td><strong>AWS Opportunity Tracking Automation</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>MDF Approvals: CPQ</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Testing</span></td><td>Aug 31</td><td>GTM</td></tr>
+                  <tr><td><strong>Stigg Automation Refactor</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>Sales Order Creation Trigger Refactor</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>Sales Tax &amp; VAT Implementations (CA, CO, Mexico, Singapore, UAE, Malaysia, Kenya)</strong></td><td><span class="pill pill-gray">&mdash;</span></td><td><span class="pill pill-gray">Not Started</span></td><td>eff. 2027</td><td>Finance &amp; Legal</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">C360</h4>
+              <table class="data-table">
+                <thead><tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Team</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Domain Enrichment (C360 matching &amp; hierarchy)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>GTM &middot; Integrations</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">Platform Governance &amp; Stability</h4>
+              <table class="data-table">
+                <thead><tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Team</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Secure &amp; Stabilize Salesforce Integration + API Access</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-blue">In Planning</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Salesforce Flows: Build, Optimize &amp; Maintain</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Disaster Recovery + Salesforce Backup (OwnBackup)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Automated User Provisioning: Okta &rarr; Salesforce</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Salesforce CI/CD Tool</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Salesforce Error Observability Framework</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>GTM</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">Business Process Automation</h4>
+              <table class="data-table">
+                <thead><tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Team</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Campaigns Refresh</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>SFDC Home Pages (RevOps + MarketingOps)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Aug&ndash;Sep</td><td>GTM</td></tr>
+                  <tr><td><strong>Intelligent Contract Repository</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Partner Certification / Lifecycle Tracking</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>GTM &middot; Integrations</td></tr>
+                  <tr><td><strong>PDR Handoff Process Updates</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Personalized ABM Landing Pages</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Procurement Workflow Refactor</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>Finance &amp; Legal</td></tr>
+                  <tr><td><strong>NS Admin Automation: Workday &rarr; NetSuite employee sync</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>NS Admin Automation: GL account creation</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>NS Admin Automation: role permission automation</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">AI</h4>
+              <table class="data-table">
+                <thead><tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Team</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Salesforce MCP (Data Read-Only)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>GTM &middot; Enterprise AI</td></tr>
+                  <tr><td><strong>Salesforce MCP (Data Write)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>GTM &middot; Enterprise AI</td></tr>
+                  <tr><td><strong>AI Agents for GTM Tech Delivery Workflow</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-green">Done</span></td><td>Aug 11</td><td>GTM</td></tr>
+                  <tr><td><strong>Clari Replacement (Write MCP) &mdash; Phase 1</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>AI Ops: Automated close-prep &amp; reconciliation (NS/Stripe/SF)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>AI Ops: Intelligent exception flagging across O2C</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>AI Ops: System health monitoring &amp; alerting</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
 
-        <!-- EntTech / Finance, Legal & Billing -->
-        <div class="accordion open" id="acc-roadmap-enttech">
-          <button class="accordion-trigger" onclick="toggleAccordion('acc-roadmap-enttech')">
+        <div class="accordion open" id="acc-roadmap-it">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-roadmap-it')">
             <span class="trigger-left">
-              <span class="team-dot" style="background:#10B981"></span>
-              EntTech / Finance, Legal &amp; Billing
-              <span class="pill pill-blue">8 projects</span>
+              <span class="team-dot" style="background:#6366F1"></span>
+              IT Foundations
             </span>
             <span class="chevron">&#x25BC;</span>
           </button>
           <div class="accordion-content">
-            <div class="commentable" data-comment-id="roadmap-enttech">
-              <table class="data-table">
-                <thead>
-                  <tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Pillar</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>Argentina Entity</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>Enterprise Billing Automation (Stripe)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>SKU Creation Automation + Product Catalog Syncer</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-blue">In Planning</span></td><td>May 31</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>Automated Intercompany for Expenses Across Webflow Entities</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>May 1</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>Consolidation of Month End and Flux Analysis</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">&mdash;</span></td><td>May 31</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>JPMC Bank Integration for Expense Payout</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
-                  <tr><td><strong>ZIP AI Intake Process</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-green">Done</span></td><td>May 31</td><td>AI as Default Way of Working</td></tr>
-                  <tr><td><strong>ZIP and Brightflag Integration</strong></td><td><span class="pill pill-blue">P2</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Jun 30</td><td>Business Process Automation</td></tr>
-                </tbody>
-              </table>
+            <div class="commentable" data-comment-id="roadmap-it">
+              <p style="font-size:13px; color:var(--text-secondary);">Roadmap pending — Lalena to provide the IT Foundations look-ahead.</p>
             </div>
           </div>
         </div>
@@ -865,7 +1161,7 @@
 
   <!-- Footer -->
   <div style="text-align:center; padding:32px 0; color:var(--text-secondary); font-size:12px;">
-    Generated Apr 16, 2026 &middot; QBR Automation v1.0 &middot; Data as of Apr 16, 2026
+    Generated Aug 12, 2026 &middot; QBR Automation v1.0 &middot; Data as of Aug 12, 2026
   </div>
 
 </div>

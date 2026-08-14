@@ -1,5 +1,5 @@
   // ── Config ──────────────────────────────────────────────
-  const QUARTER = 'Q1FY27';
+  const QUARTER = 'Q2FY27';
   const API_BASE = '/api';
 
   // ── In-memory state (loaded from API on init) ────────────
@@ -57,6 +57,24 @@
     const anyOpen = Array.from(accordions).some(a => a.classList.contains('open'));
     accordions.forEach(a => { if (anyOpen) a.classList.remove('open'); else a.classList.add('open'); });
   }
+
+  // ── Collapsible top-level sections ───────────────────────
+  document.querySelectorAll('.section > .card > .card-header').forEach(header => {
+    const h3 = header.querySelector('h3');
+    if (!h3) return;
+    const right = document.createElement('div');
+    right.className = 'card-header-right';
+    Array.from(header.children).forEach(c => { if (c !== h3) right.appendChild(c); });
+    const chev = document.createElement('span');
+    chev.className = 'section-chevron';
+    chev.textContent = '▾';
+    right.appendChild(chev);
+    header.appendChild(right);
+    header.addEventListener('click', (e) => {
+      if (e.target.closest('a, button')) return;
+      header.closest('.card').classList.toggle('collapsed');
+    });
+  });
 
   // ── Nav highlight on scroll ──────────────────────────────
   const navLinks = document.querySelectorAll('.sidebar nav a');
@@ -687,9 +705,9 @@
   new Chart(document.getElementById('chart-biztech-types'), {
     type: 'doughnut',
     data: {
-      labels: ['Story (58.8%)', 'Task (22.2%)', 'Bug (12.0%)', 'Epic (3.6%)', 'Sub-task (2.3%)', 'Access/Svc req (1.1%)'],
+      labels: ['Story (37.4%)', 'Task (31.8%)', 'Bug (14.5%)', 'Epic (4.9%)', 'Service req (4.2%)', 'Other (7.2%)'],
       datasets: [{
-        data: [260, 98, 53, 16, 10, 5],
+        data: [160, 136, 62, 21, 18, 31],
         backgroundColor: ['#4353FF', '#6B77FF', '#EF4444', '#818CF8', '#A5B4FC', '#C7D2FE'],
         borderWidth: 0,
         borderRadius: 4,
@@ -708,13 +726,30 @@
     }
   });
 
+  // BizTech created vs closed (Q1 vs Q2)
+  new Chart(document.getElementById('chart-biztech-flow'), {
+    type: 'bar',
+    data: {
+      labels: ['Q1 FY27', 'Q2 FY27'],
+      datasets: [
+        { label: 'Created', data: [491, 464], backgroundColor: '#6B77FF', borderRadius: 4 },
+        { label: 'Closed',  data: [441, 428], backgroundColor: '#4353FF', borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 11 }, usePointStyle: true, pointStyleWidth: 10 } } },
+      scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } }, x: { grid: { display: false } } }
+    }
+  });
+
   // EntTech donut (static fallback — overwritten by fetchLiveData if API is up)
   new Chart(document.getElementById('chart-enttech-types'), {
     type: 'doughnut',
     data: {
-      labels: ['Story (58%)', 'Sub-task (16%)', 'Bug (10%)', 'Task (9%)', 'Epic (6%)', 'Access req (1%)'],
+      labels: ['Story (51.5%)', 'Task (29.8%)', 'Epic (8.1%)', 'Sub-task (5.1%)', 'Access req (2.7%)', 'Bug (2.7%)'],
       datasets: [{
-        data: [58, 16, 10, 9, 6, 1],
+        data: [152, 88, 24, 15, 8, 8],
         backgroundColor: ['#10B981', '#34D399', '#EF4444', '#6EE7B7', '#A7F3D0', '#D1FAE5'],
         borderWidth: 0,
         borderRadius: 4,
@@ -733,14 +768,31 @@
     }
   });
 
+  // EntTech created vs closed (Q1 vs Q2)
+  new Chart(document.getElementById('chart-enttech-flow'), {
+    type: 'bar',
+    data: {
+      labels: ['Q1 FY27', 'Q2 FY27'],
+      datasets: [
+        { label: 'Created', data: [168, 180], backgroundColor: '#34D399', borderRadius: 4 },
+        { label: 'Closed',  data: [160, 295], backgroundColor: '#10B981', borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 11 }, usePointStyle: true, pointStyleWidth: 10 } } },
+      scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } }, x: { grid: { display: false } } }
+    }
+  });
+
   // ENI donut (static fallback — overwritten by fetchLiveData if API is up)
   new Chart(document.getElementById('chart-eni-types'), {
     type: 'doughnut',
     data: {
-      labels: ['Bug (69.6%)', 'Story (26.8%)', 'Access request (3.6%)'],
+      labels: ['Story (58%)', 'Bug (22%)', 'Task (16%)', 'Epic (4%)'],
       datasets: [{
-        data: [39, 15, 2],
-        backgroundColor: ['#EF4444', '#F59E0B', '#FCD34D'],
+        data: [29, 11, 8, 2],
+        backgroundColor: ['#F59E0B', '#EF4444', '#FBBF24', '#FCD34D'],
         borderWidth: 0,
         borderRadius: 4,
       }]
@@ -757,4 +809,50 @@
       }
     }
   });
+
+  // ENI created vs closed (Q1 vs Q2)
+  new Chart(document.getElementById('chart-eni-flow'), {
+    type: 'bar',
+    data: {
+      labels: ['Q1 FY27', 'Q2 FY27'],
+      datasets: [
+        { label: 'Created', data: [72, 53], backgroundColor: '#FBBF24', borderRadius: 4 },
+        { label: 'Closed',  data: [57, 50], backgroundColor: '#F59E0B', borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 11 }, usePointStyle: true, pointStyleWidth: 10 } } },
+      scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } }, x: { grid: { display: false } } }
+    }
+  });
+
+  // iPaaS / Workato — Q2 static data (live API pipeline retired; fed straight to applyWorkato).
+  // Q2 = weeks 19–31; wk29 (2nd wk July) is absent from the source sheet.
+  const WORKATO_Q2 = {
+    summary: {
+      total_runs: 4874194,
+      total_failures: 490,
+      overall_failure_rate_pct: 0.010,
+      peak_active_recipes: 116,
+      tasks_consumed: 850437,
+      quarterly_budget: 3000000,
+      budget_pct: 28
+    },
+    weeks: [
+      { week_number: 19, total_runs: 424008, failure_rate_pct: 0.01, weekly_tasks: 69357,  total_running_recipes: 102 },
+      { week_number: 20, total_runs: 417723, failure_rate_pct: 0.01, weekly_tasks: 67336,  total_running_recipes: 104 },
+      { week_number: 21, total_runs: 414649, failure_rate_pct: 0.01, weekly_tasks: 63701,  total_running_recipes: 109 },
+      { week_number: 22, total_runs: 402302, failure_rate_pct: 0.00, weekly_tasks: 61490,  total_running_recipes: 111 },
+      { week_number: 23, total_runs: 364028, failure_rate_pct: 0.04, weekly_tasks: 60118,  total_running_recipes: 106 },
+      { week_number: 24, total_runs: 405339, failure_rate_pct: 0.03, weekly_tasks: 65304,  total_running_recipes: 107 },
+      { week_number: 25, total_runs: 405913, failure_rate_pct: 0.00, weekly_tasks: 68978,  total_running_recipes: 106 },
+      { week_number: 26, total_runs: 400333, failure_rate_pct: 0.01, weekly_tasks: 63313,  total_running_recipes: 107 },
+      { week_number: 27, total_runs: 385101, failure_rate_pct: 0.00, weekly_tasks: 62800,  total_running_recipes: 111 },
+      { week_number: 28, total_runs: 416750, failure_rate_pct: 0.00, weekly_tasks: 65106,  total_running_recipes: 111 },
+      { week_number: 30, total_runs: 389957, failure_rate_pct: 0.00, weekly_tasks: 136489, total_running_recipes: 111 },
+      { week_number: 31, total_runs: 448091, failure_rate_pct: 0.01, weekly_tasks: 66445,  total_running_recipes: 116 }
+    ]
+  };
+  applyWorkato(WORKATO_Q2);
 

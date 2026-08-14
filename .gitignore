@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# wrangler / Webflow Cloud local D1 state
+.wrangler/
+.open-next/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

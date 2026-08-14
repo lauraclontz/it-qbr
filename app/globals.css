@@ -1126,4 +1126,16 @@
     .comment-thread { display: block !important; border: 1px solid #ddd; }
     .comment-input-row { display: none; }
     .comments-panel-toggle { display: none; }
+    .card.collapsed .card-body { display: block !important; }
   }
+
+  /* ── Collapsible top-level sections ──────────────── */
+  .card-header { cursor: pointer; }
+  .card-header-right { display: flex; align-items: center; gap: 12px; }
+  .card-header .section-chevron {
+    transition: transform 0.2s;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 12px;
+  }
+  .card.collapsed .card-header .section-chevron { transform: rotate(-90deg); }
+  .card.collapsed .card-body { display: none; }
