@@ -385,72 +385,8 @@
 
   // ── Charts ──────────────────────────────────────
 
-  // Console Top 5 Categories bar chart
-  new Chart(document.getElementById('chart-console-categories'), {
-    type: 'bar',
-    data: {
-      labels: ['Access Request', 'Permission/Role Update', 'Miscellaneous', 'Software', 'Password Reset'],
-      datasets: [{
-        label: 'Q1 FY27',
-        data: [76.0, 9.2, 5.0, 3.2, 1.0],
-        backgroundColor: ['#4353FF', '#6B77FF', '#818CF8', '#A5B4FC', '#C7D2FE'],
-        borderRadius: 4,
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: function(ctx) { return ctx.parsed.x + '%'; }
-          }
-        }
-      },
-      scales: {
-        x: { beginAtZero: true, max: 100, ticks: { callback: function(v) { return v + '%'; } }, grid: { color: 'rgba(0,0,0,0.05)' } },
-        y: { grid: { display: false } }
-      }
-    }
-  });
-
-  // Automation % trend line chart
-  new Chart(document.getElementById('chart-automation-trend'), {
-    type: 'line',
-    data: {
-      labels: ['Q3 FY26*', 'Q4 FY26', 'Q1 FY27'],
-      datasets: [{
-        label: 'Automation %',
-        data: [65, 84, 74.8],
-        borderColor: '#4353FF',
-        backgroundColor: 'rgba(67,83,255,0.1)',
-        fill: true,
-        tension: 0.3,
-        pointRadius: 6,
-        pointBackgroundColor: ['#F59E0B', '#00C853', '#EF4444'],
-        pointBorderColor: '#fff',
-        pointBorderWidth: 2,
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: function(ctx) { return ctx.parsed.y + '%'; }
-          }
-        }
-      },
-      scales: {
-        y: { min: 50, max: 100, ticks: { callback: function(v) { return v + '%'; } }, grid: { color: 'rgba(0,0,0,0.05)' } },
-        x: { grid: { display: false } }
-      }
-    }
-  });
+  // (IT Ops console-categories + automation-trend charts removed — 3a/3b/3c replaced
+  //  by empty Lifecycle Metrics / Helpdesk Metrics sections pending Lalena's data.)
 
   // ── Live data from API ──────────────────────────────────
   async function fetchLiveData() {

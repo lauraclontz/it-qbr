@@ -100,9 +100,11 @@
               <tr><td><strong>Sage Lee</strong></td><td>Senior Business Systems Analyst, Enterprise AI Operations</td><td><span class="pill pill-blue">FTE</span></td><td>Reed Shackelford</td></tr>
               <tr><td><strong>Angelo Licetti</strong></td><td>Salesforce Developer</td><td><span class="pill pill-yellow">CW (Peru)</span></td><td>Anna Duncanson</td></tr>
               <tr><td><strong>Aayushi Pankaj</strong></td><td>Senior Salesforce Administrator</td><td><span class="pill pill-blue">FTE</span></td><td>Anna Duncanson</td></tr>
+              <tr><td><strong>Kiran Bhandari</strong></td><td>Okta Admin</td><td><span class="pill pill-yellow">CW</span></td><td>Lalena Boetto</td></tr>
+              <tr><td><strong>Jasdeep Singh</strong></td><td>Jamf Admin</td><td><span class="pill pill-yellow">CW</span></td><td>Lalena Boetto</td></tr>
             </tbody>
           </table>
-          <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Angelo Licetti and Aayushi Pankaj started early Aug 2026; included here as they are onboard by the time of this QBR.</p>
+          <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Angelo Licetti and Aayushi Pankaj started early Aug 2026; included here as they are onboard by the time of this QBR. Kiran Bhandari and Jasdeep Singh are IT contractors (managers to confirm).</p>
         </div>
 
         <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:24px 0 12px;">Open Roles</h4>
@@ -134,118 +136,91 @@
           &#x2195;&#xFE0F; Expand / Collapse All
         </button>
 
-        <!-- 3a. IT Ops (Console) -->
-        <div class="accordion open" id="acc-itops">
-          <button class="accordion-trigger" onclick="toggleAccordion('acc-itops')">
+        <!-- 3a. Lifecycle Metrics -->
+        <div class="accordion open" id="acc-lifecycle">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-lifecycle')">
             <span class="trigger-left">
               <span class="team-dot" style="background:#6366F1"></span>
-              3a. IT Ops (Console)
+              3a. Lifecycle Metrics
               <span class="pill pill-blue">Live Data</span>
             </span>
             <span class="chevron">&#x25BC;</span>
           </button>
           <div class="accordion-content">
-            <div class="metrics-row commentable" data-comment-id="itops-console-metrics">
+            <div class="metrics-row commentable" data-comment-id="lifecycle-metrics">
               <div class="metric-card">
-                <div class="metric-value">4,675</div>
-                <div class="metric-label">Ticket Volume</div>
-                <div class="metric-delta delta-up">&uarr; 16.2% vs Q4 (4,024)</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-value">4.76</div>
-                <div class="metric-label">CSAT (out of 5.0)</div>
-                <div class="metric-delta delta-up">&uarr; from 4.7 (326 reviews)</div>
+                <div class="metric-value">92</div>
+                <div class="metric-label">Onboards</div>
+                <div class="metric-delta delta-neutral">2 misses</div>
               </div>
               <div class="metric-card">
-                <div class="metric-value" style="color:var(--red);">74.8%</div>
-                <div class="metric-label">Automation Rate</div>
-                <div class="metric-delta delta-down">&darr; from ~84% Q4</div>
+                <div class="metric-value">261</div>
+                <div class="metric-label">Offboards</div>
+                <div class="metric-delta delta-up">0 misses</div>
               </div>
             </div>
-
-            <!-- Console categories chart + automation trend -->
-            <div class="chart-row commentable" data-comment-id="itops-charts">
-              <div class="chart-container">
-                <h5>Top 5 Console Categories</h5>
-                <div class="chart-wrap">
-                  <canvas id="chart-console-categories"></canvas>
-                </div>
-              </div>
-              <div class="chart-container">
-                <h5>Automation % Trend</h5>
-                <div class="chart-wrap">
-                  <canvas id="chart-automation-trend"></canvas>
-                </div>
-                <p style="font-size:11px; color:var(--text-secondary); margin-top:8px;">* Q3 FY26 data is approximate</p>
-              </div>
-            </div>
-
-            <div class="commentary commentable" data-comment-id="itops-console-flag">
-              <h5>
-                &#x1F6A9; Automation Drop
-                <span class="flag flag-high">&#x26A0; HIGH &mdash; Anthony to investigate</span>
-              </h5>
-              <ul class="editable" data-edit-id="itops-automation-text">
-                <li>Console automation dropped from ~84% (Q4) to 74.8% (Q1). This needs investigation &mdash; possible cause: new ticket categories not yet automated, or changed routing rules.</li>
-              </ul>
-            </div>
-
-            <!-- Jira ITS placeholder -->
-            <div style="margin-top:20px;">
-              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:12px;">Jira ITS</h4>
-              <div class="placeholder commentable" data-comment-id="itops-jira-its">
-                <div class="placeholder-icon">&#x1F3AB;</div>
-                <p>Full ITS pagination in progress. Sample shows ~50 tickets/day, 86% Service Requests.</p>
-                <div class="placeholder-action">Flag: Complete ITS data pull needed</div>
-              </div>
-            </div>
+            <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">Offboards are inflated by the RIF; offboarding is automated (the PBP&harr;IT handoff is still manual). Onboard misses: a few laptops delayed by logistics, so those hires used a personal device temporarily.</p>
           </div>
         </div>
 
-        <!-- 3b. Endpoint -->
-        <div class="accordion" id="acc-endpoint">
-          <button class="accordion-trigger" onclick="toggleAccordion('acc-endpoint')">
+        <!-- 3b. Helpdesk Metrics -->
+        <div class="accordion open" id="acc-helpdesk">
+          <button class="accordion-trigger" onclick="toggleAccordion('acc-helpdesk')">
             <span class="trigger-left">
               <span class="team-dot" style="background:#8B5CF6"></span>
-              3b. Endpoint Management
-              <span class="flag flag-low" style="margin-left:8px;">&#x1F4CB; Chris</span>
+              3b. Helpdesk Metrics
+              <span class="pill pill-blue">Live Data</span>
             </span>
             <span class="chevron">&#x25BC;</span>
           </button>
           <div class="accordion-content">
-            <div class="placeholder commentable" data-comment-id="endpoint-placeholder">
-              <div class="placeholder-icon">&#x1F4BB;</div>
-              <p>Awaiting Jamf data from Chris.</p>
-              <div class="placeholder-action">Chris to provide Jamf export for endpoint metrics</div>
+            <div class="metrics-row commentable" data-comment-id="helpdesk-metrics">
+              <div class="metric-card">
+                <div class="metric-value">4,453</div>
+                <div class="metric-label">Total Requests</div>
+                <div class="metric-delta delta-neutral">&darr; 21% vs Q1</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">1,325</div>
+                <div class="metric-label">Reached a Human</div>
+                <div class="metric-delta delta-neutral">flat vs 1,337 Q1</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">4.73</div>
+                <div class="metric-label">CSAT (out of 5.0)</div>
+                <div class="metric-delta delta-up">90% perfect score</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">1,870</div>
+                <div class="metric-label">Automation Playbooks</div>
+                <div class="metric-delta delta-up">0.43% fail (vs 39 @ 36% Q1)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">96%</div>
+                <div class="metric-label">App Access Self-Served</div>
+                <div class="metric-delta delta-up">never touched a person</div>
+              </div>
+            </div>
+
+            <div class="commentary commentable" data-comment-id="helpdesk-commentary">
+              <h5>&#x1F4DD; Commentary <span class="flag flag-low">&#x1F4CB; Lalena</span></h5>
+              <ul class="editable" data-edit-id="helpdesk-commentary-text">
+                <li>The help desk handled 4,453 requests in Q2, down 21% from Q1 &mdash; but nearly all of that decline is work the AI assistant now absorbs, not falling demand. Requests that actually reached a human were essentially flat (1,325 vs 1,337).</li>
+                <li><strong>The good:</strong> self-service now handles the highest-volume, lowest-judgment work &mdash; 96% of app-access requests never touched a person. Automation ran 1,870 playbooks at a 0.43% failure rate (up from 39 runs at 36% in Q1) &mdash; production-grade now. CSAT held at 4.73/5, with 90% perfect scores.</li>
+                <li><strong>The problem:</strong> the easy volume left, so the hard volume stayed and grew while the team got smaller. Time-to-first-human-reply rose from ~5h (Q1) to ~57h (Q2) after moving from Round Robin to a triage approach &mdash; though time-to-resolution improved 62%. Both should improve now that Console Inbox is live.</li>
+                <li><strong>Deflection down 10% YoY (H1),</strong> driven primarily by GitHub (~40% of week-over-week ticket volume), then 1Password, Vault access, API keys, and Webflow Admin &mdash; it's not just engineering building anymore.</li>
+                <li><strong>Path to green on GitHub:</strong> (1) GitHub orgs built &amp; mapped to Okta groups, (2) Flowbot intelligence to route and assign requests, (3) department owners/champions for approval decisions, (4) an access policy for the mono-repo outside EPD.</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <!-- 3c. AI Adoption -->
-        <div class="accordion" id="acc-ai">
-          <button class="accordion-trigger" onclick="toggleAccordion('acc-ai')">
-            <span class="trigger-left">
-              <span class="team-dot" style="background:#EC4899"></span>
-              3c. AI Adoption
-              <span class="flag flag-low" style="margin-left:8px;">&#x1F4CB; Reed</span>
-            </span>
-            <span class="chevron">&#x25BC;</span>
-          </button>
-          <div class="accordion-content">
-            <div class="placeholder commentable" data-comment-id="ai-adoption-placeholder">
-              <div class="placeholder-icon">&#x1F916;</div>
-              <p>Awaiting AI adoption metrics from Reed.</p>
-              <div class="placeholder-action">Reed to provide AI adoption data (MAU, DAU, attainment)</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3d. GTM (BTEC) — REAL DATA -->
+        <!-- 3c. GTM (BTEC) — REAL DATA -->
         <div class="accordion open" id="acc-biztech">
           <button class="accordion-trigger" onclick="toggleAccordion('acc-biztech')">
             <span class="trigger-left">
               <span class="team-dot" style="background:#4353FF"></span>
-              3d. GTM (BTEC)
+              3c. GTM (BTEC)
               <span class="pill pill-blue">Live Data</span>
             </span>
             <span class="chevron">&#x25BC;</span>
@@ -405,12 +380,12 @@
           </div>
         </div>
 
-        <!-- 3e. Finance &amp; Legal Systems (ETE) — REAL DATA -->
+        <!-- 3d. Finance &amp; Legal Systems (ETE) — REAL DATA -->
         <div class="accordion open" id="acc-enttech">
           <button class="accordion-trigger" onclick="toggleAccordion('acc-enttech')">
             <span class="trigger-left">
               <span class="team-dot" style="background:#10B981"></span>
-              3e. Finance &amp; Legal Systems (ETE)
+              3d. Finance &amp; Legal Systems (ETE)
               <span class="pill pill-blue">Live Data</span>
             </span>
             <span class="chevron">&#x25BC;</span>
@@ -569,12 +544,12 @@
           </div>
         </div>
 
-        <!-- 3f. Integrations (ENI) — REAL DATA -->
+        <!-- 3e. Integrations (ENI) — REAL DATA -->
         <div class="accordion open" id="acc-integrations">
           <button class="accordion-trigger" onclick="toggleAccordion('acc-integrations')">
             <span class="trigger-left">
               <span class="team-dot" style="background:#F59E0B"></span>
-              3f. Integrations (ENI)
+              3e. Integrations (ENI)
               <span class="pill pill-blue">Live Data</span>
             </span>
             <span class="chevron">&#x25BC;</span>
@@ -966,7 +941,66 @@
           </button>
           <div class="accordion-content">
             <div class="commentable" data-comment-id="landings-it">
-              <p style="font-size:13px; color:var(--text-secondary);">Landings pending — Lalena to provide the IT Foundations list.</p>
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:4px 0 10px; color:var(--text);">IT Operations</h4>
+              <table class="data-table">
+                <thead><tr><th style="width:26%;">Landing</th><th>What it delivered</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Console / Flowbot / Inbox</strong></td><td>Routing human-intervention tickets keeps Flowbot learning and deflecting more; added 34 new and improved 46 Console Playbooks this quarter.</td></tr>
+                  <tr><td><strong>Lore</strong></td><td>Documentation-as-code AI skill: interviews you, drafts internal/customer docs in a unified voice, and files them in GitHub + Confluence.</td></tr>
+                  <tr><td><strong>Oktapus</strong></td><td>macOS tool for much faster Okta queries — wildcard search, filtering, a visual rules map, and auditor functions Okta itself lacks.</td></tr>
+                  <tr><td><strong>JirAmigo</strong></td><td>macOS tool that surfaces Jira/Confluence tags &amp; replies and enables in-Jira triage.</td></tr>
+                  <tr><td><strong>Gambit</strong></td><td>macOS GUI wrapper for GAM (the powerful Google Admin CLI).</td></tr>
+                  <tr><td><strong>Sift</strong></td><td>Spotlight-style federated search across Atlassian, Linear, Google, Slack, Okta, and GitHub (a Glean-like alternative).</td></tr>
+                  <tr><td><strong>Slacksmith</strong></td><td>Slack Enterprise Grid admin tool: workflow auditor plus an add-manager rescue write.</td></tr>
+                  <tr><td><strong>Consignia</strong></td><td>Claude Skill for authoring Console/Flowbot Inbox AI assignment rules.</td></tr>
+                  <tr><td><strong>Phosphor</strong></td><td>A refounding-moment effort for Webflow that informed the IT roadmap.</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">Collaboration</h4>
+              <table class="data-table">
+                <thead><tr><th style="width:26%;">Landing</th><th>What it delivered</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Linear</strong></td><td>Deployed Linear for EPD.</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">IT Engineering</h4>
+              <table class="data-table">
+                <thead><tr><th style="width:26%;">Landing</th><th>What it delivered</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Okta + Anthropic Managed Auth</strong></td><td>Auto-provisions and auto-authorizes Atlassian and Asana.</td></tr>
+                  <tr><td><strong>Certificate Authority</strong></td><td>Stood up Webflow's internal certificate authority for DVM.</td></tr>
+                  <tr><td><strong>Apple &amp; Google Play Accounts</strong></td><td>Established Webflow developer accounts (initial use: WFC).</td></tr>
+                  <tr><td><strong>Source Certificates</strong></td><td>Built the CI/CD flow to sign the app with an Apple developer certificate.</td></tr>
+                  <tr><td><strong>Device Trust</strong></td><td>Went live for Snowflake, Stripe, Webflow Admin, and AWS.</td></tr>
+                  <tr><td><strong>GitHub Rollout</strong></td><td>Rolled out GitHub orgs for Finance and Revenue.</td></tr>
+                  <tr><td><strong>SocketFirewall Rollout</strong></td><td>Deployed the Security-procured tool that blocks malicious NPM packages; tuned on endpoints via Jamf.</td></tr>
+                  <tr><td><strong>Okta SSO + phishing-resistant MFA on Salesforce</strong></td><td>Replaced local SF logins with an Okta SSO app emitting correct AMR claims, and drove the org-wide cutover.</td></tr>
+                  <tr><td><strong>GCP ownership transfer</strong></td><td>Moved Google Cloud Platform ownership and budget to the Infrastructure team.</td></tr>
+                  <tr><td><strong>All-Hands format working group</strong></td><td>Assessed Zoom all-hands scale and alternatives to better support a large org.</td></tr>
+                  <tr><td><strong>Console Asset Management as CMDB</strong></td><td>Set the direction and partner-development relationship for Console's asset-management tooling.</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">Enterprise AI Operations</h4>
+              <table class="data-table">
+                <thead><tr><th style="width:26%;">Landing</th><th>What it delivered</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>AI Help Bot</strong></td><td>Slack agent for AI tooling/access questions that routes new requests into intake; cut EAI Ops intervention ~70% with 24/7 coverage (the team's only measured deflection result).</td></tr>
+                  <tr><td><strong>Friend of Tax / LegalBeagle / Integration Needs Agent</strong></td><td>Three Slack agents on one shared architecture; Integration Needs Agent live 8/11 (&lt;2 min/opportunity), Tax &amp; Legal in pilot.</td></tr>
+                  <tr><td><strong>Marketing Ops agent (Mopsy)</strong></td><td>Rebuilt on AWS (Secrets Manager, CI/CD, ECS Fargate) with UTM Builder, Campaign Intake, and Answer Agent skills at ~$11/mo.</td></tr>
+                  <tr><td><strong>AI spend governance</strong></td><td>Per-subdept Claude/Cursor caps, $5K/mo API-key caps, daily usage sync to Airtable, and company-wide transparency; 927 users reconciled daily, ~$672K tracked, ~10% token reduction.</td></tr>
+                  <tr><td><strong>AUP rewrite + mandatory Responsible AI training</strong></td><td>New Acceptable Use Policy with AI guardrails plus WorkRamp training (released 8/3), gating every AI user.</td></tr>
+                  <tr><td><strong>AI Hub in Confluence</strong></td><td>~25 pages (model-choice guides for 11 functions, platform guides, SOPs) — the company's first self-serve AI enablement surface.</td></tr>
+                  <tr><td><strong>Claude Cowork pilot</strong></td><td>Scaled 41 &rarr; 93 employees (+127%) with telemetry; expansion paused pending Security sign-off.</td></tr>
+                  <tr><td><strong>MCP &amp; connector estate</strong></td><td>Added DocuSign, PartnerStack, Zendesk, Zoom, and Zip connectors plus in-house Workday/Google Sheets MCPs; migrated off the deprecated Atlassian SSE before the 6/30 cutoff.</td></tr>
+                  <tr><td><strong>Doc Patrol</strong></td><td>Help Center auditing agent; reviewer calibration lifted exact agreement 52% &rarr; 63% at $0.97 per 50-article run.</td></tr>
+                  <tr><td><strong>Talent automation</strong></td><td>Slack command + n8n workflow that spins up hiring channels with a Claude-drafted kickoff; saves 10&ndash;15 min/role.</td></tr>
+                  <tr><td><strong>EAI Ops function stood up</strong></td><td>Built the intake/triage/reporting front door and consolidated 85+ AI Slack channels down to ~35.</td></tr>
+                  <tr><td><strong>Team grew to five</strong></td><td>Hired and onboarded a Senior Business Systems Analyst, Enterprise AI Operations (Sage Lee, started 8/3).</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1007,7 +1041,6 @@
                   <tr><td><strong>MDF Approvals: CPQ</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Testing</span></td><td>Aug 31</td><td>GTM</td></tr>
                   <tr><td><strong>Stigg Automation Refactor</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
                   <tr><td><strong>Sales Order Creation Trigger Refactor</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
-                  <tr><td><strong>Sales Tax &amp; VAT Implementations (CA, CO, Mexico, Singapore, UAE, Malaysia, Kenya)</strong></td><td><span class="pill pill-gray">&mdash;</span></td><td><span class="pill pill-gray">Not Started</span></td><td>eff. 2027</td><td>Finance &amp; Legal</td></tr>
                 </tbody>
               </table>
 
@@ -1029,6 +1062,7 @@
                   <tr><td><strong>Automated User Provisioning: Okta &rarr; Salesforce</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>GTM</td></tr>
                   <tr><td><strong>Salesforce CI/CD Tool</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>&mdash;</td><td>GTM</td></tr>
                   <tr><td><strong>Salesforce Error Observability Framework</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-blue">Discovery</span></td><td>&mdash;</td><td>GTM</td></tr>
+                  <tr><td><strong>Automated Error Tracking &rarr; Jira (mgmt, resolution, reporting)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal</td></tr>
                 </tbody>
               </table>
 
@@ -1046,6 +1080,9 @@
                   <tr><td><strong>NS Admin Automation: Workday &rarr; NetSuite employee sync</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
                   <tr><td><strong>NS Admin Automation: GL account creation</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
                   <tr><td><strong>NS Admin Automation: role permission automation</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal &middot; Integrations</td></tr>
+                  <tr><td><strong>Automation Opportunities: Internally Developed Software</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal</td></tr>
+                  <tr><td><strong>Automation Opportunities: Commissions</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal</td></tr>
+                  <tr><td><strong>Internal Workspace Provisioning</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>Finance &amp; Legal</td></tr>
                 </tbody>
               </table>
 
@@ -1076,7 +1113,53 @@
           </button>
           <div class="accordion-content">
             <div class="commentable" data-comment-id="roadmap-it">
-              <p style="font-size:13px; color:var(--text-secondary);">Roadmap pending — Lalena to provide the IT Foundations look-ahead.</p>
+              <p style="font-size:13px; color:var(--text-secondary); margin-bottom:12px;">Q3 FY27 look-ahead, P0 &amp; P1 only. P2+ and backlog items are tracked in the IT Foundations roadmap.</p>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:4px 0 10px; color:var(--text);">IT Operations</h4>
+              <table class="data-table">
+                <thead><tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Team</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Ashby Integrations</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>People</td></tr>
+                  <tr><td><strong>Linear (Enterprise rollout)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>Multiple</td></tr>
+                  <tr><td><strong>Software Renewals (H2 FY27)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3&ndash;Q4</td><td>&mdash;</td></tr>
+                  <tr><td><strong>Console Inbox Migration (JSM &rarr; Console)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>&mdash;</td></tr>
+                  <tr><td><strong>IT Asset Management Tool (Console CMDB)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Console</td></tr>
+                  <tr><td><strong>Lifecycle Automation Refresh</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3&ndash;Q4</td><td>&mdash;</td></tr>
+                  <tr><td><strong>PMO Center of Excellence for IT</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3&ndash;Q4</td><td>&mdash;</td></tr>
+                  <tr><td><strong>AI Help Bot + Flowbot intake (#help-ai)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>&mdash;</td></tr>
+                  <tr><td><strong>SFDC Dashboards via Zoom Signage (Korbyt)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>&mdash;</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">IT Engineering</h4>
+              <table class="data-table">
+                <thead><tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Team</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>JIT Super Admin access for Security</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Security</td></tr>
+                  <tr><td><strong>dbt Labs OAuth + SCIM (by Nov 1)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Data</td></tr>
+                  <tr><td><strong>Declarative device management software updates</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Security</td></tr>
+                  <tr><td><strong>Stripe / Okta SCIM provisioning</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Security</td></tr>
+                  <tr><td><strong>Identity Maturity (inventory, admin audit, UAR)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Security</td></tr>
+                  <tr><td><strong>Okta test environment</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>&mdash;</td></tr>
+                  <tr><td><strong>Improve SCIM + RBAC Salesforce provisioning</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Business Technology</td></tr>
+                  <tr><td><strong>Device Trust (expansion, exception walk-back)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3&ndash;Q4</td><td>Security</td></tr>
+                  <tr><td><strong>SFDC MCP v2</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Business Technology</td></tr>
+                  <tr><td><strong>Privileged access controls &amp; alerting (Slack, AI tools, GWS)</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-gray">Not Started</span></td><td>Q3</td><td>Security</td></tr>
+                </tbody>
+              </table>
+
+              <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin:22px 0 10px; color:var(--text);">Enterprise AI Operations</h4>
+              <table class="data-table">
+                <thead><tr><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th>Team</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>GitHub reorg / Okta resync &amp; management</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>Security</td></tr>
+                  <tr><td><strong>AI Enablement 2.0</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>&mdash;</td></tr>
+                  <tr><td><strong>Marketing MCP agent (Mopsy)</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>Marketing</td></tr>
+                  <tr><td><strong>AI Spend Management</strong></td><td><span class="pill pill-red">P0</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3&ndash;Q4</td><td>EPD, Security, FP&amp;A, Data</td></tr>
+                  <tr><td><strong>LegalBeagle &mdash; Legal AI agent</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>Legal</td></tr>
+                  <tr><td><strong>Friend of Tax / Billing agent</strong></td><td><span class="pill pill-red">P1</span></td><td><span class="pill pill-yellow">In Progress</span></td><td>Q3</td><td>Accounting</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1093,10 +1176,24 @@
         <span class="flag flag-low">&#x1F4CB; Laura / Lalena</span>
       </div>
       <div class="card-body">
-        <div class="placeholder commentable" data-comment-id="decisions-placeholder">
-          <div class="placeholder-icon">&#x1F91D;</div>
-          <p>Laura / Lalena to populate before QBR meeting.</p>
-          <div class="placeholder-action">Add decisions, escalations, and cross-team dependencies</div>
+        <p style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">From IT Foundations (Lalena). Additional decisions / escalations from other teams to be added.</p>
+
+        <div class="commentary commentable" data-comment-id="decision-risk" style="background:var(--red-bg); border-left-color:var(--red);">
+          <h5 style="color:var(--red);">&#x26A0; Risk &mdash; Software rationalization timing</h5>
+          <ul>
+            <li>Software rationalization can create unplanned work for IT, and the real risk is <strong>timing</strong>: when decisions are made or communicated too close to a renewal date, there isn't enough runway to assess impact or plan the migration properly.</li>
+            <li>IT is expected to support these migrations but isn't staffed for it as an ongoing function &mdash; so the work isn't additive; it comes at the cost of something already planned.</li>
+            <li><strong>The ask:</strong> build in real lead time between a rationalization decision and the renewal date. Without it, this keeps pulling the team off other priorities and risks burnout.</li>
+          </ul>
+        </div>
+
+        <div class="commentary commentable" data-comment-id="decision-inform" style="background:var(--blue-bg); border-left-color:var(--blue);">
+          <h5 style="color:var(--blue);">&#x2139; Inform &mdash; Atlassian pivot &amp; tool standards</h5>
+          <ul>
+            <li>With Linear now in the stack, we need to acknowledge the Atlassian pivot directly. Atlassian was previously communicated as our standard platform; that's no longer the direction, and IT is now operating as a <strong>multi-platform</strong> environment.</li>
+            <li>There's no clear, standardized way to tell teams which tool to use for which purpose. The published application catalog doesn't set IT tool standards, so teams default to habit &mdash; producing inconsistent adoption and duplicate tooling.</li>
+            <li><strong>Next step:</strong> communicate clear tool standards &mdash; what Linear is for, what Atlassian is still for &mdash; so teams aren't guessing and IT isn't reconciling mixed signals after the fact.</li>
+          </ul>
         </div>
       </div>
     </div>
