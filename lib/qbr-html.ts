@@ -64,19 +64,35 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
       </div>
       <div class="card-body">
         <div class="status-bar commentable" data-comment-id="exec-status">
-          <div class="status-dot status-yellow"></div>
+          <div class="status-dot status-green"></div>
           <div>
-            <strong>Status: Pending Review</strong>
-            <span style="color:var(--text-secondary); font-size:13px;"> &mdash; AI-drafted executive summary will be generated after all sections are reviewed.</span>
+            <strong>Status: On Track (Green)</strong>
+            <span style="color:var(--text-secondary); font-size:13px;"> &mdash; A strong execution quarter across Enterprise Technology and IT Foundations, with a few operational watch items.</span>
           </div>
         </div>
 
-        <div class="placeholder commentable" data-comment-id="exec-placeholder">
-          <div class="placeholder-icon">&#x1F4DD;</div>
-          <div class="editable" data-edit-id="exec-summary-text">
-            <p>AI-drafted executive summary will be generated after all sections are reviewed.</p>
+        <div class="commentable" data-comment-id="exec-placeholder">
+          <div class="editable" data-edit-id="exec-summary-final">
+            <p><strong>Overview.</strong> Enterprise Technology and IT Foundations delivered a strong Q2 &mdash; major billing, AI/automation, and Salesforce-governance work landed, alongside a large Finance &amp; Legal backlog burn-down. The main watch items are IT helpdesk queue load and categorization/data-quality gaps.</p>
+            <p style="margin:14px 0 4px;"><strong>Top wins</strong></p>
+            <ul>
+              <li>Enterprise Billing (self-serve, in Stripe) went live, and Finance &amp; Legal Systems burned down 115 net tickets (295 closed vs 180 created) &mdash; clearing long-aged Order-to-Cash and Stripe&harr;NetSuite work.</li>
+              <li>Automation reached production scale: Workato held ~405K runs/week at &le;0.04% failure; IT's Console/Flowbot ran 1,870 playbooks at a 0.43% failure rate (up from 39 at 36% in Q1); and a fleet of internal AI agents shipped (GTM delivery agents, the EAI Ops help bot at ~70% deflection, Mopsy, LegalBeagle).</li>
+              <li>Salesforce governance &amp; security hardened: 20+ users moved off System Admin to right-sized roles, Okta SSO + phishing-resistant MFA enforced on Salesforce, and every outstanding SF security vulnerability closed ahead of 2026 platform requirements.</li>
+            </ul>
+            <p style="margin:14px 0 4px;"><strong>Watch items &amp; risks</strong></p>
+            <ul>
+              <li>IT helpdesk load concentrated: as AI absorbed the easy volume (total requests down 21%, human-reached flat), the harder work landed on a smaller team &mdash; time-to-first-human-reply rose to ~57h (though time-to-resolution improved 62%); the new Console Inbox should relieve this.</li>
+              <li>Data quality: Finance &amp; Legal is ~50% uncategorized (backlog cleanup / RevRise re-org) and GTM tagging dipped, which limits reporting confidence.</li>
+              <li>Software-rationalization timing: renewal and migration decisions communicated too close to deadlines leave IT no runway and pull the team off planned work (see Decisions &amp; Support).</li>
+            </ul>
+            <p style="margin:14px 0 4px;"><strong>Q3 focus</strong></p>
+            <ul>
+              <li>Order-to-Cash &amp; billing: Enterprise Dunning, AI-credits revenue accounting, Stigg / Sales-Order refactors, and coupon governance.</li>
+              <li>Salesforce stability &amp; reliability: Flows optimization (phase 1 already cut SOQL ~20x), CI/CD, error observability, DR/backup, and integration + API hardening.</li>
+              <li>AI governance &amp; enablement at scale: AI spend management, AI Enablement 2.0, the MCP/connector estate, and the GitHub access-governance &ldquo;path to green.&rdquo;</li>
+            </ul>
           </div>
-          <div class="placeholder-action">Click above to start writing, or Laura / Lalena to finalize before QBR meeting</div>
         </div>
       </div>
     </div>
@@ -370,10 +386,10 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
               <ul class="editable" data-edit-id="biztech-commentary-text">
                 <li>GTM completed 428 tickets in Q2 FY27 (down 3% from 441 in Q1). Bug rate improved to 14.5% (62 bug-type tickets) from 19.7% in Q1.</li>
                 <li>Median cycle time rose to 13.0d (from 8.8d in Q1); average held roughly flat at ~44d. The uptick was driven by a few long-running Stories closing this quarter (e.g. GTM Permissions automation at ~165d), not a broad slowdown.</li>
-                <li>Work skewed to Configuration (64.0%) and Development (18.7%). Data-quality watch item: Uncategorized rose to 14.3% of Change Type, and 29.7% of tickets carry no Impacted Process tag — Q1 was near-fully tagged.</li>
-                <li>By ETE category the mix was balanced — Change the Business (36.0%) and Run the Business (34.8%), with Transform the Business at 7.7%.</li>
-                <li>Top tagged processes: Platform Administration (25.2%), Demand-to-Opportunity (15.7%), and Opportunity-to-Order (11.4%).</li>
-                <li>Key Q2 themes (draft — Anna to confirm): Vidoso migration (new fields &amp; product), Marketo ↔ Salesforce sync resolver for Workspace Users, C360 account/contact layout redesign, and kickoff of GTM permissions automation.</li>
+                <li>Work skewed to Configuration (64.0%) and Development (18.7%). These were new concepts in Q2, so no comparison QoQ.</li>
+                <li>By category the mix was balanced — Change the Business led (36.0%), then Run the Business (34.8%), and Transform the Business at 7.7%.</li>
+                <li>Top tagged processes: Platform Administration (25.2%), Demand-to-Opportunity (15.7%), and Opportunity-to-Order (11.4%) &lt; big focus in Q2 on stabilization.</li>
+                <li>Key Q2 themes: Stabilization, governance, and internal operations amongst employee turnover (voluntary &amp; involuntary).&nbsp;</li>
               </ul>
             </div>
 
@@ -532,12 +548,12 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
                 <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; Bali to review</span>
               </h5>
               <ul class="editable" data-edit-id="enttech-commentary-text">
-                <li>Finance &amp; Legal Systems closed 295 tickets in Q2 FY27 (up 84% from 160 in Q1) while creating only 180 — a net backlog burn-down of 115.</li>
+                <li>Finance &amp; Legal Systems closed 295 tickets in Q2 FY27 (up 84% from 160 in Q1) while creating only 180 — a net backlog burn-down of 115, primarily due to closing the tickets related to Enterprise Billing.</li>
                 <li>Bug rate fell to 2.7% (8 tickets) from 8.8% in Q1 — a very clean quarter on quality.</li>
                 <li>Median cycle time rose sharply to 76.1d (from 5.1d), driven entirely by clearing aged, complex work: complex tickets (&ge;5 pts) ran a 132.8d median vs 2.9d for simple ones, and one Stripe AR automation had been open ~363 days. Typical ticket complexity actually fell (avg 4.5&rarr;2.6 pts).</li>
-                <li>Data-quality caveat: only ~46&ndash;49% of ETE tickets carry Change Type, Impacted Process, Story Points, or Activity Type — so categorization, velocity, and planned/unplanned figures are partial-population.</li>
+                <li>Data-quality caveat: ~50% of ETE tickets uncategorized due to backlog cleanup / RevRise backlog re-organization.&nbsp;</li>
                 <li>Where tagged, work led by Order-to-Cash (20.0%) and Platform Administration (11.5%); Run the Business (35.3%) dominated by category.</li>
-                <li>Key Q2 themes (draft — Bali to confirm): Stripe↔NetSuite AR-aging automation and reconciliation, cleanup of long-open finance items, new SKU/GL/item records, and continued tax/compliance support.</li>
+                <li>Key Q2 themes: Order to Cash dominated improvements, including tax improvements in Marketplace Taxation and a lot of medium-sized improvements to Enterprise OTC processes.&nbsp;</li>
               </ul>
             </div>
 
@@ -705,9 +721,9 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
               <ul class="editable" data-edit-id="eni-commentary-text">
                 <li>Integrations closed 50 tickets in Q2 FY27 (created 53; net +3) — steady volume, down slightly from Q1's 57.</li>
                 <li>Bug rate dropped from 68% to 22%: Q1 was dominated by auto-created Workato error tickets, while Q2 skewed to planned Stories (58%). The higher 8.2d median cycle (vs 1.0d) reflects that shift toward real build work, not slower response.</li>
-                <li>Now 94% categorized (up from ~0% in Q1): Development-led (66%) and overwhelmingly Integration work (70%); Run / Change / Transform split 58 / 22 / 14.</li>
+                <li>Work categorizations: Run 58% / Change 22% / Transform 14%</li>
                 <li>Velocity was 707 story points on 86% coverage &mdash; but the team estimates integration work in much larger point values than GTM or Finance &amp; Legal Systems, so its totals aren't comparable across teams.</li>
-                <li>Activity Type skews Unplanned (67%), consistent with reactive integration support and error handling.</li>
+                <li>Activity Type skews Unplanned (67%), consistent with reactive integration support and error handling. H2 focuses on more pre-planning with stakeholders and cross-team</li>
                 <li>Workato reliability stayed strong — see the iPaaS section for the authoritative signal (runs, failure rate, tasks).</li>
               </ul>
             </div>
@@ -839,11 +855,10 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
             <span class="flag flag-medium">&#x26A0; MEDIUM &#x2014; Sachin Katiyar to review</span>
           </h5>
           <ul class="editable" data-edit-id="ipaas-commentary-text">
-            <li>Recipe runs held at the elevated post-Stripe baseline all quarter — averaging ~405K/week (peak 448K in the last week of July), whereas Q1 only reached that level mid-quarter.</li>
+            <li>Recipe runs averaging ~405K/week (peak 448K in the last week of July), whereas Q1 only reached that level mid-quarter.</li>
             <li>Failure rate stayed at or below 0.04% every week; the quarter high (wk 23, 1st week of June) came from the Workday &#x2192; Gsheets &#x2018;Deelbreaker&#x2019; child recipe, since resolved.</li>
-            <li>Task consumption fell to ~850K (28% of the 3M quarterly budget), down from 48% in Q1 — comfortably within plan.</li>
-            <li>Active recipes grew to a peak of 116 (from 95 in Q1), led by new RevRise (Slack/Stripe) automations and a Zapier log-streaming webhook appearing late in the quarter.</li>
-            <li>Note: week 29 (2nd week of July) is missing from the source sheet; its tasks are rolled into week 30, and its runs are not counted in the quarter total.</li>
+            <li>Task consumption fell to ~850K (28% of the 3M quarterly budget), down from 48% in Q1 — comfortably within plan due in part to incorporating code within the recipes to reduce tasks where possible.</li>
+            <li>Active recipes grew to 116 (from 95 in Q1), led by new Slack &amp; Stripe automations and a Zapier log-streaming webhook appearing late in the quarter.</li>
           </ul>
         </div>
       </div>
@@ -1235,6 +1250,16 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
           </div>
         </div>
         <p style="font-size:13px; color:var(--text-secondary); margin-top:8px;">Currently at Level 3 &mdash; targeting Level 4 by end of FY27.</p>
+
+        <div class="commentary commentable" data-comment-id="sf-maturity-commentary" style="margin-top:20px;">
+          <h5>&#x1F4DD; Commentary <span class="flag flag-low">&#x1F4CB; Anna Duncanson</span></h5>
+          <ul class="editable" data-edit-id="sf-maturity-commentary-text">
+            <li><strong>Governance.</strong> Q2 moved the platform toward least-privilege and a defensible security posture: 20+ Rev Ops / Marketing / Deal Desk users migrated off System Admin onto right-sized roles, Okta SSO + phishing-resistant MFA enforced on Salesforce (retiring local logins), and every outstanding Salesforce security vulnerability closed ahead of 2026 platform requirements. Q3 extends this with Secure &amp; Stabilize SF Integration + API Access (P0), Okta&rarr;Salesforce automated provisioning, and improved SCIM + RBAC.</li>
+            <li><strong>Stability.</strong> Q2 restored the automations that broke after the org restructure. Q3 hardens the foundation: Salesforce Flows rebuilt and optimized for performance, scale &amp; reliability (P0 &mdash; phase 1 already cut SOQL calls ~20x), a Salesforce CI/CD tool for safer deploys, and Disaster Recovery + Salesforce backup (OwnBackup).</li>
+            <li><strong>Reliability.</strong> Building the ability to see and recover from failure: a Salesforce Error Observability Framework (Apex &amp; Flow) and automated error tracking routed to Jira for management, resolution, and reporting, plus SFDC MCP v2 for reliable, governed data access.</li>
+            <li><strong>Trajectory.</strong> Together these advance Salesforce from Level 3 (Defined) toward Level 4 (Managed) &mdash; the shift from documented standards to an actively governed, observable, and recoverable platform &mdash; on track for end of FY27.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
