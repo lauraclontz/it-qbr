@@ -1139,3 +1139,9 @@
   }
   .card.collapsed .card-header .section-chevron { transform: rotate(-90deg); }
   .card.collapsed .card-body { display: none; }
+
+  /* ── Executive summary body: match section typography, tighten ── */
+  #exec-summary .editable { max-width: 860px; }
+  #exec-summary .editable p { font-size: 14px; line-height: 1.6; color: var(--text); margin: 0 0 4px; }
+  #exec-summary .editable ul { padding-left: 18px; margin: 4px 0 10px; }
+  #exec-summary .editable li { font-size: 14px; line-height: 1.6; color: var(--text); margin-bottom: 6px; }

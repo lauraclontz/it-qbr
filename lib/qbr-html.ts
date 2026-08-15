@@ -73,24 +73,17 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
 
         <div class="commentable" data-comment-id="exec-placeholder">
           <div class="editable" data-edit-id="exec-summary-final">
-            <p><strong>Overview.</strong> Enterprise Technology and IT Foundations delivered a strong Q2 &mdash; major billing, AI/automation, and Salesforce-governance work landed, alongside a large Finance &amp; Legal backlog burn-down. The main watch items are IT helpdesk queue load and categorization/data-quality gaps.</p>
+            <p><strong>Overview.</strong> Enterprise Technology and IT Foundations delivered a strong Q2 &mdash; major billing, AI/automation, and Salesforce-governance work landed. The main watch items are IT helpdesk queue load and categorization/data-quality gaps.</p>
             <p style="margin:14px 0 4px;"><strong>Top wins</strong></p>
             <ul>
-              <li>Enterprise Billing (self-serve, in Stripe) went live, and Finance &amp; Legal Systems burned down 115 net tickets (295 closed vs 180 created) &mdash; clearing long-aged Order-to-Cash and Stripe&harr;NetSuite work.</li>
               <li>Automation reached production scale: Workato held ~405K runs/week at &le;0.04% failure; IT's Console/Flowbot ran 1,870 playbooks at a 0.43% failure rate (up from 39 at 36% in Q1); and a fleet of internal AI agents shipped (GTM delivery agents, the EAI Ops help bot at ~70% deflection, Mopsy, LegalBeagle).</li>
+              <li>Enterprise Billing at the finish line.</li>
               <li>Salesforce governance &amp; security hardened: 20+ users moved off System Admin to right-sized roles, Okta SSO + phishing-resistant MFA enforced on Salesforce, and every outstanding SF security vulnerability closed ahead of 2026 platform requirements.</li>
             </ul>
             <p style="margin:14px 0 4px;"><strong>Watch items &amp; risks</strong></p>
             <ul>
               <li>IT helpdesk load concentrated: as AI absorbed the easy volume (total requests down 21%, human-reached flat), the harder work landed on a smaller team &mdash; time-to-first-human-reply rose to ~57h (though time-to-resolution improved 62%); the new Console Inbox should relieve this.</li>
-              <li>Data quality: Finance &amp; Legal is ~50% uncategorized (backlog cleanup / RevRise re-org) and GTM tagging dipped, which limits reporting confidence.</li>
               <li>Software-rationalization timing: renewal and migration decisions communicated too close to deadlines leave IT no runway and pull the team off planned work (see Decisions &amp; Support).</li>
-            </ul>
-            <p style="margin:14px 0 4px;"><strong>Q3 focus</strong></p>
-            <ul>
-              <li>Order-to-Cash &amp; billing: Enterprise Dunning, AI-credits revenue accounting, Stigg / Sales-Order refactors, and coupon governance.</li>
-              <li>Salesforce stability &amp; reliability: Flows optimization (phase 1 already cut SOQL ~20x), CI/CD, error observability, DR/backup, and integration + API hardening.</li>
-              <li>AI governance &amp; enablement at scale: AI spend management, AI Enablement 2.0, the MCP/connector estate, and the GitHub access-governance &ldquo;path to green.&rdquo;</li>
             </ul>
           </div>
         </div>
