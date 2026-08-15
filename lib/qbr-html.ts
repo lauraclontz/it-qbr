@@ -46,9 +46,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
       <div class="comments-panel-toggle" onclick="toggleAllComments()">
         &#x1F4AC; <span id="total-comment-count">0</span> comments
       </div>
-      <div style="padding:6px 14px; background:rgba(67,83,255,0.06); border:1px solid rgba(67,83,255,0.15); border-radius:20px; font-size:12px; font-weight:600; color:var(--blue);">
-        &#x270F;&#xFE0F; <span id="edit-count">0</span> edits
-      </div>
     </div>
   </div>
 
