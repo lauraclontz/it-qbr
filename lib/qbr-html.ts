@@ -49,9 +49,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
       <div style="padding:6px 14px; background:rgba(67,83,255,0.06); border:1px solid rgba(67,83,255,0.15); border-radius:20px; font-size:12px; font-weight:600; color:var(--blue);">
         &#x270F;&#xFE0F; <span id="edit-count">0</span> edits
       </div>
-<div class="flags-badge" onclick="document.getElementById('flags-summary').scrollIntoView({behavior:'smooth'})">
-        &#x26A0;&#xFE0F; <span id="flags-open-count">15</span> open flags
-      </div>
     </div>
   </div>
 
@@ -60,17 +57,8 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
     <div class="card">
       <div class="card-header">
         <h3><span class="section-num">1</span> Executive Summary</h3>
-        <span class="flag flag-high">&#x26A0; HIGH &mdash; Laura / Lalena to review</span>
       </div>
       <div class="card-body">
-        <div class="status-bar commentable" data-comment-id="exec-status">
-          <div class="status-dot status-green"></div>
-          <div>
-            <strong>Status: On Track (Green)</strong>
-            <span style="color:var(--text-secondary); font-size:13px;"> &mdash; A strong execution quarter across Enterprise Technology and IT Foundations, with a few operational watch items.</span>
-          </div>
-        </div>
-
         <div class="commentable" data-comment-id="exec-placeholder">
           <div class="editable" data-edit-id="exec-summary-final">
             <p><strong>Overview.</strong> Enterprise Technology and IT Foundations delivered a strong Q2 &mdash; major billing, AI/automation, and Salesforce-governance work landed. The main watch items are IT helpdesk queue load and categorization/data-quality gaps.</p>
@@ -138,7 +126,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
     <div class="card">
       <div class="card-header">
         <h3><span class="section-num">3</span> Operational Metrics</h3>
-        <span class="flag flag-medium">&#x26A0; Multiple sections need review</span>
       </div>
       <div class="card-body">
         <button class="toggle-all" onclick="toggleAllAccordions()">
@@ -212,7 +199,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
             </div>
 
             <div class="commentary commentable" data-comment-id="helpdesk-commentary">
-              <h5>&#x1F4DD; Commentary <span class="flag flag-low">&#x1F4CB; Lalena</span></h5>
+              <h5>&#x1F4DD; Commentary</h5>
               <ul class="editable" data-edit-id="helpdesk-commentary-text">
                 <li>The help desk handled 4,453 requests in Q2, down 21% from Q1 &mdash; but nearly all of that decline is work the AI assistant now absorbs, not falling demand. Requests that actually reached a human were essentially flat (1,325 vs 1,337).</li>
                 <li><strong>The good:</strong> self-service now handles the highest-volume, lowest-judgment work &mdash; 96% of app-access requests never touched a person. Automation ran 1,870 playbooks at a 0.43% failure rate (up from 39 runs at 36% in Q1) &mdash; production-grade now. CSAT held at 4.73/5, with 90% perfect scores.</li>
@@ -374,7 +361,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
             <div class="commentary commentable" data-comment-id="biztech-commentary">
               <h5>
                 &#x1F4DD; Commentary
-                <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; GTM lead to review</span>
               </h5>
               <ul class="editable" data-edit-id="biztech-commentary-text">
                 <li>GTM completed 428 tickets in Q2 FY27 (down 3% from 441 in Q1). Bug rate improved to 14.5% (62 bug-type tickets) from 19.7% in Q1.</li>
@@ -538,7 +524,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
             <div class="commentary commentable" data-comment-id="enttech-commentary">
               <h5>
                 &#x1F4DD; Commentary
-                <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; Bali to review</span>
               </h5>
               <ul class="editable" data-edit-id="enttech-commentary-text">
                 <li>Finance &amp; Legal Systems closed 295 tickets in Q2 FY27 (up 84% from 160 in Q1) while creating only 180 — a net backlog burn-down of 115, primarily due to closing the tickets related to Enterprise Billing.</li>
@@ -709,7 +694,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
             <div class="commentary commentable" data-comment-id="eni-commentary">
               <h5>
                 &#x1F4DD; Commentary
-                <span class="flag flag-medium">&#x26A0; MEDIUM &mdash; Sachin Katiyar to review</span>
               </h5>
               <ul class="editable" data-edit-id="eni-commentary-text">
                 <li>Integrations closed 50 tickets in Q2 FY27 (created 53; net +3) — steady volume, down slightly from Q1's 57.</li>
@@ -845,7 +829,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
         <div class="commentary commentable" data-comment-id="ipaas-commentary">
           <h5>
             &#x1F4DD; Commentary
-            <span class="flag flag-medium">&#x26A0; MEDIUM &#x2014; Sachin Katiyar to review</span>
           </h5>
           <ul class="editable" data-edit-id="ipaas-commentary-text">
             <li>Recipe runs averaging ~405K/week (peak 448K in the last week of July), whereas Q1 only reached that level mid-quarter.</li>
@@ -1181,7 +1164,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
     <div class="card">
       <div class="card-header">
         <h3><span class="section-num">6</span> Decisions & Support Needed</h3>
-        <span class="flag flag-low">&#x1F4CB; Laura / Lalena</span>
       </div>
       <div class="card-body">
         <p style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">From IT Foundations (Lalena). Additional decisions / escalations from other teams to be added.</p>
@@ -1212,7 +1194,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
     <div class="card">
       <div class="card-header">
         <h3><span class="section-num">7</span> Salesforce Maturity Tactical Plan</h3>
-        <span class="flag flag-low">&#x1F4CB; Anna Duncanson</span>
       </div>
       <div class="card-body">
         <div class="maturity-track commentable" data-comment-id="sf-maturity-track">
@@ -1245,7 +1226,7 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
         <p style="font-size:13px; color:var(--text-secondary); margin-top:8px;">Currently at Level 3 &mdash; targeting Level 4 by end of FY27.</p>
 
         <div class="commentary commentable" data-comment-id="sf-maturity-commentary" style="margin-top:20px;">
-          <h5>&#x1F4DD; Commentary <span class="flag flag-low">&#x1F4CB; Anna Duncanson</span></h5>
+          <h5>&#x1F4DD; Commentary</h5>
           <ul class="editable" data-edit-id="sf-maturity-commentary-text">
             <li><strong>Governance.</strong> Q2 moved the platform toward least-privilege and a defensible security posture: 20+ Rev Ops / Marketing / Deal Desk users migrated off System Admin onto right-sized roles, Okta SSO + phishing-resistant MFA enforced on Salesforce (retiring local logins), and every outstanding Salesforce security vulnerability closed ahead of 2026 platform requirements. Q3 extends this with Secure &amp; Stabilize SF Integration + API Access (P0), Okta&rarr;Salesforce automated provisioning, and improved SCIM + RBAC.</li>
             <li><strong>Stability.</strong> Q2 restored the automations that broke after the org restructure. Q3 hardens the foundation: Salesforce Flows rebuilt and optimized for performance, scale &amp; reliability (P0 &mdash; phase 1 already cut SOQL calls ~20x), a Salesforce CI/CD tool for safer deploys, and Disaster Recovery + Salesforce backup (OwnBackup).</li>
@@ -1257,22 +1238,6 @@ export const qbrBodyHtml = `<!-- ═══ Sidebar ═════════�
     </div>
   </div>
 
-
-  <!-- ═══ Flags Summary ════════════════════════════ -->
-  <div class="section" id="flags-summary" style="margin-top:40px;">
-    <div style="padding:20px; background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow);">
-      <h4 style="font-family:'Poppins',sans-serif; font-size:14px; margin-bottom:16px;">&#x26A0;&#xFE0F; Review Flags</h4>
-      <div style="display:flex; gap:16px; margin-bottom:16px;">
-        <div id="flag-count-high" style="padding:8px 16px; background:var(--red-bg); border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--red);">&#x1F534; 4 HIGH</div>
-        <div id="flag-count-medium" style="padding:8px 16px; background:var(--yellow-bg); border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--yellow);">&#x1F7E1; 5 MEDIUM</div>
-        <div id="flag-count-low" style="padding:8px 16px; background:var(--green-bg); border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--green);">&#x1F7E2; 6 LOW</div>
-        <div id="flag-count-resolved" style="padding:8px 16px; background:rgba(0,200,83,0.06); border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--green);">&#x2705; 0 resolved</div>
-      </div>
-      <div id="flags-container">
-        <!-- Flags rendered dynamically by JS -->
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <div style="text-align:center; padding:32px 0; color:var(--text-secondary); font-size:12px;">
